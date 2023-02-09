@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Protobuf Include="Services\Crop\Protos\cropServices.proto" GrpcServices="Client" />
+		<Protobuf Include="Services\GoalsPlanning\Protos\goalsplanningServices.proto" GrpcServices="Client" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <PackageReference Include="google.protobuf" Version="3.21.12" />
+	  <PackageReference Include="grpc.net.client" Version="2.51.0" />
+	  <PackageReference Include="grpc.tools" Version="2.51.0">
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	    <PrivateAssets>all</PrivateAssets>
+	  </PackageReference>
+	  <PackageReference Include="mediatr.extensions.microsoft.dependencyinjection" Version="11.0.0" />
+	  <PackageReference Include="microsoft.extensions.configuration" Version="7.0.0" />
+	  <PackageReference Include="microsoft.extensions.options.configurationextensions" Version="7.0.0" />
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+	  <PackageReference Include="scrutor" Version="4.2.0" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <ProjectReference Include="..\PX.Approval.Application\PX.Approval.Application.csproj" />
+	</ItemGroup>
+
+</Project>

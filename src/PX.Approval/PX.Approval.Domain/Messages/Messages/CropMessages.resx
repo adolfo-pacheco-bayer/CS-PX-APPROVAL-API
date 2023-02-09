@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CreateBrandCropSuccess" xml:space="preserve">
+    <value>Marca criada com sucesso</value>
+  </data>
+  <data name="CreateCropSuccess" xml:space="preserve">
+    <value>Safra criada com sucesso</value>
+  </data>
+  <data name="CropStatusNotAllowDocumentInactivation" xml:space="preserve">
+    <value>O status da safra não permite a inativação desse documento.</value>
+  </data>
+  <data name="CreateDocumentCropSuccess" xml:space="preserve">
+    <value>Documento criado com sucesso</value>
+  </data>
+  <data name="CropPartnersDownloadExcelModelErrorToConvertExcelModel" xml:space="preserve">
+    <value>Ocorreu um erro inesperado ao converter o arquivo modelo</value>
+  </data>
+  <data name="CropPartnersDownloadExcelModelFileNoPartnersLoaded" xml:space="preserve">
+    <value>Nenhum parceiro foi cadastrado no cadastro de parceiro. Por gentileza executar a carga prévia de parceiros ou entrar em contato com TI.</value>
+  </data>
+  <data name="DeleteBrandCropError" xml:space="preserve">
+    <value>Erro ao remover a marca</value>
+  </data>
+  <data name="DeleteBrandCropSuccess" xml:space="preserve">
+    <value>Marca removida com sucesso</value>
+  </data>
+  <data name="DeleteClassificationCropError" xml:space="preserve">
+    <value>Erro ao remover a classificação</value>
+  </data>
+  <data name="DeleteClassificationSuccess" xml:space="preserve">
+    <value>Classificação removida com sucesso</value>
+  </data>
+  <data name="DeleteCropError" xml:space="preserve">
+    <value>Erro ao remover a safra</value>
+  </data>
+  <data name="DeleteCropSuccess" xml:space="preserve">
+    <value>Safra removida com sucesso</value>
+  </data>
+  <data name="DeletePartnerCropError" xml:space="preserve">
+    <value>Erro ao remover parceiro</value>
+  </data>
+  <data name="DeletePartnerCropSuccess" xml:space="preserve">
+    <value>Parceiro removido com sucesso</value>
+  </data>
+  <data name="GetAllBrandsCropCropNotExist" xml:space="preserve">
+    <value>A safra informada não foi encontrada</value>
+  </data>
+  <data name="GetAllSAPBrandsUnavailableApiBrands" xml:space="preserve">
+    <value>API indisponível no momento, por gentileza tentar novamente em alguns minutos</value>
+  </data>
+  <data name="GetCropPartnersNoPartnersWasFoundPartnersDatabase" xml:space="preserve">
+    <value>Nenhum parceiro foi cadastrado no cadastro de parceiro. Por gentileza executar a carga prévia de parceiros ou entrar em contato com TI.</value>
+  </data>
+  <data name="GetCropPartnersNotAssocietedPartnersWithCrop" xml:space="preserve">
+    <value>Não foram selecionados parceiros para a safra.</value>
+  </data>
+  <data name="ImportBrandCrop" xml:space="preserve">
+    <value>Importação de marcas realizada com sucesso.</value>
+  </data>
+  <data name="ImportBrandCropErroImport" xml:space="preserve">
+    <value>Encontramos erros em {0} marcas importadas.</value>
+  </data>
+  <data name="OpenedCropError" xml:space="preserve">
+    <value>Erro ao abrir a safra</value>
+  </data>
+  <data name="OpenedCropSuccess" xml:space="preserve">
+    <value>Safra foi aberta com sucesso</value>
+  </data>
+  <data name="ImportPartnerCrop" xml:space="preserve">
+    <value>Importação de parceiros realizada com sucesso.</value>
+  </data>
+  <data name="ImportPartnerCropErroImport" xml:space="preserve">
+    <value>Encontramos {0} erros na importação de parceiros.</value>
+  </data>
+  <data name="SaveClassficationsCropError" xml:space="preserve">
+    <value>Erro ao salvar classificações</value>
+  </data>
+  <data name="SaveClassficationsCropSuccess" xml:space="preserve">
+    <value>Classificação(ões) salva(s) com sucesso</value>
+  </data>
+  <data name="UpdateBrandCropError" xml:space="preserve">
+    <value>Erro ao atualizar a marca</value>
+  </data>
+  <data name="UpdateBrandCropSuccess" xml:space="preserve">
+    <value>Marca atualizada com sucesso</value>
+  </data>
+  <data name="UpdateCropError" xml:space="preserve">
+    <value>Erro ao atualiza safra</value>
+  </data>
+  <data name="UpdateCropSuccess" xml:space="preserve">
+    <value>Safra atualizada com sucesso</value>
+  </data>
+  <data name="BrandCropDownloadExcelPurgesFileNoLoaded" xml:space="preserve">
+    <value>Nenhum relatório de erro foi encontrado. Por gentileza tente novamente importar as marcas ou entrar em contato com TI.</value>
+  </data>
+  <data name="BrandCropDownloadExcelPurgesErrorToConvertExcel" xml:space="preserve">
+    <value>Ocorreu um erro inesperado ao converter o arquivo de relatório de erro</value>
+  </data>
+  <data name="RequestManualPartnersLoadErro" xml:space="preserve">
+    <value>Erro ao processar a solicitação.</value>
+  </data>
+  <data name="RequestManualPartnersLoadSuccess" xml:space="preserve">
+    <value>Solicitação efetuada com sucesso.</value>
+  </data>
+  <data name="DonwloadPartnersExcelModelInvalidCropStatus" xml:space="preserve">
+    <value>O status da Safra não permite a inclusão de parceiros na safra.</value>
+  </data>
+  <data name="ImportPartnerCropUnexpectedErrorImport" xml:space="preserve">
+    <value>Ocorreu um erro inesperado na importação de parceiros.</value>
+  </data>
+  <data name="GetPartnerCropPurgeImportationErrorOnGenerateExcelFile" xml:space="preserve">
+    <value>Erro ao gerar o excel para listagem dos erros de importação</value>
+  </data>
+  <data name="GetPartnerCropPurgeImportationNotFound" xml:space="preserve">
+    <value>Nenhum erro de importação foi encontrado para esta safra.</value>
+  </data>
+  <data name="GetAllCropsByPartnerNotFound" xml:space="preserve">
+    <value>Nenhuma safra foi localizada para o parceiro.</value>
+  </data>
+  <data name="GetAllCropsByRTVPartnersInExceptionNotFound" xml:space="preserve">
+    <value>Nenhuma safra foi localizada em que há parceiro em Exceção para este Representante.</value>
+  </data>
+  <data name="PartnerCropNotFoundForThisCRMCode" xml:space="preserve">
+    <value>Não foi encontrado parceiro nesta safra com esse CRMCode</value>
+  </data>
+  <data name="PartnerCropNotFoundForThisCrop" xml:space="preserve">
+    <value>Não foi encontrado parceiro para esta safra</value>
+  </data>
+  <data name="UpdatePartnerCropError" xml:space="preserve">
+    <value>Houve um erro ao atualizar parceiro</value>
+  </data>
+  <data name="UpdatePartnerCropSuccess" xml:space="preserve">
+    <value>Parceiro atualizado com sucesso</value>
+  </data>
+  <data name="EarlyPaymentStartProcess" xml:space="preserve">
+    <value>O processo de early payment foi iniciado para a safra {0} - {1}</value>
+  </data>
+  <data name="EarlyPaymentStartProcessNoPartnersAvaliable" xml:space="preserve">
+    <value>Não há parceiros elegíveis a early payment nessa safra</value>
+  </data>
+  <data name="EarlyPaymentStartProcessErrorWhileStartingProcess" xml:space="preserve">
+    <value>Erro ao iniciar o processo de early payment. Crop:  {0} - {1}</value>
+  </data>
+  <data name="EarlyPaymentStartProcessHasNoChemicalPartners" xml:space="preserve">
+    <value>Processo sem nenhum parceiro do tipo CP. Crop:  {0} - {1}</value>
+  </data>
+  <data name="EarlyPaymentStartProcessHasNoSeedsPartners" xml:space="preserve">
+    <value>Processo sem nenhum parceiro do tipo seeds. Crop:  {0} - {1}</value>
+  </data>
+  <data name="DeleteDocumentCropSuccess" xml:space="preserve">
+    <value>Documento removido com sucesso</value>
+  </data>
+  <data name="HeadqartersNotFoundForThisCRMCode" xml:space="preserve">
+    <value>Não foi encontrada a matriz para o CRMCode: {0}.</value>
+  </data>
+  <data name="HeadqartersNotFoundForThisRTVCwid" xml:space="preserve">
+    <value>Não foram encontradas matrizes para o CWID: {0}</value>
+  </data>
+  <data name="HeadquarterNotFoundForThisPartnerGroup" xml:space="preserve">
+    <value>Não foi encontrada matriz para o grupo de parceiros: {0}</value>
+  </data>
+</root>

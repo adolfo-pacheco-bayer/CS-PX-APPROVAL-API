@@ -1,0 +1,2 @@
+obj\Release\net6.0\Services\GoalsPlanning\Protos/GoalsplanningServices.cs \
+obj\Release\net6.0\Services\GoalsPlanning\Protos/GoalsplanningServicesGrpc.cs: Services/GoalsPlanning/Protos/goalsplanningServices.proto

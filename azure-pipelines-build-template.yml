@@ -1,0 +1,75 @@
+parameters:
+    vmImage: 'DEFAULT_IMAGE'
+    publishProjects: ''
+
+jobs:
+  - job: BuildJob
+    displayName: 'Build & Test & Generate Artifacts'
+    pool:
+      vmImage: ${{ parameters.vmImage }}
+    steps:
+
+    - task: UseDotNet@2
+      displayName: 'Download .NET 6 Core sdk'
+      inputs:
+        packageType: 'sdk'
+        version: '6.0.x'
+        includePreviewVersions: true
+    
+    - task: DotNetCoreCLI@2
+      displayName: Restore
+      inputs:
+        command: 'restore'
+        projects: '**/*.csproj'
+        feedsToUse: 'select'
+        vstsFeed: 'e6c40dbf-88f2-439f-ad50-70e181cecd1c/5f5e75cb-cb54-4337-9bb0-892e421414ec'
+
+    - task: DotNetCoreCLI@2
+      displayName: Build
+      inputs:
+        command: 'build'
+        projects: '**/*.csproj'
+        arguments: '--configuration $(buildConfiguration)'
+  
+    - task: DotNetCoreCLI@2
+      displayName: 'Create Manifest'
+      inputs:
+        command: custom
+        custom: 'new '
+        arguments: 'tool-manifest'
+
+    - task: DotNetCoreCLI@2
+      displayName: 'Install EF Core'
+      inputs:
+        command: custom
+        custom: 'tool '
+        arguments: 'install dotnet-ef --add-source https://api.nuget.org/v3/index.json --ignore-failed-sources'
+      
+    - task: DotNetCoreCLI@2
+      displayName: 'Generate DB Scripts from Migrations'
+      inputs:
+        command: custom
+        custom: 'ef '
+        arguments: 'migrations script --output $(Build.SourcesDirectory)/db/script.sql --idempotent --project $(Build.SourcesDirectory)/src/PX.Planning.Infrastructure/PX.Planning.Infrastructure.csproj  --startup-project $(Build.SourcesDirectory)/src/PX.Planning.API/PX.Planning.API.csproj'
+   
+    - task: DotNetCoreCLI@2
+      displayName: 'Test'
+      inputs:
+        command: 'test'
+        projects: '**/*.csproj'
+        arguments: '--configuration $(buildConfiguration)'
+
+    - task: DotNetCoreCLI@2
+      displayName: 'Generate Artifacts'
+      inputs:
+        command: 'publish'
+        projects: '**/*PX.Planning.API.csproj'
+        publishWebProjects: false
+        arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/'
+        zipAfterPublish: true
+
+    - publish: '$(Build.ArtifactStagingDirectory)'
+      artifact: drop
+
+    - publish: '$(Build.SourcesDirectory)/db/script.sql'
+      artifact: sql-scripts
