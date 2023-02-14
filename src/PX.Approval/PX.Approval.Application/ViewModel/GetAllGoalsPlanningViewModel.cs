@@ -5,7 +5,11 @@ namespace PX.Approval.Application.ViewModel;
 
 public class GetAllGoalsPlanningViewModel
 {
+    public Guid CropIntegrationId { get; set; }
     public Guid IntegrationId { get; set; }
+    public string Name { get; set; }
+    public string CropPeriod { get; set; }
+    public string PlanningPeriod { get; set; }
     public string PartnerGroupCode { get; set; }
     public GoalsPlanningStatus Status { get; set; }
     public ICollection<StatusHistoryViewModel> StatusHistory { get; set; }
