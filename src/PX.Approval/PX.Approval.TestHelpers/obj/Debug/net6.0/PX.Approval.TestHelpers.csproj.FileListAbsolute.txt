@@ -10,3 +10,15 @@ C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval\PX.Approval.TestHelpe
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval\PX.Approval.TestHelpers\obj\Debug\net6.0\refint\PX.Approval.TestHelpers.dll
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval\PX.Approval.TestHelpers\obj\Debug\net6.0\PX.Approval.TestHelpers.pdb
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval\PX.Approval.TestHelpers\obj\Debug\net6.0\ref\PX.Approval.TestHelpers.dll
+C:\dev\CS-PX-APPROVAL\src\PX.Approval\PX.Approval.TestHelpers\bin\Debug\net6.0\PX.Approval.TestHelpers.deps.json
+C:\dev\CS-PX-APPROVAL\src\PX.Approval\PX.Approval.TestHelpers\bin\Debug\net6.0\PX.Approval.TestHelpers.dll
+C:\dev\CS-PX-APPROVAL\src\PX.Approval\PX.Approval.TestHelpers\bin\Debug\net6.0\PX.Approval.TestHelpers.pdb
+C:\dev\CS-PX-APPROVAL\src\PX.Approval\PX.Approval.TestHelpers\obj\Debug\net6.0\PX.Approval.TestHelpers.csproj.AssemblyReference.cache
+C:\dev\CS-PX-APPROVAL\src\PX.Approval\PX.Approval.TestHelpers\obj\Debug\net6.0\PX.Approval.TestHelpers.GeneratedMSBuildEditorConfig.editorconfig
+C:\dev\CS-PX-APPROVAL\src\PX.Approval\PX.Approval.TestHelpers\obj\Debug\net6.0\PX.Approval.TestHelpers.AssemblyInfoInputs.cache
+C:\dev\CS-PX-APPROVAL\src\PX.Approval\PX.Approval.TestHelpers\obj\Debug\net6.0\PX.Approval.TestHelpers.AssemblyInfo.cs
+C:\dev\CS-PX-APPROVAL\src\PX.Approval\PX.Approval.TestHelpers\obj\Debug\net6.0\PX.Approval.TestHelpers.csproj.CoreCompileInputs.cache
+C:\dev\CS-PX-APPROVAL\src\PX.Approval\PX.Approval.TestHelpers\obj\Debug\net6.0\PX.Approval.TestHelpers.dll
+C:\dev\CS-PX-APPROVAL\src\PX.Approval\PX.Approval.TestHelpers\obj\Debug\net6.0\refint\PX.Approval.TestHelpers.dll
+C:\dev\CS-PX-APPROVAL\src\PX.Approval\PX.Approval.TestHelpers\obj\Debug\net6.0\PX.Approval.TestHelpers.pdb
+C:\dev\CS-PX-APPROVAL\src\PX.Approval\PX.Approval.TestHelpers\obj\Debug\net6.0\ref\PX.Approval.TestHelpers.dll
