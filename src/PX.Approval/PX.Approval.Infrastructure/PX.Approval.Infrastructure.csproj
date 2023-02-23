@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net7.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
@@ -13,13 +13,18 @@
 	
 	<ItemGroup>
 	  <PackageReference Include="google.protobuf" Version="3.21.12" />
+	  <PackageReference Include="grpc.core.api" Version="2.51.0" />
 	  <PackageReference Include="grpc.net.client" Version="2.51.0" />
+	  <PackageReference Include="grpc.net.common" Version="2.51.0" />
 	  <PackageReference Include="grpc.tools" Version="2.51.0">
 	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	    <PrivateAssets>all</PrivateAssets>
 	  </PackageReference>
+	  <PackageReference Include="mediatr" Version="12.0.0" />
+	  <PackageReference Include="mediatr.contracts" Version="2.0.1" />
 	  <PackageReference Include="mediatr.extensions.microsoft.dependencyinjection" Version="11.0.0" />
 	  <PackageReference Include="microsoft.extensions.configuration" Version="7.0.0" />
+	  <PackageReference Include="microsoft.extensions.logging.abstractions" Version="7.0.0" />
 	  <PackageReference Include="microsoft.extensions.options.configurationextensions" Version="7.0.0" />
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
 	  <PackageReference Include="scrutor" Version="4.2.0" />

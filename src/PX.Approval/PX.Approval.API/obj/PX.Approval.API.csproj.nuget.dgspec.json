@@ -22,7 +22,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -31,8 +31,8 @@
           "https://pkgs.dev.azure.com/LatamDTITCSCommercial/e6c40dbf-88f2-439f-ad50-70e181cecd1c/_packaging/CSPX-Feed/nuget/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net7.0": {
+            "targetAlias": "net7.0",
             "projectReferences": {
               "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval\\PX.Approval.Application\\PX.Approval.Application.csproj": {
                 "projectPath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval\\PX.Approval.Application\\PX.Approval.Application.csproj"
@@ -50,16 +50,32 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net7.0": {
+          "targetAlias": "net7.0",
           "dependencies": {
             "MediatR": {
               "target": "Package",
-              "version": "[11.0.0, )"
+              "version": "[12.0.0, )"
+            },
+            "PXBayerLibraries": {
+              "target": "Package",
+              "version": "[1.0.101, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
+            },
+            "microsoft.aspnetcore.http": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            },
+            "microsoft.aspnetcore.mvc": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "newtonsoft.json": {
+              "target": "Package",
+              "version": "[13.0.2, )"
             }
           },
           "imports": [
@@ -81,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -103,7 +119,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -112,8 +128,8 @@
           "https://pkgs.dev.azure.com/LatamDTITCSCommercial/e6c40dbf-88f2-439f-ad50-70e181cecd1c/_packaging/CSPX-Feed/nuget/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net7.0": {
+            "targetAlias": "net7.0",
             "projectReferences": {
               "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval\\PX.Approval.Domain\\PX.Approval.Domain.csproj": {
                 "projectPath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval\\PX.Approval.Domain\\PX.Approval.Domain.csproj"
@@ -128,16 +144,28 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net7.0": {
+          "targetAlias": "net7.0",
           "dependencies": {
             "MediatR": {
               "target": "Package",
-              "version": "[11.0.0, )"
+              "version": "[12.0.0, )"
             },
             "Microsoft.Extensions.Logging.Abstractions": {
               "target": "Package",
-              "version": "[3.0.3, )"
+              "version": "[7.0.0, )"
+            },
+            "PXBayerLibraries": {
+              "target": "Package",
+              "version": "[1.0.101, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.27.0, )"
+            },
+            "newtonsoft.json": {
+              "target": "Package",
+              "version": "[13.0.2, )"
             }
           },
           "imports": [
@@ -156,7 +184,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -178,7 +206,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -187,8 +215,8 @@
           "https://pkgs.dev.azure.com/LatamDTITCSCommercial/e6c40dbf-88f2-439f-ad50-70e181cecd1c/_packaging/CSPX-Feed/nuget/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net7.0": {
+            "targetAlias": "net7.0",
             "projectReferences": {
               "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval\\PX.Approval.Application\\PX.Approval.Application.csproj": {
                 "projectPath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval\\PX.Approval.Application\\PX.Approval.Application.csproj"
@@ -209,12 +237,12 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net7.0": {
+          "targetAlias": "net7.0",
           "dependencies": {
             "FluentValidation": {
               "target": "Package",
-              "version": "[11.4.0, )"
+              "version": "[11.5.1, )"
             },
             "Microsoft.Extensions.Configuration.Abstractions": {
               "target": "Package",
@@ -241,7 +269,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -263,7 +291,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -272,8 +300,8 @@
           "https://pkgs.dev.azure.com/LatamDTITCSCommercial/e6c40dbf-88f2-439f-ad50-70e181cecd1c/_packaging/CSPX-Feed/nuget/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net7.0": {
+            "targetAlias": "net7.0",
             "projectReferences": {}
           }
         },
@@ -284,12 +312,12 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net7.0": {
+          "targetAlias": "net7.0",
           "dependencies": {
             "FluentValidation": {
               "target": "Package",
-              "version": "[11.4.0, )"
+              "version": "[11.5.1, )"
             }
           },
           "imports": [
@@ -308,7 +336,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -330,7 +358,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -339,8 +367,8 @@
           "https://pkgs.dev.azure.com/LatamDTITCSCommercial/e6c40dbf-88f2-439f-ad50-70e181cecd1c/_packaging/CSPX-Feed/nuget/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net7.0": {
+            "targetAlias": "net7.0",
             "projectReferences": {
               "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval\\PX.Approval.Application\\PX.Approval.Application.csproj": {
                 "projectPath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval\\PX.Approval.Application\\PX.Approval.Application.csproj"
@@ -355,8 +383,8 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net7.0": {
+          "targetAlias": "net7.0",
           "dependencies": {
             "Newtonsoft.Json": {
               "target": "Package",
@@ -366,7 +394,15 @@
               "target": "Package",
               "version": "[3.21.12, )"
             },
+            "grpc.core.api": {
+              "target": "Package",
+              "version": "[2.51.0, )"
+            },
             "grpc.net.client": {
+              "target": "Package",
+              "version": "[2.51.0, )"
+            },
+            "grpc.net.common": {
               "target": "Package",
               "version": "[2.51.0, )"
             },
@@ -376,11 +412,23 @@
               "target": "Package",
               "version": "[2.51.0, )"
             },
+            "mediatr": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
+            "mediatr.contracts": {
+              "target": "Package",
+              "version": "[2.0.1, )"
+            },
             "mediatr.extensions.microsoft.dependencyinjection": {
               "target": "Package",
               "version": "[11.0.0, )"
             },
             "microsoft.extensions.configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "microsoft.extensions.logging.abstractions": {
               "target": "Package",
               "version": "[7.0.0, )"
             },
@@ -409,7 +457,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }
