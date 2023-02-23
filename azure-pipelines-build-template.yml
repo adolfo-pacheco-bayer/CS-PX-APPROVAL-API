@@ -10,7 +10,7 @@ jobs:
     steps:
 
     - task: UseDotNet@2
-      displayName: 'Download .NET 6 Core sdk'
+      displayName: 'Download .NET 7 Core sdk'
       inputs:
         packageType: 'sdk'
         version: '7.0.x'
