@@ -7,6 +7,6 @@ stages:
   jobs:
   - template: azure-pipelines-build-template.yml
     parameters:
-      vmImage: 'ubuntu-latest'
+      vmImage: 'windows-latest'
       buildConfiguration: 'Release'
       publishProjects: '**/*PX.Approval.API.csproj'
