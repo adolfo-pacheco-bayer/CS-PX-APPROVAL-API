@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\PX.Approval.API.props" />
+</Project>
