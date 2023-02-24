@@ -7,8 +7,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Protobuf Include="Services\Crop\Protos\cropServices.proto" GrpcServices="Client" />
-		<Protobuf Include="Services\GoalsPlanning\Protos\goalsplanningServices.proto" GrpcServices="Client" />
+		<Protobuf Include="../Services/Crop/Protos/cropServices.proto" GrpcServices="Client" ProtoRoot="../Services" />
+		<Protobuf Include="../Services/GoalsPlanning/Protos/goalsplanningServices.proto" ProtoRoot="../Services" GrpcServices="Client" />
 	</ItemGroup>
 	
 	<ItemGroup>
