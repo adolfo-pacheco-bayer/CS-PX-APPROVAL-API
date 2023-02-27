@@ -9,4 +9,4 @@ stages:
     parameters:
       vmImage: 'windows-latest'
       buildConfiguration: 'Release'
-      publishProjects: '**/*PX.Approval.Infrastructure.csproj'
+      publishProjects: '**/*PX.Approval.API.csproj'
