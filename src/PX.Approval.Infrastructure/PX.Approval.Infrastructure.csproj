@@ -7,7 +7,7 @@
 	</PropertyGroup>
 	
 	<ItemGroup>
-		<Protobuf Include="%(RelativePath)Services\Protos\cropServices.proto" GrpcServices="Client" ProtoRoot="%(RelativePath)Services/Protos" OutputDir="%(RelativePath)CodeGen/" CompileOutputs="true" />
+		<Protobuf Include="Services\Protos\cropServices.proto" GrpcServices="Client" ProtoRoot="%(RelativePath)Services/Protos" OutputDir="%(RelativePath)CodeGen/" CompileOutputs="true" />
 		<Protobuf Include="Services\Protos\goalsplanningServices.proto" ProtoRoot="%(RelativePath)Services/Protos" GrpcServices="Client" OutputDir="%(RelativePath)CodeGen/" CompileOutputs="true" />
 	</ItemGroup>
 	
