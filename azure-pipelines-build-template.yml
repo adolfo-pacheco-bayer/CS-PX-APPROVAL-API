@@ -31,26 +31,26 @@ jobs:
         projects: '**/*.csproj'
         arguments: '--configuration $(buildConfiguration)'
   
-    - task: DotNetCoreCLI@2
-      displayName: 'Create Manifest'
-      inputs:
-        command: custom
-        custom: 'new '
-        arguments: 'tool-manifest'
+    #- task: DotNetCoreCLI@2
+    #  displayName: 'Create Manifest'
+    #  inputs:
+    #    command: custom
+    #    custom: 'new '
+    #    arguments: 'tool-manifest'
 
-    - task: DotNetCoreCLI@2
-      displayName: 'Install EF Core'
-      inputs:
-        command: custom
-        custom: 'tool '
-        arguments: 'install dotnet-ef --add-source https://api.nuget.org/v3/index.json --ignore-failed-sources'
+    #- task: DotNetCoreCLI@2
+    #  displayName: 'Install EF Core'
+    #  inputs:
+    #    command: custom
+    #    custom: 'tool '
+    #    arguments: 'install dotnet-ef --add-source https://api.nuget.org/v3/index.json --ignore-failed-sources'
       
-    - task: DotNetCoreCLI@2
-      displayName: 'Generate DB Scripts from Migrations'
-      inputs:
-        command: custom
-        custom: 'ef '
-        arguments: 'migrations script --output $(Build.SourcesDirectory)/db/script.sql --idempotent --project $(Build.SourcesDirectory)/src/PX.Approval.Infrastructure/PX.Approval.Infrastructure.csproj  --startup-project $(Build.SourcesDirectory)/src/PX.Approval.API/PX.Approval.API.csproj'
+    #- task: DotNetCoreCLI@2
+    #  displayName: 'Generate DB Scripts from Migrations'
+    #  inputs:
+    #    command: custom
+    #    custom: 'ef '
+    #    arguments: 'migrations script --output $(Build.SourcesDirectory)/db/script.sql --idempotent --project $(Build.SourcesDirectory)/src/PX.Approval.Infrastructure/PX.Approval.Infrastructure.csproj  --startup-project $(Build.SourcesDirectory)/src/PX.Approval.API/PX.Approval.API.csproj'
    
     - task: DotNetCoreCLI@2
       displayName: 'Test'
