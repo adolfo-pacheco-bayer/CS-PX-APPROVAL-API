@@ -7,8 +7,17 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Protobuf Include=".\Services\Protos\cropServices.proto" GrpcServices="Client" ProtoRoot="%(RelativePath)Services/Protos" OutputDir="%(RelativePath)CodeGen/" CompileOutputs="false" />
-		<Protobuf Include=".\Services\Protos\goalsplanningServices.proto" ProtoRoot="%(RelativePath)Services/Protos" GrpcServices="Client" OutputDir="%(RelativePath)CodeGen/" CompileOutputs="false" />
+	  <None Remove="Services\Crop\Protos\cropServices.proto" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Protobuf Include="Services\Protos\cropServices.proto" GrpcServices="Client" ProtoRoot="%(RelativePath)Services/Protos" OutputDir="%(RelativePath)CodeGen/" CompileOutputs="true" />
+		<Protobuf Include="Services\Protos\goalsplanningServices.proto" ProtoRoot="%(RelativePath)Services/Protos" GrpcServices="Client" OutputDir="%(RelativePath)CodeGen/" CompileOutputs="true" />
+		<Protobuf Include="Services\Crop\Protos\cropServices.proto" GrpcServices="Client">
+		  <ProtoRoot>%(RelativePath)Services/Protos</ProtoRoot>
+		  <OutputDir>%(RelativePath)CodeGen/</OutputDir>
+		  <CompileOutputs>false</CompileOutputs>
+		</Protobuf>
 	</ItemGroup>
 	
 	<ItemGroup>
