@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BrandCropCreateBrandWithSameName" xml:space="preserve">
+    <value>Não é permitido cadastro de marca com o mesmo nome</value>
+  </data>
+  <data name="BrandCropCreateCropPlanningValuedPriceRequired" xml:space="preserve">
+    <value>Esta safra é valorada, é obrigatório preencher o campo preço</value>
+  </data>
+  <data name="BrandCropIsNotCPType" xml:space="preserve">
+    <value>Só é permitida exclusão de marca para tipo CP</value>
+  </data>
+  <data name="ClassificationCropDeleteClassificationWithSameCode" xml:space="preserve">
+    <value>Não é permitido cadastro de classificação com o mesmo código.</value>
+  </data>
+  <data name="ClassificationNoExistForCrop" xml:space="preserve">
+    <value>Classificação não existente para esta safra</value>
+  </data>
+  <data name="ClassificationCropNotValuedCrop" xml:space="preserve">
+    <value>Classificação: {0}, não é permitido colocar valor de margem de planejamento para safra que não é valorada</value>
+  </data>
+  <data name="ClassificationCropSameCode" xml:space="preserve">
+    <value>Classificação: {0}, código de classificação já cadastrado</value>
+  </data>
+  <data name="ClassificationCropValuedCrop" xml:space="preserve">
+    <value>Classificação: {0}, é obrigatório colocar valor de margem de planejamento para safra valorada</value>
+  </data>
+  <data name="ClosedOrDeletedBrandCropStatus" xml:space="preserve">
+    <value>O status da safra não permite a exclusão de marca elegível</value>
+  </data>
+  <data name="CropInSamePeriod" xml:space="preserve">
+    <value>Já existe uma safra neste mesmo período.</value>
+  </data>
+  <data name="CropInStatusIneligible" xml:space="preserve">
+    <value>O status da Safra não permite a inclusão de marca elegível</value>
+  </data>
+  <data name="CropStatusNotAllowToDeleteClassification" xml:space="preserve">
+    <value>O status da safra não permite a exclusão de classificação</value>
+  </data>
+  <data name="DeleteClassificationCropNotFound" xml:space="preserve">
+    <value>Classificação não existente para essa safra.</value>
+  </data>
+  <data name="DeleteClassificationNotFound" xml:space="preserve">
+    <value>A classificação que você está tentando remover não foi encontrada.</value>
+  </data>
+  <data name="DeleteClosedCrop" xml:space="preserve">
+    <value>A safra não pode ser removida, pois já está fechada.</value>
+  </data>
+  <data name="DeleteCropNotFound" xml:space="preserve">
+    <value>A safra que você está tentando remover não foi encontrada.</value>
+  </data>
+  <data name="ErrorDeleteClassificationIdentifyPartnerThisClassification" xml:space="preserve">
+    <value>Erro ao excluir esta classificação. O sistema identificou que existem parceiros com esta classificação.</value>
+  </data>
+  <data name="ImportBrandBrandDuplicated" xml:space="preserve">
+    <value>A importação contém marcas duplicadas</value>
+  </data>
+  <data name="ImportBrandCropBrandRequired" xml:space="preserve">
+    <value>O campo marca é obrigatório</value>
+  </data>
+  <data name="ImportBrandCropIsNotInDraft" xml:space="preserve">
+    <value>Só é permitida importação de marcas para safra em rascunho</value>
+  </data>
+  <data name="ImportBrandCropUnavailableApiBrands" xml:space="preserve">
+    <value>API indisponível no momento, por gentileza tentar novamente em alguns minutos</value>
+  </data>
+  <data name="IsNotInDraft" xml:space="preserve">
+    <value>Só é possivel remover safras que ainda estão no modo rascunho.</value>
+  </data>
+  <data name="NoExistBrandCrop" xml:space="preserve">
+    <value>Marca não existente para esta safra</value>
+  </data>
+  <data name="NonExistentBrandsInBayerAPI" xml:space="preserve">
+    <value>Não foi possível importar a planilha. As seguintes marcas não foram encontradas na API.</value>
+  </data>
+  <data name="SaveClassificationCropIsNotValid" xml:space="preserve">
+    <value>O status da safra não permite a inclusão de classificação</value>
+  </data>
+  <data name="UpdateBrandCropBrandNotExistsInCrop" xml:space="preserve">
+    <value>Marca não existente para esta Safra</value>
+  </data>
+  <data name="UpdateBrandCropBrandTypeNotAllowed" xml:space="preserve">
+    <value>Só é permitida alteração para tipo CP</value>
+  </data>
+  <data name="UpdateBrandCropCropNotGoalPlanningValued" xml:space="preserve">
+    <value>Não é permitida alteração para safra que não é valorada</value>
+  </data>
+  <data name="UpdateBrandCropCropWithNotAllowedStatus" xml:space="preserve">
+    <value>O status da Safra não permite a alteração de marca elegível</value>
+  </data>
+  <data name="UpdateCropGoalPlanningValued" xml:space="preserve">
+    <value>Não é permitida alteração no campo Valorar Plano de Metas para Safra Ativa</value>
+  </data>
+  <data name="UpdateCropInvalidStatus" xml:space="preserve">
+    <value>Não é permitida alteração em Safra Fechada ou Excluída</value>
+  </data>
+  <data name="UpdateCropNotFound" xml:space="preserve">
+    <value>Safra não existente</value>
+  </data>
+  <data name="NoExistCrop" xml:space="preserve">
+    <value>Safra não existente</value>
+  </data>
+  <data name="ClosedOrDeletedPartnerCropStatus" xml:space="preserve">
+    <value>O status da safra não permite a exclusão desse parceiro.</value>
+  </data>
+  <data name="NoExistPartnerCrop" xml:space="preserve">
+    <value>Parceiro não existente para esta safra</value>
+  </data>
+  <data name="IncorrectPartnerListToDelete" xml:space="preserve">
+    <value>Lista de parceiros para exclusão apresenta inconsistências</value>
+  </data>
+  <data name="DocumentCropDuplicate" xml:space="preserve">
+    <value>Erro ao incluir documento. Documento já cadastrado com as mesmas configurações de Tipo parceiro, Tipo e classificações</value>
+  </data>
+  <data name="ClassificationCropCodeAlreadyInUse" xml:space="preserve">
+    <value>Erro ao editar esta classificação {0} para {1}. O sistema identificou que existem parceiros com esta classificação</value>
+  </data>
+  <data name="DeleteClassificationCropAlreadyInUse" xml:space="preserve">
+    <value>Erro ao excluir esta classificação. O sistema identificou que existem parceiros com esta classificação.</value>
+  </data>
+  <data name="StartEarlyPaymentProcessNotAllowed" xml:space="preserve">
+    <value>Não é permitido iniciar o processamento do early payment. Motivo: {0}</value>
+  </data>
+  <data name="DocumentCropPriceListDuplicate" xml:space="preserve">
+    <value>Não é possivel cadastrar mais de um documento para tipo lista de preços para essa safra</value>
+  </data>
+  <data name="DeleteClassificationAlreadyInDocument" xml:space="preserve">
+    <value>Esta classificação não pode ser excluída pois está sendo utilizada no cadastro de documento.</value>
+  </data>
+  <data name="DocumentCropDelete" xml:space="preserve">
+    <value>Este documento não pode ser excluído pois já foi aceito pelo parceiro.</value>
+  </data>
+  <data name="DocumentCropDescriptionDuplicate" xml:space="preserve">
+    <value>Já existe nesta safra um documento com o mesmo nome.</value>
+  </data>
+</root>

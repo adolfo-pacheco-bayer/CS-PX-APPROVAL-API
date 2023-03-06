@@ -1,0 +1,2 @@
+CodeGen/GoalsplanningServices.cs \
+CodeGen/GoalsplanningServicesGrpc.cs: Services/Protos/goalsplanningServices.proto

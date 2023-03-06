@@ -1,0 +1,2 @@
+CodeGen/CropServices.cs \
+CodeGen/CropServicesGrpc.cs: Services/Protos/CropServices.proto
