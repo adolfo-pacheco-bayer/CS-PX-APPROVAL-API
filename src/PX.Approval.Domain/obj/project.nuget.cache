@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "2sVCAqgdrnlauJ8DU/s/EVbASvLGCA0DUauwt/7KeORmdPUzWnCC3obNJMGncyV1d8+vUtSmB8ACfi3ae6Fptw==",
+  "dgSpecHash": "5hmVoLHlEOIj/0CtWaMUWZIfEJg9BiZfenu7OyjsVDIyIQ150mk4/4B5yJJxAQ6q7BfODA+d0yOJC/NwTfWL1Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Domain\\PX.Approval.Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\EFERE\\.nuget\\packages\\fluentvalidation\\11.5.1\\fluentvalidation.11.5.1.nupkg.sha512"
+  ],
   "logs": []
 }
