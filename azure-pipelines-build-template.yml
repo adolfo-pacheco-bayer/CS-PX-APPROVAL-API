@@ -50,7 +50,7 @@ jobs:
       inputs:
         command: custom
         custom: 'ef '
-        arguments: 'migrations script --output $(Build.SourcesDirectory)/db/script.sql --idempotent --project $(Build.SourcesDirectory)/src/PX.Planning.Infrastructure/PX.Planning.Infrastructure.csproj  --startup-project $(Build.SourcesDirectory)/src/PX.Planning.API/PX.Planning.API.csproj'
+        arguments: 'migrations script --output $(Build.SourcesDirectory)/db/script.sql --idempotent --project $(Build.SourcesDirectory)/src/PX.Approval.Infrastructure/PX.Approval.Infrastructure.csproj  --startup-project $(Build.SourcesDirectory)/src/PX.Approval.API/PX.Approval.API.csproj'
    
     - task: DotNetCoreCLI@2
       displayName: 'Test'
