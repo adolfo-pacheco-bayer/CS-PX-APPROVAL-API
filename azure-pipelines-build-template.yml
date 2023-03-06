@@ -63,7 +63,7 @@ jobs:
       displayName: 'Generate Artifacts'
       inputs:
         command: 'publish'
-        projects: '**/*PX.Planning.API.csproj'
+        projects: '**/*PX.Approval.API.csproj'
         publishWebProjects: false
         arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/'
         zipAfterPublish: true
@@ -71,5 +71,5 @@ jobs:
     - publish: '$(Build.ArtifactStagingDirectory)'
       artifact: drop
 
-    - publish: '$(Build.SourcesDirectory)/db/script.sql'
-      artifact: sql-scripts
+    #- publish: '$(Build.SourcesDirectory)/db/script.sql'
+    #  artifact: sql-scripts
