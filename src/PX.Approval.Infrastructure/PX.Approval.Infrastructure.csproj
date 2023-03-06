@@ -7,8 +7,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Protobuf Include="Services\Protos\cropServices.proto" GrpcServices="Client" ProtoRoot="Services/Protos/cropServices.proto" OutputDir="%(RelativePath)CodeGen/" CompileOutputs="false" />
-		<Protobuf Include="Services\Protos\goalsplanningServices.proto" ProtoRoot="Services/Protos/goalsplanningServices.proto" GrpcServices="Client" OutputDir="%(RelativePath)CodeGen/" CompileOutputs="false" />
+		<Protobuf Include="Services\Protos\cropServices.proto" GrpcServices="Client" ProtoRoot="%(RelativePath)Services/Protos" OutputDir="%(RelativePath)CodeGen/" CompileOutputs="false" />
+		<Protobuf Include="Services\Protos\goalsplanningServices.proto" ProtoRoot="%(RelativePath)Services/Protos" GrpcServices="Client" OutputDir="%(RelativePath)CodeGen/" CompileOutputs="false" />
 	</ItemGroup>
 	
 	<ItemGroup>
