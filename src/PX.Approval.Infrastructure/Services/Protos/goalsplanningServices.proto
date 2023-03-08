@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "PX.Planning.GrpcAPI";
+
+package goalsPlanning;
+
+service GoalsPlanningService {
+  rpc GetAllGoalsPlanningByCropIds (Request) returns (Response);
+}
+
+message Request{
+	repeated integrationIdList cropIntegrationIds = 1;
+}
+
+message integrationIdList{
+	string cropIntegrationId = 1;
+}
+
+message Response {
+  string data = 1;
+}
