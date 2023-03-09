@@ -55,4 +55,6 @@ app.UseHttpsRedirection();
 
 app.MapEndPoints();
 
+app.UseMiddleware();
+
 app.Run();
