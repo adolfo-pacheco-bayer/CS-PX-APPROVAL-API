@@ -9,12 +9,12 @@ namespace PX.Approval.API.Routes
 
         public static void MapEndPoints(this WebApplication app)
         {
-            app.MapGet("/check",() =>
+            app.MapGet("api/approval/check",() =>
             {
                 return "Service is running!";
             });
 
-            app.MapGet("/get-all-goals-planning", async ([FromServices] IMediator mediator) =>
+            app.MapGet("api/approval/get-all-goals-planning", async ([FromServices] IMediator mediator) =>
             {
                 return await mediator.Send(new GetAllGoalsPlanningInActiveCropsQuery()
                 {

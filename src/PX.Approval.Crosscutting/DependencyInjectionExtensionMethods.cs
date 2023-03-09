@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using MediatR;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PX.Approval.Application.Common.Interfaces;
@@ -7,6 +8,7 @@ using PX.Approval.Domain.DomainObjects;
 using PX.Approval.Domain.Response;
 using PX.Approval.Infrastructure.Services.Crop;
 using PX.Approval.Infrastructure.Services.GoalsPlanning;
+using PX.Crop.Application.Common.PipelineBehaviours;
 using System.Reflection;
 
 namespace PX.Approval.Crosscutting;
@@ -22,6 +24,9 @@ public static class DependencyInjectionExtensionMethods
         services.AddScoped<IResponse, Response>();
         services.AddScoped<IGoalsPlanningClient, GoalsPlanningGrpcClient>();
         services.AddScoped<ICropServiceClient, CropGrpcClient>();
+
+        //Not change order below. This order determines an logic sequence of a pipeline
+        services.AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));          //1st
 
         return services;
     }
@@ -45,4 +50,8 @@ public static class DependencyInjectionExtensionMethods
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
     }
 
+    public static void UseMiddleware(this IApplicationBuilder app)
+    {
+        app.UseMiddleware<ExceptionHandlerMiddleware>();
+    }
 }

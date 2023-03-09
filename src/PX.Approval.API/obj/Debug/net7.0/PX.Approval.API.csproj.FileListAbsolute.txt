@@ -169,3 +169,16 @@ C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\obj\Debug\net7.0\
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\obj\Debug\net7.0\PX.Approval.API.pdb
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\obj\Debug\net7.0\PX.Approval.API.genruntimeconfig.cache
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\obj\Debug\net7.0\ref\PX.Approval.API.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Elasticsearch.Net.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Serilog.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Serilog.AspNetCore.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Serilog.Extensions.Hosting.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Serilog.Extensions.Logging.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Serilog.Formatting.Compact.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Serilog.Formatting.Elasticsearch.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Serilog.Settings.Configuration.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Serilog.Sinks.Console.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Serilog.Sinks.Debug.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Serilog.Sinks.Elasticsearch.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Serilog.Sinks.File.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Serilog.Sinks.PeriodicBatching.dll

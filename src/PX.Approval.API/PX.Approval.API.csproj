@@ -16,6 +16,9 @@
     </PackageReference>
     <PackageReference Include="newtonsoft.json" Version="13.0.2" />
     <PackageReference Include="PXBayerLibraries" Version="1.0.101" />
+    <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+    <PackageReference Include="Serilog.extensions.hosting" Version="5.0.1" />
+    <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="9.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
