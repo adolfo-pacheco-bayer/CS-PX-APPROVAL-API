@@ -97,6 +97,7 @@ C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Grpc.Core.Api.dll
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Grpc.Net.Client.dll
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Grpc.Net.Common.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Humanizer.dll
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\iTextSharp.LGPLv2.Core.dll
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\MassTransit.dll
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\MassTransit.Abstractions.dll
@@ -112,6 +113,10 @@ C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Microsoft.CodeAnalysis.dll
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Microsoft.CodeAnalysis.Razor.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Microsoft.Identity.Client.dll
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Microsoft.Identity.Client.Extensions.Msal.dll
@@ -121,6 +126,7 @@ C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Microsoft.OpenApi.dll
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Mono.TextTemplating.dll
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Newtonsoft.Json.dll
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\OpenHtmlToPdf.dll
@@ -130,6 +136,7 @@ C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\System.CodeDom.dll
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\System.Drawing.Common.dll
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\System.Memory.Data.dll
