@@ -1,2 +1,0 @@
-obj\Debug\net7.0\Services\GoalsPlanning\Protos/GoalsplanningServices.cs \
-obj\Debug\net7.0\Services\GoalsPlanning\Protos/GoalsplanningServicesGrpc.cs: Services/GoalsPlanning/Protos/goalsplanningServices.proto

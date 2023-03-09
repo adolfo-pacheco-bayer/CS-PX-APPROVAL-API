@@ -15,7 +15,7 @@ public static class DependencyInjectionExtensionMethods
 {
     private const string applicationProjectName = "PX.Approval.Application";
 
-    public static IServiceCollection AddOProjectServices(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddProjectServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.Configure<GoalsPlanningClientConfiguration>(configuration.GetSection(GoalsPlanningClientConfiguration.GoalsPlanningOptions));
         services.Configure<CropClientConfiguration>(configuration.GetSection(CropClientConfiguration.CropClientOptions));
@@ -31,18 +31,18 @@ public static class DependencyInjectionExtensionMethods
         var assembly = Assembly.Load(applicationProjectName);
 
         //Fluent Validation Validators
-        AssemblyScanner
-            .FindValidatorsInAssembly(assembly)
-            .ForEach(result => services.AddScoped(result.InterfaceType, result.ValidatorType));
+        //AssemblyScanner
+        //    .FindValidatorsInAssembly(assembly)
+        //    .ForEach(result => services.AddScoped(result.InterfaceType, result.ValidatorType));
 
-        //IDomainValidationHandlers Validators
-        services.Scan(scan => scan
-            .FromAssemblies(assembly)
-            .AddClasses(classes => classes.AssignableTo<IDomainValidationHandler>())
-            .AsImplementedInterfaces()
-            .WithTransientLifetime());
+        ////IDomainValidationHandlers Validators
+        //services.Scan(scan => scan
+        //    .FromAssemblies(assembly)
+        //    .AddClasses(classes => classes.AssignableTo<IRequestHandler>())
+        //    .AsImplementedInterfaces()
+        //    .WithTransientLifetime());
 
-        services.AddMediatR(assembly);
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
     }
 
 }

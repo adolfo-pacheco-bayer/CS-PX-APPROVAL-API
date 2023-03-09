@@ -1,0 +1,419 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sites_cmeusdpxe_approval_api_name": {
+            "defaultValue": "cmeusdpxe-approval-api",
+            "type": "String"
+        },
+        "serverfarms_cmeusdpxe_asp_fn_externalid": {
+            "defaultValue": "/subscriptions/357500ca-3176-458a-a6cd-70bb9c8a1079/resourceGroups/CMEUSDPXE-RG/providers/Microsoft.Web/serverfarms/cmeusdpxe-asp-fn",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2022-03-01",
+            "name": "[parameters('sites_cmeusdpxe_approval_api_name')]",
+            "location": "East US 2",
+            "tags": {
+                "Loc": "eastus2",
+                "Lob": "Partner Experience",
+                "Env": "dev"
+            },
+            "kind": "app",
+            "properties": {
+                "enabled": true,
+                "hostNameSslStates": [
+                    {
+                        "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '.azurewebsites.net')]",
+                        "sslState": "Disabled",
+                        "hostType": "Standard"
+                    },
+                    {
+                        "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '.scm.azurewebsites.net')]",
+                        "sslState": "Disabled",
+                        "hostType": "Repository"
+                    }
+                ],
+                "serverFarmId": "[parameters('serverfarms_cmeusdpxe_asp_fn_externalid')]",
+                "reserved": false,
+                "isXenon": false,
+                "hyperV": false,
+                "vnetRouteAllEnabled": false,
+                "vnetImagePullEnabled": false,
+                "vnetContentShareEnabled": false,
+                "siteConfig": {
+                    "numberOfWorkers": 1,
+                    "acrUseManagedIdentityCreds": false,
+                    "alwaysOn": true,
+                    "http20Enabled": false,
+                    "functionAppScaleLimit": 0,
+                    "minimumElasticInstanceCount": 0
+                },
+                "scmSiteAlsoStopped": false,
+                "clientAffinityEnabled": true,
+                "clientCertEnabled": false,
+                "clientCertMode": "Required",
+                "hostNamesDisabled": false,
+                "customDomainVerificationId": "BF609C94980E7A6322E06CBA09F5714100F7948A01EE39C095135250E2A831AA",
+                "containerSize": 0,
+                "dailyMemoryTimeQuota": 0,
+                "httpsOnly": true,
+                "redundancyMode": "None",
+                "publicNetworkAccess": "Enabled",
+                "storageAccountRequired": false,
+                "keyVaultReferenceIdentity": "SystemAssigned"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+            "apiVersion": "2022-03-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/ftp')]",
+            "location": "East US 2",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ],
+            "tags": {
+                "Loc": "eastus2",
+                "Lob": "Partner Experience",
+                "Env": "dev"
+            },
+            "properties": {
+                "allow": true
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+            "apiVersion": "2022-03-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/scm')]",
+            "location": "East US 2",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ],
+            "tags": {
+                "Loc": "eastus2",
+                "Lob": "Partner Experience",
+                "Env": "dev"
+            },
+            "properties": {
+                "allow": true
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/config",
+            "apiVersion": "2022-03-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/web')]",
+            "location": "East US 2",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ],
+            "tags": {
+                "Loc": "eastus2",
+                "Lob": "Partner Experience",
+                "Env": "dev"
+            },
+            "properties": {
+                "numberOfWorkers": 1,
+                "defaultDocuments": [
+                    "Default.htm",
+                    "Default.html",
+                    "Default.asp",
+                    "index.htm",
+                    "index.html",
+                    "iisstart.htm",
+                    "default.aspx",
+                    "index.php",
+                    "hostingstart.html"
+                ],
+                "netFrameworkVersion": "v6.0",
+                "requestTracingEnabled": false,
+                "remoteDebuggingEnabled": false,
+                "httpLoggingEnabled": false,
+                "acrUseManagedIdentityCreds": false,
+                "logsDirectorySizeLimit": 35,
+                "detailedErrorLoggingEnabled": false,
+                "publishingUsername": "$cmeusdpxe-approval-api",
+                "scmType": "None",
+                "use32BitWorkerProcess": true,
+                "webSocketsEnabled": false,
+                "alwaysOn": true,
+                "managedPipelineMode": "Integrated",
+                "virtualApplications": [
+                    {
+                        "virtualPath": "/",
+                        "physicalPath": "site\\wwwroot",
+                        "preloadEnabled": true
+                    }
+                ],
+                "loadBalancing": "LeastRequests",
+                "experiments": {
+                    "rampUpRules": []
+                },
+                "autoHealEnabled": false,
+                "vnetRouteAllEnabled": false,
+                "vnetPrivatePortsCount": 0,
+                "publicNetworkAccess": "Enabled",
+                "localMySqlEnabled": false,
+                "ipSecurityRestrictions": [
+                    {
+                        "ipAddress": "Any",
+                        "action": "Allow",
+                        "priority": 2147483647,
+                        "name": "Allow all",
+                        "description": "Allow all access"
+                    }
+                ],
+                "scmIpSecurityRestrictions": [
+                    {
+                        "ipAddress": "Any",
+                        "action": "Allow",
+                        "priority": 2147483647,
+                        "name": "Allow all",
+                        "description": "Allow all access"
+                    }
+                ],
+                "scmIpSecurityRestrictionsUseMain": false,
+                "http20Enabled": false,
+                "minTlsVersion": "1.2",
+                "scmMinTlsVersion": "1.2",
+                "ftpsState": "FtpsOnly",
+                "preWarmedInstanceCount": 0,
+                "functionsRuntimeScaleMonitoringEnabled": false,
+                "minimumElasticInstanceCount": 0,
+                "azureStorageAccounts": {}
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/hostNameBindings",
+            "apiVersion": "2022-03-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/', parameters('sites_cmeusdpxe_approval_api_name'), '.azurewebsites.net')]",
+            "location": "East US 2",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ],
+            "properties": {
+                "siteName": "cmeusdpxe-approval-api",
+                "hostNameType": "Verified"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-07T14_27_16_0444680')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-07T15_27_16_0528542')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-07T16_27_16_0907644')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-07T17_27_16_1301341')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-07T18_27_16_2081900')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-07T19_27_16_2000184')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-07T20_27_16_2153846')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-07T21_27_16_2475078')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-07T22_27_16_3305943')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-07T23_27_16_3454589')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-08T00_27_16_5405861')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-08T01_27_16_3416308')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-08T02_27_16_4266622')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-08T03_27_16_3875044')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-08T04_27_16_4244618')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-08T05_27_16_4549304')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-08T06_27_16_5406330')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-08T07_27_16_5154379')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-08T08_27_16_5527314')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-08T09_27_16_5675806')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-08T10_27_16_5990416')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-08T11_27_16_6232230')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-08T12_27_16_6539747')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-08T13_27_16_7115408')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-08T14_27_16_7179148')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-08T15_27_16_7802963')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites/snapshots",
+            "apiVersion": "2015-08-01",
+            "name": "[concat(parameters('sites_cmeusdpxe_approval_api_name'), '/2023-03-08T16_27_16_7639397')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_cmeusdpxe_approval_api_name'))]"
+            ]
+        }
+    ]
+}

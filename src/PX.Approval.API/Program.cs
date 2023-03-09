@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddOProjectServices(builder.Configuration);
+builder.Services.AddProjectServices(builder.Configuration);
 builder.Services.AddMediatr();
 
 var app = builder.Build();
