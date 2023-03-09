@@ -33,7 +33,8 @@ Log.Logger = new LoggerConfiguration()
         {
             Console.WriteLine($"Erro: {fc.Exception}");
         }
-    })    
+    })
+    .WriteTo.Console(Serilog.Events.LogEventLevel.Verbose)
     .Enrich.WithProperty("Environment", environment)
     .ReadFrom.Configuration(configuration)
     .CreateLogger();
