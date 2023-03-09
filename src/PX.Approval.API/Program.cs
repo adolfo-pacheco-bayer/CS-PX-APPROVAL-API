@@ -1,5 +1,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using PX.Approval.API.Routes;
 using PX.Approval.Application.GoalsPlanning.Queries;
 using PX.Approval.Crosscutting;
 
@@ -24,16 +25,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/check", () =>
-{
-    return "Service is running!";
-});
+app.MapEndPoints();
 
-app.MapGet("/get-all-goals-planning", async ([FromServices] IMediator mediator) =>
-{
-    return await mediator.Send(new GetAllGoalsPlanningInActiveCropsQuery()
-    {
-
-    });
-});
 app.Run();
