@@ -67,6 +67,18 @@
               "target": "Package",
               "version": "[1.0.101, )"
             },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[6.1.0, )"
+            },
+            "Serilog.Sinks.Elasticsearch": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Serilog.extensions.hosting": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
