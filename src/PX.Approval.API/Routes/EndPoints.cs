@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using PX.Approval.Application.GoalsPlanning.Commands;
 using PX.Approval.Application.GoalsPlanning.Queries;
 
 namespace PX.Approval.API.Routes
@@ -19,6 +20,11 @@ namespace PX.Approval.API.Routes
                 return await mediator.Send(new GetAllGoalsPlanningInActiveCropsQuery()
                 {
                 });
+            });
+
+            app.MapPut("api/approval/return-status-goals-planning", async ([FromServices] IMediator mediator, List<Guid> goalsPlanningIntegrationIds) =>
+            {
+                return await mediator.Send(new ReturnStatusGoalsPlanningCommand(goalsPlanningIntegrationIds));
             });
         }
     }
