@@ -19,7 +19,15 @@ namespace PX.Approval.API.Routes
                 return await mediator.Send(new GetAllGoalsPlanningInActiveCropsQuery()
                 {
                 });
-            });
+            }).RequireAuthorization("Main");
+
+            app.MapGet("api/approval/get-user-info", async ([FromServices] IMediator mediator) =>
+            {
+                return await mediator.Send(new GetUserInfoQuery()
+                {
+                });
+            }).RequireAuthorization("Main");
+
         }
     }
 }
