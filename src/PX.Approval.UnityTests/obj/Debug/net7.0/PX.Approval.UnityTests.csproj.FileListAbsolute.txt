@@ -22,3 +22,15 @@ C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.UnityTests\obj\Debug\
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.UnityTests\obj\Debug\net7.0\refint\PX.Approval.UnityTests.dll
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.UnityTests\obj\Debug\net7.0\PX.Approval.UnityTests.pdb
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.UnityTests\obj\Debug\net7.0\ref\PX.Approval.UnityTests.dll
+C:\dev\CS-PX-APPROVAL\src\PX.Approval.UnityTests\bin\Debug\net7.0\PX.Approval.UnityTests.deps.json
+C:\dev\CS-PX-APPROVAL\src\PX.Approval.UnityTests\bin\Debug\net7.0\PX.Approval.UnityTests.dll
+C:\dev\CS-PX-APPROVAL\src\PX.Approval.UnityTests\bin\Debug\net7.0\PX.Approval.UnityTests.pdb
+C:\dev\CS-PX-APPROVAL\src\PX.Approval.UnityTests\obj\Debug\net7.0\PX.Approval.UnityTests.csproj.AssemblyReference.cache
+C:\dev\CS-PX-APPROVAL\src\PX.Approval.UnityTests\obj\Debug\net7.0\PX.Approval.UnityTests.GeneratedMSBuildEditorConfig.editorconfig
+C:\dev\CS-PX-APPROVAL\src\PX.Approval.UnityTests\obj\Debug\net7.0\PX.Approval.UnityTests.AssemblyInfoInputs.cache
+C:\dev\CS-PX-APPROVAL\src\PX.Approval.UnityTests\obj\Debug\net7.0\PX.Approval.UnityTests.AssemblyInfo.cs
+C:\dev\CS-PX-APPROVAL\src\PX.Approval.UnityTests\obj\Debug\net7.0\PX.Approval.UnityTests.csproj.CoreCompileInputs.cache
+C:\dev\CS-PX-APPROVAL\src\PX.Approval.UnityTests\obj\Debug\net7.0\PX.Approval.UnityTests.dll
+C:\dev\CS-PX-APPROVAL\src\PX.Approval.UnityTests\obj\Debug\net7.0\refint\PX.Approval.UnityTests.dll
+C:\dev\CS-PX-APPROVAL\src\PX.Approval.UnityTests\obj\Debug\net7.0\PX.Approval.UnityTests.pdb
+C:\dev\CS-PX-APPROVAL\src\PX.Approval.UnityTests\obj\Debug\net7.0\ref\PX.Approval.UnityTests.dll
