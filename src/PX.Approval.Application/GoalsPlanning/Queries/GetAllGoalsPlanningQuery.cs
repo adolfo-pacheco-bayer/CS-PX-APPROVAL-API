@@ -5,4 +5,5 @@ namespace PX.Approval.Application.GoalsPlanning.Queries;
 
 public class GetAllGoalsPlanningInActiveCropsQuery : IRequest<Response>
 {
+    public Guid CropIntegrationId { get; set; }
 }

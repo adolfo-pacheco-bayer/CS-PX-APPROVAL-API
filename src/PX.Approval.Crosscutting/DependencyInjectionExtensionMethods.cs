@@ -1,5 +1,4 @@
-﻿using FluentValidation;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,6 +6,7 @@ using PX.Approval.Application.Common.Interfaces;
 using PX.Approval.Domain.DomainObjects;
 using PX.Approval.Domain.Response;
 using PX.Approval.Infrastructure.Services.Crop;
+using PX.Approval.Infrastructure.Services.ElasticSearch;
 using PX.Approval.Infrastructure.Services.GoalsPlanning;
 using PX.Crop.Application.Common.PipelineBehaviours;
 using System.Reflection;
@@ -55,4 +55,14 @@ public static class DependencyInjectionExtensionMethods
     {
         app.UseMiddleware<ExceptionHandlerMiddleware>();
     }
+
+
+    public static IServiceCollection AddProjectRepository(this IServiceCollection services, IConfiguration configuration)
+    {
+
+        services.AddSingleton<IElasticSearchServiceClient, ElasticSearchService>();
+
+        return services;
+    }
+
 }

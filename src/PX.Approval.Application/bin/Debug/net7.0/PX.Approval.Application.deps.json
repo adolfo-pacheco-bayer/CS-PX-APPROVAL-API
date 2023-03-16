@@ -1472,7 +1472,8 @@
       },
       "PX.Approval.Domain/1.0.0": {
         "dependencies": {
-          "FluentValidation": "11.5.1"
+          "FluentValidation": "11.5.1",
+          "Newtonsoft.Json": "13.0.2"
         },
         "runtime": {
           "PX.Approval.Domain.dll": {}
