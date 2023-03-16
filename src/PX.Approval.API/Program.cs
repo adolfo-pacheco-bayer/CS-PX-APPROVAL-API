@@ -56,6 +56,8 @@ builder.Services.AddMvc().AddJsonOptions(o =>
 
 
 builder.Services.AddProjectServices(builder.Configuration);
+builder.Services.AddProjectRepository(builder.Configuration);
+
 builder.Services.AddMediatr();
 builder.Services.AddAuthentication().AddJwtBearer();
 builder.Services.AddAuthorization(o =>

@@ -61,6 +61,26 @@ BenchmarkDotNet.Artifacts/
 project.lock.json
 project.fragment.lock.json
 artifacts/
+obj/
+bin/
+debug/
+PX.Approval/.vs
+src/PX.Approval.API/bin
+src/PX.Approval.API/obj
+src/PX.Approval.Application/bin/
+src/PX.Approval.Application/obj/
+src/PX.Approval.Crosscutting/bin/
+src/PX.Approval.Crosscutting/obj/
+src/PX.Approval.Domain/bin/
+src/PX.Approval.Domain/obj/
+src/PX.Approval.Infrastructure/bin/
+src/PX.Approval.Infrastructure/obj/
+src/PX.Approval.TestHelpers/bin/
+src/PX.Approval.TestHelpers/obj/
+src/PX.Approval.UnityTests/bin/
+src/PX.Approval.UnityTests/obj/
+
+
 
 # ASP.NET Scaffolding
 ScaffoldingReadMe.txt

@@ -79,6 +79,44 @@
           }
         }
       },
+      "Elastic.Clients.Elasticsearch/8.0.4": {
+        "dependencies": {
+          "Elastic.Transport": "0.4.5"
+        },
+        "runtime": {
+          "lib/net6.0/Elastic.Clients.Elasticsearch.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.4.0"
+          }
+        }
+      },
+      "Elastic.Transport/0.4.5": {
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0",
+          "System.Buffers": "4.5.1",
+          "System.Diagnostics.DiagnosticSource": "6.0.0",
+          "System.Text.Json": "6.0.2"
+        },
+        "runtime": {
+          "lib/net6.0/Elastic.Transport.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.4.5.0"
+          }
+        }
+      },
+      "Elasticsearch.Net/7.17.5": {
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0",
+          "System.Buffers": "4.5.1",
+          "System.Diagnostics.DiagnosticSource": "6.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.17.5.0"
+          }
+        }
+      },
       "EPPlus/4.5.3.2": {
         "dependencies": {
           "Microsoft.Extensions.Configuration.Json": "2.2.0",
@@ -469,7 +507,7 @@
           }
         }
       },
-      "Microsoft.CSharp/4.5.0": {},
+      "Microsoft.CSharp/4.7.0": {},
       "Microsoft.Extensions.Configuration/7.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Configuration.Abstractions": "7.0.0",
@@ -769,7 +807,7 @@
       },
       "Microsoft.IdentityModel.Tokens/6.27.0": {
         "dependencies": {
-          "Microsoft.CSharp": "4.5.0",
+          "Microsoft.CSharp": "4.7.0",
           "Microsoft.IdentityModel.Logging": "6.27.0",
           "System.Security.Cryptography.Cng": "4.5.0"
         },
@@ -810,6 +848,17 @@
             "assetType": "runtime",
             "assemblyVersion": "4.0.1.0",
             "fileVersion": "4.700.19.30308"
+          }
+        }
+      },
+      "NEST/7.17.5": {
+        "dependencies": {
+          "Elasticsearch.Net": "7.17.5"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.17.5.0"
           }
         }
       },
@@ -1477,7 +1526,8 @@
       },
       "PX.Approval.Domain/1.0.0": {
         "dependencies": {
-          "FluentValidation": "11.5.1"
+          "FluentValidation": "11.5.1",
+          "Newtonsoft.Json": "13.0.2"
         },
         "runtime": {
           "PX.Approval.Domain.dll": {}
@@ -1485,6 +1535,8 @@
       },
       "PX.Approval.Infrastructure/1.0.0": {
         "dependencies": {
+          "Elastic.Clients.Elasticsearch": "8.0.4",
+          "NEST": "7.17.5",
           "Newtonsoft.Json": "13.0.2",
           "PX.Approval.Application": "1.0.0",
           "Google.Protobuf": "3.21.12",
@@ -1538,6 +1590,27 @@
       "sha512": "sha512-ioGedXeH8KK4HdTDEyOzdgNbEXGstGItVljI1EKYsz08sgwej6LpODCZmwPR2ui1fjXBWt8Zea0RJT4d9LwlMg==",
       "path": "azure.messaging.servicebus/7.11.1",
       "hashPath": "azure.messaging.servicebus.7.11.1.nupkg.sha512"
+    },
+    "Elastic.Clients.Elasticsearch/8.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QX74PjOlRTOD0zYB/sNmYJNFR0QMR8J7zNbmJde5HHFdJp5J6BWCr15/rp4Rp+iQYZp3C6vWScmzQYOo0Zw6kw==",
+      "path": "elastic.clients.elasticsearch/8.0.4",
+      "hashPath": "elastic.clients.elasticsearch.8.0.4.nupkg.sha512"
+    },
+    "Elastic.Transport/0.4.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iy3ekUGcbHCDAWCcaG7+IERXouKJ6ta3CXiqAGwdhu1FYudqnAzo1UBdPeQQHmYYGNvQ/cqLHAUQW+1Zh/i6KA==",
+      "path": "elastic.transport/0.4.5",
+      "hashPath": "elastic.transport.0.4.5.nupkg.sha512"
+    },
+    "Elasticsearch.Net/7.17.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-orChsQi1Ceho/NyIylNOn6y4vuGcsbCfMZnCueNN0fzqYEGQmQdPfcVmsR5+3fwpXTgxCdjTUVmqOwvHpCSB+Q==",
+      "path": "elasticsearch.net/7.17.5",
+      "hashPath": "elasticsearch.net.7.17.5.nupkg.sha512"
     },
     "EPPlus/4.5.3.2": {
       "type": "package",
@@ -1756,12 +1829,12 @@
       "path": "microsoft.bcl.asyncinterfaces/7.0.0",
       "hashPath": "microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512"
     },
-    "Microsoft.CSharp/4.5.0": {
+    "Microsoft.CSharp/4.7.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-kaj6Wb4qoMuH3HySFJhxwQfe8R/sJsNJnANrvv8WdFPMoNbKY5htfNscv+LHCu5ipz+49m2e+WQXpLXr9XYemQ==",
-      "path": "microsoft.csharp/4.5.0",
-      "hashPath": "microsoft.csharp.4.5.0.nupkg.sha512"
+      "sha512": "sha512-pTj+D3uJWyN3My70i2Hqo+OXixq3Os2D1nJ2x92FFo6sk8fYS1m1WLNTs0Dc1uPaViH0YvEEwvzddQ7y4rhXmA==",
+      "path": "microsoft.csharp/4.7.0",
+      "hashPath": "microsoft.csharp.4.7.0.nupkg.sha512"
     },
     "Microsoft.Extensions.Configuration/7.0.0": {
       "type": "package",
@@ -1979,6 +2052,13 @@
       "sha512": "sha512-IuyieAKZeCDGoOoIFhWMFAcdo6EledhjXxUw/g46azLzrNXo9kIlfiEVkQZsAeKtWmgy0FwLnvEQ6Rt9Z/RbHw==",
       "path": "microsoft.win32.systemevents/4.6.0-preview6.19303.8",
       "hashPath": "microsoft.win32.systemevents.4.6.0-preview6.19303.8.nupkg.sha512"
+    },
+    "NEST/7.17.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bo9UyuIoVRx4IUQiuC8ZrlZuvAXKIccernC7UUKukQCEmRq2eVIk+gubHlnMQljrP51q0mN4cjgy9vv5uZPkoA==",
+      "path": "nest/7.17.5",
+      "hashPath": "nest.7.17.5.nupkg.sha512"
     },
     "Newtonsoft.Json/13.0.2": {
       "type": "package",
