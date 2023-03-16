@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LQvr/JREMzeFrkQGFApeg6IDnBvg+3roN4GuBCkBCRVkgkUacWoC3M+YA9gif53eG5i3V3INx8hJxag7j2tKEA==",
+  "dgSpecHash": "CSzUHXLJt/LQTKFEisDHBetKO0RdxFHp5YHMOSLYwxTWVT5GMJfYmST6OLAivzgE1Cn4oc6pukB1XvAI01LkSw==",
   "success": true,
-  "projectFilePath": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.TestHelpers\\PX.Approval.TestHelpers.csproj",
+  "projectFilePath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.TestHelpers\\PX.Approval.TestHelpers.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
