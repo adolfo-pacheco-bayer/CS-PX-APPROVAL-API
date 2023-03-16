@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "google/protobuf/timestamp.proto";
+
 option csharp_namespace = "PX.Crop.GrpcApi";
 
 package crop;
@@ -16,6 +18,18 @@ message Request {
 }
 
 // The response message containing the greetings.
+
+message getactivecropviewmodel{
+	string integrationId = 1;
+    string name = 2;
+    string description = 3;
+    google.protobuf.Timestamp startPeriod = 4;
+    google.protobuf.Timestamp endPeriod = 5;
+    google.protobuf.Timestamp startPlanningPeriod = 6;
+    google.protobuf.Timestamp endPlanningPeriod = 7;
+    bool isGoalPlanningValued = 9;
+}
+
 message Response {
-  string Data = 1;
+  repeated getactivecropviewmodel crops = 1;
 }

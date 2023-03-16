@@ -1,4 +1,5 @@
-﻿using Grpc.Net.Client;
+﻿using Google.Protobuf.WellKnownTypes;
+using Grpc.Net.Client;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using PX.Approval.Application.Common.Interfaces;
@@ -24,8 +25,20 @@ namespace PX.Approval.Infrastructure.Services.Crop
             {
                  UserName = "USER"
             });
+            
+            var crops = result.Crops.ToList();
 
-            return JsonConvert.DeserializeObject<IEnumerable<GetAllActiveCropsViewModel>>(result.Data);
+            return crops.Select(x => new GetAllActiveCropsViewModel()
+            {
+                Description = x.Description,
+                EndPeriod = x.EndPeriod.ToDateTime(),
+                EndPlanningPeriod = x.EndPlanningPeriod.ToDateTime(),
+                IsGoalPlanningValued = x.IsGoalPlanningValued,
+                IntegrationId = new Guid(x.IntegrationId),
+                Name = x.Name,
+                StartPeriod = x.StartPeriod.ToDateTime(),
+                StartPlanningPeriod = x.StartPlanningPeriod.ToDateTime()
+            });
         }
     }
 }

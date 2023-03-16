@@ -182,3 +182,6 @@ C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Serilog.Sinks.Elasticsearch.dll
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Serilog.Sinks.File.dll
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Serilog.Sinks.PeriodicBatching.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
