@@ -24,21 +24,22 @@ public class GoalsPlanningGrpcClient : IGoalsPlanningClient
         var client = new GoalsPlanningService.GoalsPlanningServiceClient(channel);
 
         var request = new Request();
-        request.CropIntegrationIds.AddRange(cropIntegrationIds.Select(x => new integrationIdList() { CropIntegrationId = x.ToString() }));
+        request.CropIntegrationIds.AddRange(cropIntegrationIds.Select(x => new cropIntegrationIdList() { CropIntegrationId = x.ToString() }));
 
         var result = await client.GetAllGoalsPlanningByCropIdsAsync(request);
         return JsonConvert.DeserializeObject<IEnumerable<GetAllGoalsPlanningViewModel>>(result.Data);
     }
 
-    public async Task<IEnumerable<GetAllGoalsPlanningViewModel>> ReturnStatusGoalsPlanningAsync(string reason, List<Guid> goalsPlanningIntegrationIds)
+    public async Task<bool> ReturnStatusGoalsPlanningAsync(string reason, List<Guid> goalsPlanningIntegrationIds)
     {
-        using var channel = GrpcChannel.ForAddress(string.Concat(_config.Value.GrpcUrl, _config.Value.ReturnStatusGoalsPlanningUrl));
+        using var channel = GrpcChannel.ForAddress(_config.Value.GrpcUrl);
         var client = new GoalsPlanningService.GoalsPlanningServiceClient(channel);
 
-        var request = new Request();
-        request.GoalsPlanningIntegrationIds.AddRange(goalsPlanningIntegrationIds.Select(x => new integrationIdList() { CropIntegrationId = x.ToString() }));
+        var request = new ReturnStatusRequest();
+        request.Reason = reason;
+        request.GoalsPlanningIntegrationIds.AddRange(goalsPlanningIntegrationIds.Select(x => new goalsPlanningIntegrationIdList() { GoalsPlanningIntegrationId = x.ToString() }));
 
-        var result = await client.GetAllGoalsPlanningByCropIdsAsync(request);
-        return JsonConvert.DeserializeObject<IEnumerable<GetAllGoalsPlanningViewModel>>(result.Data);
+        var result = await client.ReturnStatusGoalsPlanningAsync(request);
+        return result.Result;
     }
 }

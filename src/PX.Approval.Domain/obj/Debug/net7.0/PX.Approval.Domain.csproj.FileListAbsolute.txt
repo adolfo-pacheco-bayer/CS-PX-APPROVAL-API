@@ -54,3 +54,4 @@ C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.Domain\obj\Debug\net7
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.Domain\obj\Debug\net7.0\refint\PX.Approval.Domain.dll
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.Domain\obj\Debug\net7.0\PX.Approval.Domain.pdb
 C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.Domain\obj\Debug\net7.0\ref\PX.Approval.Domain.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.Domain\obj\Debug\net7.0\PX.Approval.Domain.Messages.Messages.PlanningMessages.resources

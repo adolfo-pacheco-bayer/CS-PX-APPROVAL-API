@@ -19,24 +19,8 @@ public class ReturnStatusGoalsPlanningCommandHandler : IRequestHandler<ReturnSta
 
     public async Task<Response> Handle(ReturnStatusGoalsPlanningCommand request, CancellationToken cancellationToken)
     {
-        var goalsPlanningEntity = new List<PlanningEntity>();
-        var allGoalsPlanning = await _goalsPlanningClient.GetAllGoalsPlanningByCropIntegrationsIdAsync(request.GoalsPlanningIntegrationIds.ToArray());
+        var result = await _goalsPlanningClient.ReturnStatusGoalsPlanningAsync(request.Reason, request.GoalsPlanningIntegrationIds);
 
-        foreach (var goalPlanning in allGoalsPlanning)
-        {
-            var status = goalPlanning.Status;
-
-            status = goalPlanning.Status switch
-            {
-                GoalsPlanningStatus.Reproved => GoalsPlanningStatus.InPreparation,
-                GoalsPlanningStatus.Canceled => GoalsPlanningStatus.InPreparation,
-                _ => goalPlanning.Status
-            };
-
-            goalPlanning.SetStatus(status);
-            goalsPlanningEntity.Add(await _planningRepository.UpdateAsync(goalPlanning));
-        }
-
-        return await _response.CreateSuccessResponseAsync(goalsPlanningEntity, PlanningMessages.ReturnStatusSuccess);
+        return await _response.CreateSuccessResponseAsync(result);
     }
 }
