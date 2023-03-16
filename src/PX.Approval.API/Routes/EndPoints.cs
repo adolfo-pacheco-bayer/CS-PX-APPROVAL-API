@@ -14,10 +14,11 @@ namespace PX.Approval.API.Routes
                 return "Service is running!";
             });
 
-            app.MapGet("api/approval/get-all-goals-planning", async ([FromServices] IMediator mediator) =>
+            app.MapGet("api/approval/get-all-goals-planning/{cropintegrationid}", async (Guid cropintegrationid, [FromServices] IMediator mediator) =>
             {
                 return await mediator.Send(new GetAllGoalsPlanningInActiveCropsQuery()
                 {
+                    CropIntegrationId = cropintegrationid
                 });
             });
         }

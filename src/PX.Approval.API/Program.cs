@@ -12,6 +12,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddProjectServices(builder.Configuration);
+builder.Services.AddProjectRepository(builder.Configuration);
+
 builder.Services.AddMediatr();
 
 var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");

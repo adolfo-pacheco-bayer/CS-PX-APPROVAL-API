@@ -8,30 +8,28 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
 {
     public class GetAllGoalsPlanningInActiveCropsQueryHandler : IRequestHandler<GetAllGoalsPlanningInActiveCropsQuery, Response>
     {
-        private IGoalsPlanningClient _goalsPlanningClient;
-        private ICropServiceClient _cropClient;
         private IResponse _response;
         private ILogger<GetAllGoalsPlanningInActiveCropsQueryHandler> _logger;
+        private IElasticSearchServiceClient _elasticSearchClient;
 
-        public GetAllGoalsPlanningInActiveCropsQueryHandler(IGoalsPlanningClient goalsPlanningClient,
-                                                            ICropServiceClient cropClient, 
+        public GetAllGoalsPlanningInActiveCropsQueryHandler(IElasticSearchServiceClient elasticSearchServiceClient,
                                                             IResponse response,
                                                             ILogger<GetAllGoalsPlanningInActiveCropsQueryHandler> logger)
         {
-            _goalsPlanningClient = goalsPlanningClient;
-            _cropClient = cropClient;
             _response = response;
             _logger = logger;
+            _elasticSearchClient = elasticSearchServiceClient;
         }
 
         public async Task<Response> Handle(GetAllGoalsPlanningInActiveCropsQuery request, CancellationToken cancellationToken)
-        {            
-            var allActiveCrops = await _cropClient.GetAllActiveCrops();
+        {
 
-            var allActiveCropIds = allActiveCrops.Select(x => x.IntegrationId).ToArray();
+            if (request.CropIntegrationId == null)
+                return await _response.CreateErrorResponseAsync(new { message = "CropIntegrationId Obrigatorio" }, System.Net.HttpStatusCode.BadRequest);
 
-            var allGoalsPlanning = await _goalsPlanningClient.GetAllGoalsPlanningByCropIntegrationsIdAsync(allActiveCropIds);
-            return await _response.CreateSuccessResponseAsync(allGoalsPlanning);
+            var result = await _elasticSearchClient.Get(request.CropIntegrationId);
+
+            return await _response.CreateSuccessResponseAsync(result);
         }
     }
 }
