@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "5hmVoLHlEOIj/0CtWaMUWZIfEJg9BiZfenu7OyjsVDIyIQ150mk4/4B5yJJxAQ6q7BfODA+d0yOJC/NwTfWL1Q==",
+  "dgSpecHash": "nQBL8ybH617HPcXDPXZgBrtlEQsDPFJQIUd3MPIRuo3yCj7URJfxzT2e2ZlO/eV1HdYpzEQwQ+9Iw8yjhFpWwg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Domain\\PX.Approval.Domain.csproj",
+  "projectFilePath": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Domain\\PX.Approval.Domain.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\EFERE\\.nuget\\packages\\fluentvalidation\\11.5.1\\fluentvalidation.11.5.1.nupkg.sha512"
+    "C:\\Users\\EFGMR\\.nuget\\packages\\fluentvalidation\\11.5.1\\fluentvalidation.11.5.1.nupkg.sha512",
+    "C:\\Users\\EFGMR\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512"
   ],
   "logs": []
 }
