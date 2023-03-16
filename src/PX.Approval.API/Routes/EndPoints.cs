@@ -22,9 +22,9 @@ namespace PX.Approval.API.Routes
                 });
             });
 
-            app.MapPut("api/approval/return-status-goals-planning", async ([FromServices] IMediator mediator, List<Guid> goalsPlanningIntegrationIds) =>
+            app.MapPut("api/approval/return-status-goals-planning", async ([FromServices] IMediator mediator, string reason, List<Guid> goalsPlanningIntegrationIds) =>
             {
-                return await mediator.Send(new ReturnStatusGoalsPlanningCommand(goalsPlanningIntegrationIds));
+                return await mediator.Send(new ReturnStatusGoalsPlanningCommand(reason, goalsPlanningIntegrationIds));
             });
         }
     }

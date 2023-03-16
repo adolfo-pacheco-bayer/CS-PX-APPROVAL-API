@@ -29,4 +29,16 @@ public class GoalsPlanningGrpcClient : IGoalsPlanningClient
         var result = await client.GetAllGoalsPlanningByCropIdsAsync(request);
         return JsonConvert.DeserializeObject<IEnumerable<GetAllGoalsPlanningViewModel>>(result.Data);
     }
+
+    public async Task<IEnumerable<GetAllGoalsPlanningViewModel>> ReturnStatusGoalsPlanningAsync(string reason, List<Guid> goalsPlanningIntegrationIds)
+    {
+        using var channel = GrpcChannel.ForAddress(string.Concat(_config.Value.GrpcUrl, _config.Value.ReturnStatusGoalsPlanningUrl));
+        var client = new GoalsPlanningService.GoalsPlanningServiceClient(channel);
+
+        var request = new Request();
+        request.GoalsPlanningIntegrationIds.AddRange(goalsPlanningIntegrationIds.Select(x => new integrationIdList() { CropIntegrationId = x.ToString() }));
+
+        var result = await client.GetAllGoalsPlanningByCropIdsAsync(request);
+        return JsonConvert.DeserializeObject<IEnumerable<GetAllGoalsPlanningViewModel>>(result.Data);
+    }
 }

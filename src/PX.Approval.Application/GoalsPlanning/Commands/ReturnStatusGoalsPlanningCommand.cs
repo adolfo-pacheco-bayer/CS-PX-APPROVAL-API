@@ -5,11 +5,13 @@ namespace PX.Approval.Application.GoalsPlanning.Commands;
 
 public class ReturnStatusGoalsPlanningCommand : IRequest<Response>
 {
-    public ReturnStatusGoalsPlanningCommand(List<Guid> goalsPlanningIntegrationIds)
+    public ReturnStatusGoalsPlanningCommand(string reason, List<Guid> goalsPlanningIntegrationIds)
     {
+        Reason = reason;
         GoalsPlanningIntegrationIds = goalsPlanningIntegrationIds;
     }
 
+    public string Reason { get; set; }
     public List<Guid> GoalsPlanningIntegrationIds { get; set; }
 }
 
