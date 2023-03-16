@@ -60,7 +60,7 @@ builder.Services.AddMediatr();
 builder.Services.AddAuthentication().AddJwtBearer();
 builder.Services.AddAuthorization(o =>
 {
-    o.AddPolicy("Main", p => p.AddRequirements(new JwtAuthorizationRequirement()));
+    o.AddPolicy("Omega", p => p.AddRequirements(new JwtAuthorizationRequirement()));
 });
 
 builder.Services.AddHttpContextAccessor();
