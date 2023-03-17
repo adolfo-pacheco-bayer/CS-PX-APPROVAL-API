@@ -32,6 +32,13 @@ namespace PX.Approval.API.Routes
                 return await mediator.Send(new GetUserInfoQuery());
             }).RequireAuthorization("Omega");
 
+            app.MapGet("api/approval/getgraphicstatus/{cropintegrationid}", async (Guid cropintegrationid, [FromServices] IMediator mediator) =>
+            {
+                return await mediator.Send(new GetGraphicStatusQuery()
+                {
+                    CropIntegrationId = cropintegrationid
+                });
+            });
         }
     }
 }
