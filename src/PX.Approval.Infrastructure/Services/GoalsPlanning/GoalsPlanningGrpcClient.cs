@@ -41,6 +41,6 @@ public class GoalsPlanningGrpcClient : IGoalsPlanningClient
 
         var result = await client.ReturnStatusGoalsPlanningAsync(request);
 
-        return new ReturnStatusViewModel() { Data = result.Data, Message = result.Message }; ;
+        return new ReturnStatusViewModel() { Data = result.Data, Message = result.Message };
     }
 }
