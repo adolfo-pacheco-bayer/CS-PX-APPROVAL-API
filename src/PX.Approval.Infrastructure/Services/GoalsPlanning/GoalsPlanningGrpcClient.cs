@@ -40,6 +40,7 @@ public class GoalsPlanningGrpcClient : IGoalsPlanningClient
         request.GoalsPlanningIntegrationIds.AddRange(goalsPlanningIntegrationIds.Select(x => new goalsPlanningIntegrationIdList() { GoalsPlanningIntegrationId = x.ToString() }));
 
         var result = await client.ReturnStatusGoalsPlanningAsync(request);
-        return JsonConvert.DeserializeObject<ReturnStatusViewModel>(result);
+
+        return new ReturnStatusViewModel() { Data = result.Data, Message = result.Message }; ;
     }
 }
