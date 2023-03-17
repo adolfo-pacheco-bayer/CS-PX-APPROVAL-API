@@ -30,7 +30,7 @@ public class GoalsPlanningGrpcClient : IGoalsPlanningClient
         return JsonConvert.DeserializeObject<IEnumerable<GetAllGoalsPlanningViewModel>>(result.Data);
     }
 
-    public async Task<bool> ReturnStatusGoalsPlanningAsync(string reason, List<Guid> goalsPlanningIntegrationIds)
+    public async Task<ReturnStatusViewModel> ReturnStatusGoalsPlanningAsync(string reason, List<Guid> goalsPlanningIntegrationIds)
     {
         using var channel = GrpcChannel.ForAddress(_config.Value.GrpcUrl);
         var client = new GoalsPlanningService.GoalsPlanningServiceClient(channel);
@@ -40,6 +40,6 @@ public class GoalsPlanningGrpcClient : IGoalsPlanningClient
         request.GoalsPlanningIntegrationIds.AddRange(goalsPlanningIntegrationIds.Select(x => new goalsPlanningIntegrationIdList() { GoalsPlanningIntegrationId = x.ToString() }));
 
         var result = await client.ReturnStatusGoalsPlanningAsync(request);
-        return result.Result;
+        return JsonConvert.DeserializeObject<ReturnStatusViewModel>(result);
     }
 }

@@ -10,7 +10,8 @@ service GoalsPlanningService {
 }
 
 message BooleanResponse{
-	bool result = 1;
+	bool data = 1;
+	string message = 2;
 }
 
 message Request{
