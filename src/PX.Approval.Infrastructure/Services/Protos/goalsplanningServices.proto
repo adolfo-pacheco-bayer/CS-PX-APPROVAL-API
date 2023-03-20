@@ -33,4 +33,5 @@ message Response {
 message ReturnStatusRequest{
 	repeated goalsPlanningIntegrationIdList goalsPlanningIntegrationIds = 1;
 	string reason = 2;
+	string returnUserCWID = 3;
 }
