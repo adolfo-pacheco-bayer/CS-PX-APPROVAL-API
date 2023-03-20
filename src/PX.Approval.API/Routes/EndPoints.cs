@@ -1,5 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using PX.Approval.API.Models;
+using PX.Approval.Application.GoalsPlanning.Commands;
 using PX.Approval.Application.GoalsPlanning.Queries;
 
 namespace PX.Approval.API.Routes
@@ -39,6 +41,12 @@ namespace PX.Approval.API.Routes
                     CropIntegrationId = cropintegrationid
                 });
             });
+
+            app.MapPut("api/approval/return-status-goals-planning", async ([FromServices] IMediator mediator, [FromBody]ReturnStatusRequest request) =>
+            {
+                return await mediator.Send(new ReturnStatusGoalsPlanningCommand(request.Reason, request.GoalsPlanningIntegrationIds.ToList()));
+            }).RequireAuthorization("Omega");
         }
     }
 }
+
