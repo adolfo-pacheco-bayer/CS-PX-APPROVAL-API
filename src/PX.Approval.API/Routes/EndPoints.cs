@@ -19,7 +19,7 @@ namespace PX.Approval.API.Routes
                 return await mediator.Send(new GetActiveCropsQuery());
             }).RequireAuthorization("Omega");
 
-            app.MapGet("api/approval/get-all-goals-planning/{cropintegrationid}", async (Guid cropintegrationid, [FromServices] IMediator mediator) =>
+            app.MapGet("api/approval/get-all-goals-planning/crop/{cropintegrationid}", async (Guid cropintegrationid, [FromServices] IMediator mediator) =>
             {
                 return await mediator.Send(new GetAllGoalsPlanningInActiveCropsQuery()
                 {
@@ -32,6 +32,13 @@ namespace PX.Approval.API.Routes
                 return await mediator.Send(new GetUserInfoQuery());
             }).RequireAuthorization("Omega");
 
+            app.MapGet("api/approval/get-planning-total/crop/{cropintegrationid}", async (Guid cropintegrationid, [FromServices] IMediator mediator) =>
+            {
+                return await mediator.Send(new GetPlanningTotalQuery()
+                {
+                    CropIntegrationId = cropintegrationid
+                });
+            });
         }
     }
 }

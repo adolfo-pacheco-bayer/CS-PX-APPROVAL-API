@@ -3979,7 +3979,6 @@
       "path": "system.appcontext/4.1.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -5002,7 +5001,6 @@
       "path": "system.linq.expressions/4.1.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -5457,7 +5455,6 @@
       "path": "system.objectmodel/4.0.12",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -5662,7 +5659,6 @@
       "path": "system.reflection.emit.ilgeneration/4.0.1",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/net45/_._",
@@ -5753,7 +5749,6 @@
       "path": "system.reflection.extensions/4.0.1",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -6320,7 +6315,6 @@
       "path": "system.runtime.interopservices.runtimeinformation/4.0.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -7542,24 +7536,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\EFERE\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\EFGMR\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\PX.Approval.Application.csproj",
+      "projectUniqueName": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\PX.Approval.Application.csproj",
       "projectName": "PX.Approval.Application",
-      "projectPath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\PX.Approval.Application.csproj",
-      "packagesPath": "C:\\Users\\EFERE\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\obj\\",
+      "projectPath": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\PX.Approval.Application.csproj",
+      "packagesPath": "C:\\Users\\EFGMR\\.nuget\\packages\\",
+      "outputPath": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\EFERE\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\EFGMR\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7567,7 +7556,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://pkgs.dev.azure.com/LatamDTITCSCommercial/e6c40dbf-88f2-439f-ad50-70e181cecd1c/_packaging/CSPX-Feed/nuget/v3/index.json": {}
       },
@@ -7575,8 +7563,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Domain\\PX.Approval.Domain.csproj": {
-              "projectPath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Domain\\PX.Approval.Domain.csproj"
+            "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Domain\\PX.Approval.Domain.csproj": {
+              "projectPath": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Domain\\PX.Approval.Domain.csproj"
             }
           }
         }
@@ -7628,7 +7616,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   },
