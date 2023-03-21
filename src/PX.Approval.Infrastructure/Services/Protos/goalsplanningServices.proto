@@ -6,16 +6,32 @@ package goalsPlanning;
 
 service GoalsPlanningService {
   rpc GetAllGoalsPlanningByCropIds (Request) returns (Response);
+  rpc ReturnStatusGoalsPlanning (ReturnStatusRequest) returns (BooleanResponse);
+}
+
+message BooleanResponse{
+	bool data = 1;
+	string message = 2;
 }
 
 message Request{
-	repeated integrationIdList cropIntegrationIds = 1;
+	repeated cropIntegrationIdList cropIntegrationIds = 1;
 }
 
-message integrationIdList{
+message cropIntegrationIdList{
 	string cropIntegrationId = 1;
+}
+
+message goalsPlanningIntegrationIdList{
+	string goalsPlanningIntegrationId = 1;
 }
 
 message Response {
   string data = 1;
+}
+
+message ReturnStatusRequest{
+	repeated goalsPlanningIntegrationIdList goalsPlanningIntegrationIds = 1;
+	string reason = 2;
+	string returnUserCWID = 3;
 }

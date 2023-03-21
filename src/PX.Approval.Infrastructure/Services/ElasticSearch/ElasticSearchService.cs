@@ -1,4 +1,5 @@
 ﻿using Elastic.Clients.Elasticsearch;
+using Elastic.Transport;
 using Microsoft.Extensions.Configuration;
 using Org.BouncyCastle.Bcpg.OpenPgp;
 using PX.Approval.Application.Common.Interfaces;
@@ -60,6 +61,23 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
                                                                                        .Query(cropIntegrationId.ToString()))));
 
             return response.Documents.FirstOrDefault();
+        }
+
+        public async Task<List<PlanningElasticViewModel>> GetGraphicsByCropIntegrationId(string cropIntegrationId)
+        {
+            var settings = new ElasticsearchClientSettings(_cloudId, new ApiKey(_apiKey))
+              .DefaultIndex(_goalsPlanningApproval);
+            var client = new ElasticsearchClient(settings);
+
+
+            var response = await client.SearchAsync<PlanningElasticViewModel>(s =>
+                                                                             s.Query(
+                                                                               q => q.Match(
+                                                                                 m => m.Field(f => f.CropIntegrationId)
+                                                                                  .Query(cropIntegrationId)
+                                                                                          ))
+                                                                                     );
+            return response.Documents.ToList();
         }
     }
 }

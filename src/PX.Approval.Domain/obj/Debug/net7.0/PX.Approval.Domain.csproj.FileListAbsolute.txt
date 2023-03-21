@@ -16,6 +16,7 @@ C:\dev\CS-PX-APPROVAL\src\PX.Approval.Domain\obj\Debug\net7.0\PX.Approval.Domain
 C:\dev\CS-PX-APPROVAL\src\PX.Approval.Domain\obj\Debug\net7.0\PX.Approval.Domain.Messages.Messages.FailFastValidation.UpdateCropPeriodFailFast.resources
 C:\dev\CS-PX-APPROVAL\src\PX.Approval.Domain\obj\Debug\net7.0\PX.Approval.Domain.Messages.Messages.FailFastValidation.UpdatePartnerCropColumnInExceptionFailFast.resources
 C:\dev\CS-PX-APPROVAL\src\PX.Approval.Domain\obj\Debug\net7.0\PX.Approval.Domain.Messages.Messages.Logger.CropLoggerMessage.resources
+C:\dev\CS-PX-APPROVAL\src\PX.Approval.Domain\obj\Debug\net7.0\PX.Approval.Domain.Messages.Messages.PlanningMessages.resources
 C:\dev\CS-PX-APPROVAL\src\PX.Approval.Domain\obj\Debug\net7.0\PX.Approval.Domain.Messages.Messages.Translations.resources
 C:\dev\CS-PX-APPROVAL\src\PX.Approval.Domain\obj\Debug\net7.0\PX.Approval.Domain.csproj.GenerateResource.cache
 C:\dev\CS-PX-APPROVAL\src\PX.Approval.Domain\obj\Debug\net7.0\PX.Approval.Domain.GeneratedMSBuildEditorConfig.editorconfig

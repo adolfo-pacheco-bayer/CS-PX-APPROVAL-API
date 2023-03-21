@@ -60,7 +60,7 @@ namespace PX.Approval.API.Authorization
                 profiles = JsonConvert.DeserializeObject<IEnumerable<ProfileViewModel>>(profileClaim)?.ToList();
 
             var identity = _httpContextAccessor.HttpContext?.User.Identities.FirstOrDefault();
-            identity?.AddClaim(new Claim("cwid", userCwid));
+            identity?.AddClaim(new Claim("cwid", cwid));
 
             var roles = new List<RoleViewModel>();
             IEnumerable<LevelViewModel>? levels = null;
@@ -85,7 +85,7 @@ namespace PX.Approval.API.Authorization
                 Email = userCwid,
                 NameUser = userCwid,
                 Roles = roles,
-                Cwid = userCwid,
+                Cwid = cwid,
             });
 
             identity?.AddClaim(new Claim("user", user));
