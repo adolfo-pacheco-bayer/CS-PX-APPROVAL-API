@@ -1,2 +1,0 @@
-obj\Debug\net6.0\Services\Crop\Protos/CropServices.cs \
-obj\Debug\net6.0\Services\Crop\Protos/CropServicesGrpc.cs: Services/Crop/Protos/cropServices.proto
