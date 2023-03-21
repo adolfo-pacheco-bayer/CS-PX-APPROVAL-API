@@ -14,3 +14,4 @@ PX.Approval/src/PX.Approval.Crosscutting/bin
 PX.Approval/src/PX.Approval.Domain/bin/
 PX.Approval/src/PX.Approval.Infrastructure/bin/
 PX.Approval/src/PX.Approval.TestHelpers/bin/
+src/PX.Approval.Infrastructure/CodeGen/
