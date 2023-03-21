@@ -46,6 +46,16 @@ namespace PX.Approval.API.Routes
             {
                 return await mediator.Send(new ReturnStatusGoalsPlanningCommand(request.Reason, request.GoalsPlanningIntegrationIds.ToList()));
             }).RequireAuthorization("Omega");
+
+            app.MapPut("api/approval/approve-goals-planning", async ([FromServices] IMediator mediator, [FromBody] ApproveRequest request) =>
+            {
+                return await mediator.Send(new ApproveGoalsPlanningCommand(request.GoalsPlanningIntegrationIds.ToList()));
+            }).RequireAuthorization("Omega");
+
+            app.MapPut("api/approval/reprove-goals-planning", async ([FromServices] IMediator mediator, [FromBody] ReproveRequest request) =>
+            {
+                return await mediator.Send(new ReproveGoalsPlanningCommand(request.Reason, request.GoalsPlanningIntegrationIds.ToList()));
+            }).RequireAuthorization("Omega");
         }
     }
 }
