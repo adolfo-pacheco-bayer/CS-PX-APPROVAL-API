@@ -54,7 +54,7 @@ namespace PX.Approval.API.Routes
 
             app.MapPut("api/approval/reprove-goals-planning", async ([FromServices] IMediator mediator, [FromBody] ReproveRequest request) =>
             {
-                return await mediator.Send(new ReproveGoalsPlanningCommand(request.Reason, request.GoalsPlanningIntegrationIds.ToList()));
+                return await mediator.Send(new ReproveGoalsPlanningCommand(request.Reason, request.File, request.GoalsPlanningIntegrationIds.ToList()));
             }).RequireAuthorization("Omega");
         }
     }
