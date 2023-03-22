@@ -3,7 +3,9 @@ using PX.Approval.Domain.Response;
 
 namespace PX.Approval.Application.GoalsPlanning.Queries
 {
-    public class GetActiveCropsQuery : IRequest<Response>
+    public class GetPlanningTotalQuery : IRequest<Response>
     {
+        public Guid CropIntegrationId { get; set; }
+
     }
 }
