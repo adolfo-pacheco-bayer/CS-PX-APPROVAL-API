@@ -9,7 +9,7 @@ namespace PX.Approval.Domain.Models
         public int Id { get; set; }
         public string GoalsPlanningIntegrationId { get; set; }
         public string PartnerName { get; set; }
-        public string RtvnName { get; set; }
+        public string RtvName { get; set; }
         public List<string> Classifications { get; set; }
         public decimal Total { get; set; }
         public decimal SelloutCp { get; set; }
