@@ -41,6 +41,7 @@ namespace PX.Approval.API.Routes
                     CropIntegrationId = cropintegrationid
                 });
             });
+
             app.MapGet("api/approval/getgraphicstatus/{cropintegrationid}", async (Guid cropintegrationid, [FromServices] IMediator mediator) =>
             {
                 return await mediator.Send(new GetGraphicStatusQuery()
@@ -53,6 +54,15 @@ namespace PX.Approval.API.Routes
             {
                 return await mediator.Send(new ReturnStatusGoalsPlanningCommand(request.Reason, request.GoalsPlanningIntegrationIds.ToList()));
             }).RequireAuthorization("Omega");
+
+            
+            app.MapGet("api/approval/getgraphicpartnertype/{cropintegrationid}", async (Guid cropintegrationid, [FromServices] IMediator mediator) =>
+            {
+                return await mediator.Send(new GetGraphicsPartnerTyperQuery()
+                {
+                    CropIntegrationId = cropintegrationid
+                });
+            });
         }
     }
 }
