@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.API\\PX.Approval.API.csproj": {}
+    "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.API\\PX.Approval.API.csproj": {}
   },
   "projects": {
-    "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.API\\PX.Approval.API.csproj": {
+    "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.API\\PX.Approval.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.API\\PX.Approval.API.csproj",
+        "projectUniqueName": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.API\\PX.Approval.API.csproj",
         "projectName": "PX.Approval.API",
-        "projectPath": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.API\\PX.Approval.API.csproj",
-        "packagesPath": "C:\\Users\\EFGMR\\.nuget\\packages\\",
-        "outputPath": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.API\\obj\\",
+        "projectPath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.API\\PX.Approval.API.csproj",
+        "packagesPath": "C:\\Users\\EFERE\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.API\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\EFGMR\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\EFERE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {},
           "https://pkgs.dev.azure.com/LatamDTITCSCommercial/e6c40dbf-88f2-439f-ad50-70e181cecd1c/_packaging/CSPX-Feed/nuget/v3/index.json": {}
         },
@@ -29,11 +34,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\PX.Approval.Application.csproj": {
-                "projectPath": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\PX.Approval.Application.csproj"
+              "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\PX.Approval.Application.csproj": {
+                "projectPath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\PX.Approval.Application.csproj"
               },
-              "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Crosscutting\\PX.Approval.Crosscutting.csproj": {
-                "projectPath": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Crosscutting\\PX.Approval.Crosscutting.csproj"
+              "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Crosscutting\\PX.Approval.Crosscutting.csproj": {
+                "projectPath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Crosscutting\\PX.Approval.Crosscutting.csproj"
               }
             }
           }
@@ -114,21 +119,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\PX.Approval.Application.csproj": {
+    "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\PX.Approval.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\PX.Approval.Application.csproj",
+        "projectUniqueName": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\PX.Approval.Application.csproj",
         "projectName": "PX.Approval.Application",
-        "projectPath": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\PX.Approval.Application.csproj",
-        "packagesPath": "C:\\Users\\EFGMR\\.nuget\\packages\\",
-        "outputPath": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\obj\\",
+        "projectPath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\PX.Approval.Application.csproj",
+        "packagesPath": "C:\\Users\\EFERE\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\EFGMR\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\EFERE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -136,6 +145,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {},
           "https://pkgs.dev.azure.com/LatamDTITCSCommercial/e6c40dbf-88f2-439f-ad50-70e181cecd1c/_packaging/CSPX-Feed/nuget/v3/index.json": {}
         },
@@ -143,8 +153,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Domain\\PX.Approval.Domain.csproj": {
-                "projectPath": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Domain\\PX.Approval.Domain.csproj"
+              "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Domain\\PX.Approval.Domain.csproj": {
+                "projectPath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Domain\\PX.Approval.Domain.csproj"
               }
             }
           }
@@ -196,21 +206,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Crosscutting\\PX.Approval.Crosscutting.csproj": {
+    "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Crosscutting\\PX.Approval.Crosscutting.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Crosscutting\\PX.Approval.Crosscutting.csproj",
+        "projectUniqueName": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Crosscutting\\PX.Approval.Crosscutting.csproj",
         "projectName": "PX.Approval.Crosscutting",
-        "projectPath": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Crosscutting\\PX.Approval.Crosscutting.csproj",
-        "packagesPath": "C:\\Users\\EFGMR\\.nuget\\packages\\",
-        "outputPath": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Crosscutting\\obj\\",
+        "projectPath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Crosscutting\\PX.Approval.Crosscutting.csproj",
+        "packagesPath": "C:\\Users\\EFERE\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Crosscutting\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\EFGMR\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\EFERE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -218,6 +232,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {},
           "https://pkgs.dev.azure.com/LatamDTITCSCommercial/e6c40dbf-88f2-439f-ad50-70e181cecd1c/_packaging/CSPX-Feed/nuget/v3/index.json": {}
         },
@@ -225,14 +240,14 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\PX.Approval.Application.csproj": {
-                "projectPath": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\PX.Approval.Application.csproj"
+              "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\PX.Approval.Application.csproj": {
+                "projectPath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\PX.Approval.Application.csproj"
               },
-              "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Domain\\PX.Approval.Domain.csproj": {
-                "projectPath": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Domain\\PX.Approval.Domain.csproj"
+              "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Domain\\PX.Approval.Domain.csproj": {
+                "projectPath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Domain\\PX.Approval.Domain.csproj"
               },
-              "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Infrastructure\\PX.Approval.Infrastructure.csproj": {
-                "projectPath": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Infrastructure\\PX.Approval.Infrastructure.csproj"
+              "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Infrastructure\\PX.Approval.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Infrastructure\\PX.Approval.Infrastructure.csproj"
               }
             }
           }
@@ -276,21 +291,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Domain\\PX.Approval.Domain.csproj": {
+    "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Domain\\PX.Approval.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Domain\\PX.Approval.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Domain\\PX.Approval.Domain.csproj",
         "projectName": "PX.Approval.Domain",
-        "projectPath": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Domain\\PX.Approval.Domain.csproj",
-        "packagesPath": "C:\\Users\\EFGMR\\.nuget\\packages\\",
-        "outputPath": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Domain\\obj\\",
+        "projectPath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Domain\\PX.Approval.Domain.csproj",
+        "packagesPath": "C:\\Users\\EFERE\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Domain\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\EFGMR\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\EFERE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -298,6 +317,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {},
           "https://pkgs.dev.azure.com/LatamDTITCSCommercial/e6c40dbf-88f2-439f-ad50-70e181cecd1c/_packaging/CSPX-Feed/nuget/v3/index.json": {}
         },
@@ -342,21 +362,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Infrastructure\\PX.Approval.Infrastructure.csproj": {
+    "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Infrastructure\\PX.Approval.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Infrastructure\\PX.Approval.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Infrastructure\\PX.Approval.Infrastructure.csproj",
         "projectName": "PX.Approval.Infrastructure",
-        "projectPath": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Infrastructure\\PX.Approval.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\EFGMR\\.nuget\\packages\\",
-        "outputPath": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Infrastructure\\PX.Approval.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\EFERE\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\EFGMR\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\EFERE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -364,6 +388,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {},
           "https://pkgs.dev.azure.com/LatamDTITCSCommercial/e6c40dbf-88f2-439f-ad50-70e181cecd1c/_packaging/CSPX-Feed/nuget/v3/index.json": {}
         },
@@ -371,8 +396,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\PX.Approval.Application.csproj": {
-                "projectPath": "C:\\dev\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\PX.Approval.Application.csproj"
+              "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\PX.Approval.Application.csproj": {
+                "projectPath": "C:\\Users\\EFERE\\source\\repos\\CS-PX-APPROVAL\\src\\PX.Approval.Application\\PX.Approval.Application.csproj"
               }
             }
           }
@@ -466,7 +491,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }

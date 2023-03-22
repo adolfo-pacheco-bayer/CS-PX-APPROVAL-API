@@ -293,3 +293,6 @@ C:\dev\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\PX.Approval.Infrastru
 C:\dev\CS-PX-APPROVAL\src\PX.Approval.API\obj\Debug\net7.0\PX.Approval.API.csproj.CopyComplete
 C:\dev\CS-PX-APPROVAL\src\PX.Approval.API\obj\Debug\net7.0\PX.Approval.API.genruntimeconfig.cache
 C:\dev\CS-PX-APPROVAL\src\PX.Approval.API\obj\Debug\net7.0\ref\PX.Approval.API.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Elastic.Clients.Elasticsearch.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Elastic.Transport.dll
+C:\Users\EFERE\source\repos\CS-PX-APPROVAL\src\PX.Approval.API\bin\Debug\net7.0\Nest.dll
