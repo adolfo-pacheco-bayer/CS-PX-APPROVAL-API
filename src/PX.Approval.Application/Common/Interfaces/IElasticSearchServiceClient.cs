@@ -7,5 +7,6 @@ namespace PX.Approval.Application.Common.Interfaces
         Task<List<PlanningElasticViewModel>> Get(Guid cropIntegrationId);
 
         Task<List<PlanningElasticViewModel>> GetGraphicsByCropIntegrationId(string cropIntegrationId);
+        Task<List<PlanningElasticViewModel>> GetByGoalsPlanningIntegrationId(Guid goalsPlanningIntegrationId);
     }
 }
