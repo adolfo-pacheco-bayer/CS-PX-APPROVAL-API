@@ -6,7 +6,7 @@ namespace PX.Approval.Application.GoalsPlanning.Commands;
 
 public class ReproveGoalsPlanningCommand : IRequest<Response>
 {
-    public ReproveGoalsPlanningCommand(string reason, IFormFile file, List<Guid> goalsPlanningIntegrationIds)
+    public ReproveGoalsPlanningCommand(string reason, IFormFile? file, List<Guid> goalsPlanningIntegrationIds)
     {
         Reason = reason;
         File = file;

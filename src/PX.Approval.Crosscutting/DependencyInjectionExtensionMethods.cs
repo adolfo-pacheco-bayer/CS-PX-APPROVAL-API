@@ -9,6 +9,8 @@ using PX.Approval.Infrastructure.Services.Crop;
 using PX.Approval.Infrastructure.Services.ElasticSearch;
 using PX.Approval.Infrastructure.Services.GoalsPlanning;
 using PX.Crop.Application.Common.PipelineBehaviours;
+using PX.Library.Common.ServiceBus.Configurations;
+using PX.Library.Common.ServiceBus.DependencyInjection;
 using System.Reflection;
 
 
@@ -29,6 +31,10 @@ public static class DependencyInjectionExtensionMethods
         //Not change order below. This order determines an logic sequence of a pipeline
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));          //1st
 
+        services.AddServiceBus(configuration.GetConnectionString("AzureServiceBus"), (services) =>
+        {
+            services.Configure<ServiceBusConfiguration>(configuration.GetSection("AzureServiceBusOptions"));
+        });
         return services;
     }
 

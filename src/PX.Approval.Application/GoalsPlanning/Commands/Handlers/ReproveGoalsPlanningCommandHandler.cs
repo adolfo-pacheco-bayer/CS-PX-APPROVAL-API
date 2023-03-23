@@ -19,7 +19,7 @@ public class ReproveGoalsPlanningCommandHandler : IRequestHandler<ReproveGoalsPl
     private IGoalsPlanningClient _goalsPlanningClient;
     private IHttpContextAccessor _httpContextAccessor;
     private IElasticSearchServiceClient _elasticSearchClient;
-    private IServiceBus _serviceBusClient;
+    private readonly IServiceBus _serviceBusClient;
     private readonly ILogger<ReproveGoalsPlanningCommandHandler> _logger;
 
     public ReproveGoalsPlanningCommandHandler(IResponse response, 
@@ -40,7 +40,7 @@ public class ReproveGoalsPlanningCommandHandler : IRequestHandler<ReproveGoalsPl
     public async Task<Response> Handle(ReproveGoalsPlanningCommand request, CancellationToken cancellationToken)
     {
         var reproveUserCWID = _httpContextAccessor.HttpContext.GetCwid();
-        var result = await _goalsPlanningClient.ReproveGoalsPlanningAsync(reproveUserCWID, request.Reason, request.GoalsPlanningIntegrationIds);
+        var result = await _goalsPlanningClient.ReproveGoalsPlanningAsync(reproveUserCWID, request.Reason, request.File, request.GoalsPlanningIntegrationIds);
 
         foreach (var goalsPlanning in request.GoalsPlanningIntegrationIds)
         {

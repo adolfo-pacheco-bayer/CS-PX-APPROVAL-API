@@ -16,7 +16,7 @@ public class ApproveGoalsPlanningCommandHandler : IRequestHandler<ApproveGoalsPl
     private IGoalsPlanningClient _goalsPlanningClient;
     private IHttpContextAccessor _httpContextAccessor;
     private IElasticSearchServiceClient _elasticSearchClient;
-    private IServiceBus _serviceBusClient;
+    private readonly IServiceBus _serviceBusClient;
 
     public ApproveGoalsPlanningCommandHandler(IResponse response, IGoalsPlanningClient goalsPlanningClient, IHttpContextAccessor httpContextAccessor, IElasticSearchServiceClient elasticSearchClient, IServiceBus serviceBusClient)
     {

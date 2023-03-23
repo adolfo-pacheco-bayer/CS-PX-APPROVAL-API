@@ -1,4 +1,5 @@
 ﻿using Grpc.Net.Client;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
@@ -61,7 +62,7 @@ public class GoalsPlanningGrpcClient : IGoalsPlanningClient
         return new ModifyGoalsPlanningViewModel() { Data = result.Data, Message = result.Message };
     }
 
-    public async Task<ModifyGoalsPlanningViewModel> ReproveGoalsPlanningAsync(string returnUserCWID, string reason, List<Guid> goalsPlanningIntegrationIds)
+    public async Task<ModifyGoalsPlanningViewModel> ReproveGoalsPlanningAsync(string returnUserCWID, string reason, IFormFile? file, List<Guid> goalsPlanningIntegrationIds)
     {
         using var channel = GrpcChannel.ForAddress(_config.Value.GrpcUrl);
         var client = new GoalsPlanningService.GoalsPlanningServiceClient(channel);
@@ -70,10 +71,19 @@ public class GoalsPlanningGrpcClient : IGoalsPlanningClient
 
         request.ReturnUserCWID = returnUserCWID;
         request.Reason = reason;
+        request.File = ToBase64(file);
         request.GoalsPlanningIntegrationIds.AddRange(goalsPlanningIntegrationIds.Select(x => new goalsPlanningIntegrationIdList() { GoalsPlanningIntegrationId = x.ToString() }));
 
         var result = await client.ReproveGoalsPlanningAsync(request);
 
         return new ModifyGoalsPlanningViewModel() { Data = result.Data, Message = result.Message };
+    }
+
+    public static string ToBase64(IFormFile? file)
+    {
+        using var stream = new MemoryStream();
+        file.CopyTo(stream);
+        var bytes = stream.ToArray();
+        return Convert.ToBase64String(bytes);
     }
 }

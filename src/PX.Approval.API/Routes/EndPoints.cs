@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PX.Approval.API.Models;
 using PX.Approval.Application.GoalsPlanning.Commands;
 using PX.Approval.Application.GoalsPlanning.Queries;
@@ -42,7 +43,7 @@ namespace PX.Approval.API.Routes
                 });
             });
 
-            app.MapPut("api/approval/return-status-goals-planning", async ([FromServices] IMediator mediator, [FromBody]ReturnStatusRequest request) =>
+            app.MapPut("api/approval/return-status-goals-planning", async ([FromServices] IMediator mediator, [FromBody] ReturnStatusRequest request) =>
             {
                 return await mediator.Send(new ReturnStatusGoalsPlanningCommand(request.Reason, request.GoalsPlanningIntegrationIds.ToList()));
             }).RequireAuthorization("Omega");
@@ -52,9 +53,10 @@ namespace PX.Approval.API.Routes
                 return await mediator.Send(new ApproveGoalsPlanningCommand(request.GoalsPlanningIntegrationIds.ToList()));
             }).RequireAuthorization("Omega");
 
-            app.MapPut("api/approval/reprove-goals-planning", async ([FromServices] IMediator mediator, [FromBody] ReproveRequest request) =>
+            app.MapPut("api/approval/reprove-goals-planning", async ([FromServices] IMediator mediator, [FromForm] IFormFile? file, [FromForm] string body) =>
             {
-                return await mediator.Send(new ReproveGoalsPlanningCommand(request.Reason, request.File, request.GoalsPlanningIntegrationIds.ToList()));
+                var request = JsonConvert.DeserializeObject<ReproveRequest>(body);
+                return await mediator.Send(new ReproveGoalsPlanningCommand(request.Reason, file, request.GoalsPlanningIntegrationIds.ToList()));
             }).RequireAuthorization("Omega");
         }
     }
