@@ -16,12 +16,12 @@ namespace PX.Approval.API.Routes
                 return "Service is running!";
             });
 
-            app.MapGet("api/approval/get-active-crops", async ([FromServices] IMediator mediator) =>
+            app.MapGet("api/approval/active-crops", async ([FromServices] IMediator mediator) =>
             {
                 return await mediator.Send(new GetActiveCropsQuery());
             }).RequireAuthorization("Omega");
 
-            app.MapGet("api/approval/get-all-goals-planning/crop/{cropintegrationid}", async (Guid cropintegrationid, [FromServices] IMediator mediator) =>
+            app.MapGet("api/approval/all-goals-planning/crop/{cropintegrationid}", async (Guid cropintegrationid, [FromServices] IMediator mediator) =>
             {
                 return await mediator.Send(new GetAllGoalsPlanningInActiveCropsQuery()
                 {
@@ -29,12 +29,12 @@ namespace PX.Approval.API.Routes
                 });
             });
 
-            app.MapGet("api/approval/get-user-info", async ([FromServices] IMediator mediator) =>
+            app.MapGet("api/approval/user-info", async ([FromServices] IMediator mediator) =>
             {
                 return await mediator.Send(new GetUserInfoQuery());
             }).RequireAuthorization("Omega");
 
-            app.MapGet("api/approval/get-planning-total/crop/{cropintegrationid}", async (Guid cropintegrationid, [FromServices] IMediator mediator) =>
+            app.MapGet("api/approval/planning-total/crop/{cropintegrationid}", async (Guid cropintegrationid, [FromServices] IMediator mediator) =>
             {
                 return await mediator.Send(new GetPlanningTotalQuery()
                 {
@@ -42,7 +42,7 @@ namespace PX.Approval.API.Routes
                 });
             });
 
-            app.MapGet("api/approval/get-graphic-status/{cropintegrationid}", async (Guid cropintegrationid, [FromServices] IMediator mediator) =>
+            app.MapGet("api/approval/graphic-status/{cropintegrationid}", async (Guid cropintegrationid, [FromServices] IMediator mediator) =>
             {
                 return await mediator.Send(new GetGraphicStatusQuery()
                 {
@@ -56,12 +56,17 @@ namespace PX.Approval.API.Routes
             }).RequireAuthorization("Omega");
 
             
-            app.MapGet("api/approval/get-graphic-partnertype/{cropintegrationid}", async (Guid cropintegrationid, [FromServices] IMediator mediator) =>
+            app.MapGet("api/approval/graphic-partnertype/{cropintegrationid}", async (Guid cropintegrationid, [FromServices] IMediator mediator) =>
             {
                 return await mediator.Send(new GetGraphicsPartnerTyperQuery()
                 {
                     CropIntegrationId = cropintegrationid
                 });
+            });
+
+            app.MapGet("api/approval/all-approved-goals-plan", async (Guid[] cropintegrationids, [FromServices] IMediator mediator) =>
+            {
+                return await mediator.Send(new GetAllApprovedGoalsPlanQuery(cropintegrationids.ToList()));
             });
         }
     }
