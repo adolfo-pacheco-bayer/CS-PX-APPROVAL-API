@@ -7,7 +7,7 @@ public enum PartnerType
     [EnumMember(Value = "DISTRIBUIDOR")]
     Distributor = 1,
     [EnumMember(Value = "ATACADISTA")]
-    Dealer = 2,
+    Wholesaler = 2,
     [EnumMember(Value = "COOPERATIVA")]
     Cooperative = 3
 }
