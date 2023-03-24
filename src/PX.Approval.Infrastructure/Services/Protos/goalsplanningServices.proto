@@ -47,5 +47,6 @@ message ReproveRequest{
 	repeated goalsPlanningIntegrationIdList goalsPlanningIntegrationIds = 1;
 	string reason = 2;
 	string returnUserCWID = 3;
-	string file = 4;
+	bytes file = 4;
+	string fileName = 5;
 }

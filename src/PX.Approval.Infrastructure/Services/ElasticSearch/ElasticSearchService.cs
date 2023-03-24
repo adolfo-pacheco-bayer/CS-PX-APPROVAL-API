@@ -80,11 +80,11 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
             return response.Documents.ToList();
         }
 
-        public async Task<List<PlanningElasticViewModel>> GetByGoalsPlanningIntegrationId(Guid goalsPlanningIntegrationId)
+        public async Task<PlanningElasticViewModel> GetByGoalsPlanningIntegrationId(Guid goalsPlanningIntegrationId)
         {
 
             var settings = new ElasticsearchClientSettings(_cloudId, new Elastic.Transport.ApiKey(_apiKey))
-                .DefaultIndex(_defaultIndex);
+                .DefaultIndex(_goalsPlanningApproval);
             var client = new ElasticsearchClient(settings);
 
             var response = await client.SearchAsync<PlanningElasticViewModel>(s => s.Query(
@@ -92,7 +92,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
                                                                                         m => m.Field(f => f.GoalsPlanningIntegrationId)
                                                                                        .Query(goalsPlanningIntegrationId.ToString()))));
 
-            return response.Documents.ToList();
+            return response.Documents.FirstOrDefault();
         }
     }
 }

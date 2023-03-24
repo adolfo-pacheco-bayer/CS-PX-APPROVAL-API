@@ -40,14 +40,14 @@ public class ReproveGoalsPlanningCommandHandler : IRequestHandler<ReproveGoalsPl
     public async Task<Response> Handle(ReproveGoalsPlanningCommand request, CancellationToken cancellationToken)
     {
         var reproveUserCWID = _httpContextAccessor.HttpContext.GetCwid();
-        var result = await _goalsPlanningClient.ReproveGoalsPlanningAsync(reproveUserCWID, request.Reason, request.File, request.GoalsPlanningIntegrationIds);
+        var result = await _goalsPlanningClient.ReproveGoalsPlanningAsync(reproveUserCWID, request.Reason, request.File, request.FileName, request.GoalsPlanningIntegrationIds);
 
         foreach (var goalsPlanning in request.GoalsPlanningIntegrationIds)
         {
             var goalsPlanningInfo = await _elasticSearchClient.GetByGoalsPlanningIntegrationId(goalsPlanning);
 
-            var emailPartner = string.Empty;
-            var namePartner = string.Empty;
+            var emailPartner = goalsPlanningInfo.PartnerName;
+            var namePartner = goalsPlanningInfo.EmailGoalsPlanning;
             var content = Translations.EmailReprove.Replace("#PARCEIRO#", namePartner).Replace("#MOTIVO#", request.Reason);
 
             if (!string.IsNullOrEmpty(emailPartner))

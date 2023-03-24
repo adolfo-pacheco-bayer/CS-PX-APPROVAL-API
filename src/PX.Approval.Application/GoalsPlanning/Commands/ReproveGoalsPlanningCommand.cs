@@ -6,15 +6,17 @@ namespace PX.Approval.Application.GoalsPlanning.Commands;
 
 public class ReproveGoalsPlanningCommand : IRequest<Response>
 {
-    public ReproveGoalsPlanningCommand(string reason, IFormFile? file, List<Guid> goalsPlanningIntegrationIds)
+    public ReproveGoalsPlanningCommand(string reason, byte[] file, string fileName, List<Guid> goalsPlanningIntegrationIds)
     {
         Reason = reason;
         File = file;
+        FileName = fileName;
         GoalsPlanningIntegrationIds = goalsPlanningIntegrationIds;
     }
 
     public string Reason { get; set; }
-    public IFormFile? File { get; set; }
+    public byte[] File { get; set; }
+    public string FileName { get; set; }
     public List<Guid> GoalsPlanningIntegrationIds { get; set; }
 }
 

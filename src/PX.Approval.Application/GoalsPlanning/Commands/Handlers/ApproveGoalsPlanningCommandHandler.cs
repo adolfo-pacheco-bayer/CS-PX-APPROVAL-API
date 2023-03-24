@@ -36,8 +36,8 @@ public class ApproveGoalsPlanningCommandHandler : IRequestHandler<ApproveGoalsPl
         {
             var goalsPlanningInfo = await _elasticSearchClient.GetByGoalsPlanningIntegrationId(goalsPlanning);
 
-            var emailPartner = string.Empty;
-            var namePartner = string.Empty;
+            var emailPartner = goalsPlanningInfo.PartnerName;
+            var namePartner = goalsPlanningInfo.EmailGoalsPlanning;
             var content = Translations.EmailApprove.Replace("#PARCEIRO#", namePartner);
 
             if (!string.IsNullOrEmpty(emailPartner))

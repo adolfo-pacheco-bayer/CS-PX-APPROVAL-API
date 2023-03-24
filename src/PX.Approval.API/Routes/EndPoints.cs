@@ -70,11 +70,19 @@ namespace PX.Approval.API.Routes
                 return await mediator.Send(new ApproveGoalsPlanningCommand(request.GoalsPlanningIntegrationIds.ToList()));
             }).RequireAuthorization("Omega");
 
-            app.MapPut("api/approval/reprove-goals-planning", async ([FromServices] IMediator mediator, [FromForm] IFormFile? file, [FromForm] string body) =>
+            app.MapPut("api/approval/reprove-goals-planning", async (HttpRequest request, string fileName, string payload, IMediator mediator) =>
             {
-                var request = JsonConvert.DeserializeObject<ReproveRequest>(body);
-                return await mediator.Send(new ReproveGoalsPlanningCommand(request.Reason, file, request.GoalsPlanningIntegrationIds.ToList()));
-            }).RequireAuthorization("Omega");
+                using var reader = new StreamReader(request.Body, System.Text.Encoding.UTF8);
+
+                using var ms = new MemoryStream();
+                await reader.BaseStream.CopyToAsync(ms);
+                var fileBytes = ms.ToArray();
+
+                var p = JsonConvert.DeserializeObject<ReproveRequest>(payload);
+
+                return await mediator.Send(new ReproveGoalsPlanningCommand(p.Reason, fileBytes, fileName, p.GoalsPlanningIntegrationIds.ToList()));
+
+            }).Accepts<IFormFile>("application/pdf").RequireAuthorization("Omega");
         }
     }
 }
