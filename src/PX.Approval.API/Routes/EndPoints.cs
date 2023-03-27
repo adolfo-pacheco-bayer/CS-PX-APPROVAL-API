@@ -82,7 +82,7 @@ namespace PX.Approval.API.Routes
 
                 return await mediator.Send(new ReproveGoalsPlanningCommand(p.Reason, fileBytes, fileName, p.GoalsPlanningIntegrationIds.ToList()));
 
-            }).Accepts<IFormFile>("application/pdf").RequireAuthorization("Omega");
+            }).RequireAuthorization("Omega").Accepts<IFormFile>("application/pdf");
         }
     }
 }

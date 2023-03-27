@@ -6,6 +6,7 @@ using PX.Approval.Application.Common.Interfaces;
 using PX.Approval.Domain.DomainObjects;
 using PX.Approval.Domain.Messages.Messages;
 using PX.Approval.Domain.Response;
+using PX.Library.Common.BayerServices.Models;
 using PX.Library.Common.Extensions;
 using PX.Library.Common.Notification.Email;
 using PX.Library.Common.ServiceBus.Interfaces;
@@ -42,16 +43,24 @@ public class ReproveGoalsPlanningCommandHandler : IRequestHandler<ReproveGoalsPl
         var reproveUserCWID = _httpContextAccessor.HttpContext.GetCwid();
         var result = await _goalsPlanningClient.ReproveGoalsPlanningAsync(reproveUserCWID, request.Reason, request.File, request.FileName, request.GoalsPlanningIntegrationIds);
 
-        foreach (var goalsPlanning in request.GoalsPlanningIntegrationIds)
+        if (result.Data)
         {
-            var goalsPlanningInfo = await _elasticSearchClient.GetByGoalsPlanningIntegrationId(goalsPlanning);
+            foreach (var goalsPlanning in request.GoalsPlanningIntegrationIds)
+            {
+                var goalsPlanningInfo = await _elasticSearchClient.GetByGoalsPlanningIntegrationId(goalsPlanning);
 
-            var emailPartner = goalsPlanningInfo.PartnerName;
-            var namePartner = goalsPlanningInfo.EmailGoalsPlanning;
-            var content = Translations.EmailReprove.Replace("#PARCEIRO#", namePartner).Replace("#MOTIVO#", request.Reason);
+                if (goalsPlanningInfo is not null)
+                {
+                    var emailPartner = goalsPlanningInfo.PartnerName;
+                    var namePartner = goalsPlanningInfo.EmailGoalsPlanning;
+                    var content = Translations.EmailReprove.Replace("#PARCEIRO#", namePartner).Replace("#MOTIVO#", request.Reason);
 
-            if (!string.IsNullOrEmpty(emailPartner))
-                await _serviceBusClient.SendEmailMessage(new Email(emailPartner, Translations.NoReplyEmail, Translations.DefaultSender, Translations.SubjectReprove, content, true), cancellationToken);
+                    if (!string.IsNullOrEmpty(emailPartner))
+                        await _serviceBusClient.SendEmailMessage(new Email(emailPartner, Translations.NoReplyEmail, Translations.DefaultSender, Translations.SubjectReprove, content, true), cancellationToken);
+                }
+                else
+                    _logger.LogError($"GetByGoalsPlanningIntegrationId não retornou dados do elastic - GoalsPlanningIntegrationId: {goalsPlanning}");
+            } 
         }
 
         return await _response.CreateSuccessResponseAsync(result);
