@@ -79,6 +79,21 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
             return response.Documents.ToList();
         }
 
+        public async Task<PlanningElasticViewModel> GetByGoalsPlanningIntegrationId(Guid goalsPlanningIntegrationId)
+        {
+
+            var settings = new ElasticsearchClientSettings(_cloudId, new Elastic.Transport.ApiKey(_apiKey))
+                .DefaultIndex(_goalsPlanningApproval);
+            var client = new ElasticsearchClient(settings);
+
+            var response = await client.SearchAsync<PlanningElasticViewModel>(s => s.Query(
+                                                                                        q => q.Match(
+                                                                                        m => m.Field(f => f.GoalsPlanningIntegrationId)
+                                                                                       .Query(goalsPlanningIntegrationId.ToString()))));
+
+            return response.Documents.FirstOrDefault();
+        }
+
 
         public async Task<PlanningElasticViewModel> GetBrandsByGoalsPlanningId(string goalsPlanningId)
         {
