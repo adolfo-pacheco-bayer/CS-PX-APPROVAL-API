@@ -1,7 +1,6 @@
 ﻿using Elastic.Clients.Elasticsearch;
 using Elastic.Transport;
 using Microsoft.Extensions.Configuration;
-using Org.BouncyCastle.Bcpg.OpenPgp;
 using PX.Approval.Application.Common.Interfaces;
 using PX.Approval.Domain.Models;
 
@@ -92,6 +91,24 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
                                                                                         m => m.Field(f => f.GoalsPlanningIntegrationId)
                                                                                        .Query(goalsPlanningIntegrationId.ToString()))));
 
+            return response.Documents.FirstOrDefault();
+        }
+
+
+        public async Task<PlanningElasticViewModel> GetBrandsByGoalsPlanningId(string goalsPlanningId)
+        {
+            var settings = new ElasticsearchClientSettings(_cloudId, new ApiKey(_apiKey))
+              .DefaultIndex(_goalsPlanningApproval);
+            var client = new ElasticsearchClient(settings);
+
+
+            var response = await client.SearchAsync<PlanningElasticViewModel>(s =>
+                                                                             s.Query(
+                                                                               q => q.Match(
+                                                                                 m => m.Field(f => f.GoalsPlanningIntegrationId)
+                                                                                  .Query(goalsPlanningId)
+                                                                                          ))
+                                                                                     );
             return response.Documents.FirstOrDefault();
         }
     }
