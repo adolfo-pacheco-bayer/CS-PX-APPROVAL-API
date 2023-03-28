@@ -24,6 +24,8 @@ namespace PX.Approval.Domain.Models
 
         public string CropIntegrationId { get; set; }
 
+        public DateTime LastUpdate { get; set; }
+
         public string EmailGoalsPlanning { get; set; }
         public string CWIDCPApprover { get; set; }
         public string CWIDSeedsApprover { get; set; }
