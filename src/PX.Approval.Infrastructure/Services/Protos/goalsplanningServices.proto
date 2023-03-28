@@ -42,6 +42,10 @@ message GetInApprovalGoalsPlanningRequest{
 }
 
 message InApprovalGoalsPlanningResponse{
+	repeated InApprovalGoalsPlanning Data = 1;	
+}
+
+message InApprovalGoalsPlanning {
 	string integrationId = 1;
 	string cropIntegrationId = 2;
     string PartnerGroupCode = 3;

@@ -5,7 +5,7 @@ using PX.Approval.Domain.Response;
 
 namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
 {
-    public class GetAllApprovedGoalsPlanQueryHandlercs : IRequestHandler<GetAllApprovedGoalsPlanQuery, Response>
+    public class GetAllApprovedGoalsPlanQueryHandlercs : IRequestHandler<GetInApprovalGoalsPlanningQuery, Response>
     {
         private IResponse _response;
         private IGoalsPlanningClient _goalsPlanningClient;
@@ -16,7 +16,7 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
             _goalsPlanningClient = goalsPlanningClient;
         }
 
-        public async Task<Response> Handle(GetAllApprovedGoalsPlanQuery request, CancellationToken cancellationToken)
+        public async Task<Response> Handle(GetInApprovalGoalsPlanningQuery request, CancellationToken cancellationToken)
         {
             var result = await _goalsPlanningClient.GetInApprovalGoalsPlanning(request.CropIntegrationIds.ToArray());
 

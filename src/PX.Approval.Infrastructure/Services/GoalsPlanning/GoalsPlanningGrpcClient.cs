@@ -46,7 +46,7 @@ public class GoalsPlanningGrpcClient : IGoalsPlanningClient
         return new ReturnStatusViewModel() { Data = result.Data, Message = result.Message };
     }
 
-    public async Task<GetInApprovalGoalsPlanningViewModel> GetInApprovalGoalsPlanning(Guid[] cropIntegrationIds)
+    public async Task<IEnumerable<GetInApprovalGoalsPlanningViewModel>> GetInApprovalGoalsPlanning(Guid[] cropIntegrationIds)
     {
         using var channel = GrpcChannel.ForAddress(_config.Value.GrpcUrl);
         var client = new GoalsPlanningService.GoalsPlanningServiceClient(channel);
@@ -55,27 +55,36 @@ public class GoalsPlanningGrpcClient : IGoalsPlanningClient
         request.CropIntegrationIds.AddRange(cropIntegrationIds.Select(x => new cropIntegrationIdList() { CropIntegrationId = x.ToString() }));
 
         var result = await client.GetInApprovalGoalsPlanningByCropIdsAsync(request);
-
-        var item = new GetInApprovalGoalsPlanningViewModel()
+        var list = new List<GetInApprovalGoalsPlanningViewModel>();
+        foreach(var item in result.Data)
         {
-            CropIntegrationId = new Guid(result.CropIntegrationId),
-            IntegrationId = new Guid(result.IntegrationId),
-            Status = result.Status
-        };
+            var viewModel = new GetInApprovalGoalsPlanningViewModel()
+            {
+                CropIntegrationId = new Guid(item.CropIntegrationId),
+                IntegrationId = new Guid(item.IntegrationId),
+                PartnerGroupCode = item.PartnerGroupCode,
+                Status = item.Status
+            };
+            
+            foreach(var itemBrand in item.Brands)
+            {
+                viewModel.Brands.Add(new GetInApprovalGoalsPlanningBrandsViewModel()
+                {
+                    Bio = itemBrand.Bio,
+                    BrandCropIntegrationId = new Guid(itemBrand.BrandCropIntegrationId),
+                    ClassificationCPMargin = decimal.Parse(itemBrand.ClassificationCPMargin.ToString()),
+                    FirstSellinPeriod = decimal.Parse(itemBrand.FirstSellinPeriod.ToString()),
+                    Name = itemBrand.Name,
+                    Price = decimal.Parse(itemBrand.Price.ToString()),
+                    SecondSellinPeriod = decimal.Parse(itemBrand.SecondSellinPeriod.ToString()),
+                    Sellout = decimal.Parse(itemBrand.Sellout.ToString()),
+                    Type = itemBrand.Type
+                });
+            }
 
-        item.Brands.ToList().AddRange(result.Brands.Select(x => new GetInApprovalGoalsPlanningBrandsViewModel()
-        {
-            Bio = x.Bio,
-            BrandCropIntegrationId = new Guid(x.BrandCropIntegrationId),
-            ClassificationCPMargin = decimal.Parse(x.ClassificationCPMargin.ToString()),
-            FirstSellinPeriod = decimal.Parse(x.FirstSellinPeriod.ToString()),
-            Name = x.Name,
-            Price = decimal.Parse(x.Price.ToString()),
-            SecondSellinPeriod = decimal.Parse(x.SecondSellinPeriod.ToString()),
-            Sellout = decimal.Parse(x.Sellout.ToString()),
-            Type = x.Type
-        }));
+            list.Add(viewModel);
+        }
 
-        return item;
+        return list;
     }
 }

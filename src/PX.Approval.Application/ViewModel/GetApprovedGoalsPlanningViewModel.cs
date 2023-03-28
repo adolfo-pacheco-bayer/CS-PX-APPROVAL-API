@@ -13,6 +13,11 @@ namespace PX.Approval.Application.ViewModel
         public Guid CropIntegrationId { get; set; }
         public string PartnerGroupCode { get; set; }
         public string Status { get; set; }
-        public IEnumerable<GetInApprovalGoalsPlanningBrandsViewModel> Brands { get; set; }
+        public List<GetInApprovalGoalsPlanningBrandsViewModel> Brands { get; set; }
+
+        public GetInApprovalGoalsPlanningViewModel()
+        {
+            Brands = new List<GetInApprovalGoalsPlanningBrandsViewModel>();
+        }
     }
 }
