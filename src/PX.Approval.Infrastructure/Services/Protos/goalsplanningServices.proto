@@ -7,6 +7,7 @@ package goalsPlanning;
 service GoalsPlanningService {
   rpc GetAllGoalsPlanningByCropIds (Request) returns (Response);
   rpc ReturnStatusGoalsPlanning (ReturnStatusRequest) returns (BooleanResponse);
+  rpc GetInApprovalGoalsPlanningByCropIds (GetInApprovalGoalsPlanningRequest) returns (InApprovalGoalsPlanningResponse);
 }
 
 message BooleanResponse{
@@ -34,4 +35,33 @@ message ReturnStatusRequest{
 	repeated goalsPlanningIntegrationIdList goalsPlanningIntegrationIds = 1;
 	string reason = 2;
 	string returnUserCWID = 3;
+}
+
+message GetInApprovalGoalsPlanningRequest{
+	repeated cropIntegrationIdList cropIntegrationIds = 1;
+}
+
+message InApprovalGoalsPlanningResponse{
+	string integrationId = 1;
+	string cropIntegrationId = 2;
+    string PartnerGroupCode = 3;
+    string Status = 4;
+    repeated brandmodel Brands = 5;
+	repeated errorsmodel Errors = 6;
+}
+
+message brandmodel{
+	string BrandCropIntegrationId = 1;
+    string Name =2;
+    double Price = 3;
+    string Type = 4;
+    bool Bio = 5;
+    double FirstSellinPeriod = 6;
+    double SecondSellinPeriod = 7;
+    double Sellout = 8;
+    double ClassificationCPMargin = 9;
+}
+
+message errorsmodel{
+	string message = 1;
 }

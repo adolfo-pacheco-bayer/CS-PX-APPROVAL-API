@@ -45,4 +45,37 @@ public class GoalsPlanningGrpcClient : IGoalsPlanningClient
 
         return new ReturnStatusViewModel() { Data = result.Data, Message = result.Message };
     }
+
+    public async Task<GetInApprovalGoalsPlanningViewModel> GetInApprovalGoalsPlanning(Guid[] cropIntegrationIds)
+    {
+        using var channel = GrpcChannel.ForAddress(_config.Value.GrpcUrl);
+        var client = new GoalsPlanningService.GoalsPlanningServiceClient(channel);
+
+        var request = new GetInApprovalGoalsPlanningRequest();
+        request.CropIntegrationIds.AddRange(cropIntegrationIds.Select(x => new cropIntegrationIdList() { CropIntegrationId = x.ToString() }));
+
+        var result = await client.GetInApprovalGoalsPlanningByCropIdsAsync(request);
+
+        var item = new GetInApprovalGoalsPlanningViewModel()
+        {
+            CropIntegrationId = new Guid(result.CropIntegrationId),
+            IntegrationId = new Guid(result.IntegrationId),
+            Status = result.Status
+        };
+
+        item.Brands.ToList().AddRange(result.Brands.Select(x => new GetInApprovalGoalsPlanningBrandsViewModel()
+        {
+            Bio = x.Bio,
+            BrandCropIntegrationId = new Guid(x.BrandCropIntegrationId),
+            ClassificationCPMargin = decimal.Parse(x.ClassificationCPMargin.ToString()),
+            FirstSellinPeriod = decimal.Parse(x.FirstSellinPeriod.ToString()),
+            Name = x.Name,
+            Price = decimal.Parse(x.Price.ToString()),
+            SecondSellinPeriod = decimal.Parse(x.SecondSellinPeriod.ToString()),
+            Sellout = decimal.Parse(x.Sellout.ToString()),
+            Type = x.Type
+        }));
+
+        return item;
+    }
 }

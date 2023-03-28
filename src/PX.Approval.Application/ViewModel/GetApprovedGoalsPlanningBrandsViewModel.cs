@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PX.Approval.Application.ViewModel
 {
-    public class GetApprovedGoalsPlanningBrandsViewModel
+    public class GetInApprovalGoalsPlanningBrandsViewModel
     {
         public Guid BrandCropIntegrationId { get; set; }
         public string Name { get; set; }

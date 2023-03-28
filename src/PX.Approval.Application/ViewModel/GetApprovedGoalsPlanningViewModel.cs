@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace PX.Approval.Application.ViewModel
 {
-    public class GetApprovedGoalsPlanningViewModel
+    public class GetInApprovalGoalsPlanningViewModel
     {
         public Guid IntegrationId { get; set; }
         public Guid CropIntegrationId { get; set; }
         public string PartnerGroupCode { get; set; }
         public string Status { get; set; }
-        public IEnumerable<GetApprovedGoalsPlanningBrandsViewModel> Brands { get; set; }
+        public IEnumerable<GetInApprovalGoalsPlanningBrandsViewModel> Brands { get; set; }
     }
 }
