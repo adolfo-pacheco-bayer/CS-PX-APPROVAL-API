@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PX.Crop.Domain.Messages.Crop {
+namespace PX.Approval.Domain.Messages.Messages {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace PX.Crop.Domain.Messages.Crop {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PX.Crop.Domain.Messages.Crop.Translations", typeof(Translations).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PX.Approval.Domain.Messages.Messages.Translations", typeof(Translations).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -106,6 +106,15 @@ namespace PX.Crop.Domain.Messages.Crop {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Portal Partner Experience.
+        /// </summary>
+        public static string DefaultSender {
+            get {
+                return ResourceManager.GetString("DefaultSender", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Excluída.
         /// </summary>
         public static string Deleted {
@@ -133,6 +142,59 @@ namespace PX.Crop.Domain.Messages.Crop {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;html&gt;
+        ///    &lt;head&gt;
+        ///        &lt;style&gt;
+        ///            body {
+        ///                font-family: Arial, Helvetica, sans-serif;
+        ///                font-size: 12pt;
+        ///            }
+        ///        &lt;/style&gt;
+        ///    &lt;/head&gt;
+        ///    &lt;body&gt;
+        ///        Caro #PARCEIRO#,&lt;br/&gt;
+        ///        Seu planejamento de metas foi aprovado.&lt;br/&gt;
+        ///        Para ver mais detalhes, acesse o Portal do Parceiro.&lt;br/&gt;
+        ///        &lt;br/&gt;
+        ///        Este e-mail foi enviado pelo sistema.&lt;br/&gt;
+        ///        Crop Science - Portal do Parceiro.
+        ///    &lt;/body&gt;
+        ///&lt;/html&gt;.
+        /// </summary>
+        public static string EmailApprove {
+            get {
+                return ResourceManager.GetString("EmailApprove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;html&gt;
+        ///    &lt;head&gt;
+        ///        &lt;style&gt;
+        ///            body {
+        ///                font-family: Arial, Helvetica, sans-serif;
+        ///                font-size: 12pt;
+        ///            }
+        ///        &lt;/style&gt;
+        ///    &lt;/head&gt;
+        ///    &lt;body&gt;
+        ///        Caro #PARCEIRO#,&lt;br/&gt;
+        ///        &lt;br/&gt;
+        ///        Seu planejamento de metas foi reprovado e dever ser reavaliado de acordo com o motivo abaixo informado.&lt;br/&gt;
+        ///        &lt;br/&gt;
+        ///        #MOTIVO#
+        ///        &lt;br/&gt;
+        ///        Para ver mais detalhes, acesse o Portal do Parceiro.
+        ///    &lt;/body&gt;
+        ///&lt;/html&gt;.
+        /// </summary>
+        public static string EmailReprove {
+            get {
+                return ResourceManager.GetString("EmailReprove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Em Revisão.
         /// </summary>
         public static string In_Review {
@@ -156,6 +218,15 @@ namespace PX.Crop.Domain.Messages.Crop {
         public static string No {
             get {
                 return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to noreplay@bayer.com.
+        /// </summary>
+        public static string NoReplyEmail {
+            get {
+                return ResourceManager.GetString("NoReplyEmail", resourceCulture);
             }
         }
         
@@ -210,6 +281,24 @@ namespace PX.Crop.Domain.Messages.Crop {
         public static string Seeds {
             get {
                 return ResourceManager.GetString("Seeds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [Portal Parceiro Bayer] - Planejamento de metas aprovado.
+        /// </summary>
+        public static string SubjectApprove {
+            get {
+                return ResourceManager.GetString("SubjectApprove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [Portal Parceiro Bayer] - Planejamento de metas reprovado.
+        /// </summary>
+        public static string SubjectReprove {
+            get {
+                return ResourceManager.GetString("SubjectReprove", resourceCulture);
             }
         }
         

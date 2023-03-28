@@ -23,12 +23,21 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>PlanningMessages.resx</DependentUpon>
     </Compile>
+    <Compile Update="Messages\Messages\Translations.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Translations.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="Messages\Messages\PlanningMessages.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>PlanningMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Messages\Messages\Translations.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Translations.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 
