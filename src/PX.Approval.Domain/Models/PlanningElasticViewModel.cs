@@ -23,5 +23,7 @@ namespace PX.Approval.Domain.Models
         public string PartnerType { get; set; }
 
         public string CropIntegrationId { get; set; }
+
+        public DateTime LastUpdate { get; set; }
     }
 }
