@@ -50,18 +50,36 @@ namespace PX.Approval.API.Routes
                 });
             });
 
-            app.MapPut("api/approval/return-status-goals-planning", async ([FromServices] IMediator mediator, [FromBody]ReturnStatusRequest request) =>
+            app.MapPut("api/approval/return-status-goals-planning", async ([FromServices] IMediator mediator, [FromBody] ReturnStatusRequest request) =>
             {
                 return await mediator.Send(new ReturnStatusGoalsPlanningCommand(request.Reason, request.GoalsPlanningIntegrationIds.ToList()));
             }).RequireAuthorization("Omega");
 
-            
+
             app.MapGet("api/approval/get-graphic-partnertype/{cropintegrationid}", async (Guid cropintegrationid, [FromServices] IMediator mediator) =>
             {
                 return await mediator.Send(new GetGraphicsPartnerTyperQuery()
                 {
                     CropIntegrationId = cropintegrationid
                 });
+            });
+
+
+
+            app.MapGet("api/approval/brands/{goalsPlanningId}/valued", async (Guid goalsPlanningId, [FromServices] IMediator mediator) =>
+            {
+                return await mediator.Send(new GetAllValuedCPBrandByGoalsPlanningQuery()
+                {
+                    GoalsPlanningId = goalsPlanningId
+                }); ;
+            });
+
+            app.MapGet("api/approval/brands/{goalsPlanningId}/volume", async (Guid goalsPlanningId, [FromServices] IMediator mediator) =>
+            {
+                return await mediator.Send(new GetAllVolumeCPBrandByGoalsPlanningQuery()
+                {
+                    GoalsPlanningId = goalsPlanningId
+                }); ;
             });
         }
     }

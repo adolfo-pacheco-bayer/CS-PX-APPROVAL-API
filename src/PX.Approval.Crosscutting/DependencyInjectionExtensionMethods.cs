@@ -12,6 +12,7 @@ using PX.Crop.Application.Common.PipelineBehaviours;
 using System.Reflection;
 
 
+
 namespace PX.Approval.Crosscutting;
 
 public static class DependencyInjectionExtensionMethods
@@ -20,11 +21,16 @@ public static class DependencyInjectionExtensionMethods
 
     public static IServiceCollection AddProjectServices(this IServiceCollection services, IConfiguration configuration)
     {
+        var assembly = Assembly.Load("PX.Approval.Application");
+
         services.Configure<GoalsPlanningClientConfiguration>(configuration.GetSection(GoalsPlanningClientConfiguration.GoalsPlanningOptions));
         services.Configure<CropClientConfiguration>(configuration.GetSection(CropClientConfiguration.CropClientOptions));
         services.AddScoped<IResponse, Response>();
         services.AddScoped<IGoalsPlanningClient, GoalsPlanningGrpcClient>();
         services.AddScoped<ICropServiceClient, CropGrpcClient>();
+        services.AddAutoMapper(assembly);
+
+
 
         //Not change order below. This order determines an logic sequence of a pipeline
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));          //1st
@@ -35,19 +41,6 @@ public static class DependencyInjectionExtensionMethods
     public static void AddMediatr(this IServiceCollection services)
     {
         var assembly = Assembly.Load(applicationProjectName);
-
-        //Fluent Validation Validators
-        //AssemblyScanner
-        //    .FindValidatorsInAssembly(assembly)
-        //    .ForEach(result => services.AddScoped(result.InterfaceType, result.ValidatorType));
-
-        ////IDomainValidationHandlers Validators
-        //services.Scan(scan => scan
-        //    .FromAssemblies(assembly)
-        //    .AddClasses(classes => classes.AssignableTo<IRequestHandler>())
-        //    .AsImplementedInterfaces()
-        //    .WithTransientLifetime());
-
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
     }
 

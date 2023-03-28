@@ -18,5 +18,6 @@
         public decimal? SecondSellinPeriod { get; set; }
         public decimal Sellout { get; set; }
         public decimal? ClassificationCPMargin { get; set; }
+        public Guid IntegrationId { get; set; }
     }
 }
