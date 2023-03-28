@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PX.Approval.API.Models;
 using PX.Approval.Application.GoalsPlanning.Commands;
 using PX.Approval.Application.GoalsPlanning.Queries;
@@ -50,7 +51,7 @@ namespace PX.Approval.API.Routes
                 });
             });
 
-            app.MapPut("api/approval/return-status-goals-planning", async ([FromServices] IMediator mediator, [FromBody]ReturnStatusRequest request) =>
+            app.MapPut("api/approval/return-status-goals-planning", async ([FromServices] IMediator mediator, [FromBody] ReturnStatusRequest request) =>
             {
                 return await mediator.Send(new ReturnStatusGoalsPlanningCommand(request.Reason, request.GoalsPlanningIntegrationIds.ToList()));
             }).RequireAuthorization("Omega");
@@ -64,10 +65,47 @@ namespace PX.Approval.API.Routes
                 });
             });
 
+
+
+            app.MapGet("api/approval/brands/{goalsPlanningId}/valued", async (Guid goalsPlanningId, [FromServices] IMediator mediator) =>
+            {
+                return await mediator.Send(new GetAllValuedCPBrandByGoalsPlanningQuery()
+                {
+                    GoalsPlanningId = goalsPlanningId
+                }); ;
+            });
+
+            app.MapGet("api/approval/brands/{goalsPlanningId}/volume", async (Guid goalsPlanningId, [FromServices] IMediator mediator) =>
+            {
+                return await mediator.Send(new GetAllVolumeCPBrandByGoalsPlanningQuery()
+                {
+                    GoalsPlanningId = goalsPlanningId
+                }); ;
+            });
+
             app.MapGet("api/approval/all-inapproval-goals-planning", async (Guid[] cropintegrationids, [FromServices] IMediator mediator) =>
             {
                 return await mediator.Send(new GetInApprovalGoalsPlanningQuery(cropintegrationids.ToList()));
             });
+
+            app.MapPut("api/approval/approve-goals-planning", async ([FromServices] IMediator mediator, [FromBody] ApproveRequest request) =>
+            {
+                return await mediator.Send(new ApproveGoalsPlanningCommand(request.GoalsPlanningIntegrationIds.ToList()));
+            }).RequireAuthorization("Omega");
+
+            app.MapPut("api/approval/reprove-goals-planning", async (HttpRequest request, string fileName, string payload, IMediator mediator) =>
+            {
+                using var reader = new StreamReader(request.Body, System.Text.Encoding.UTF8);
+
+                using var ms = new MemoryStream();
+                await reader.BaseStream.CopyToAsync(ms);
+                var fileBytes = ms.ToArray();
+
+                var p = JsonConvert.DeserializeObject<ReproveRequest>(payload);
+
+                return await mediator.Send(new ReproveGoalsPlanningCommand(p.Reason, fileBytes, fileName, p.GoalsPlanningIntegrationIds.ToList()));
+
+            }).RequireAuthorization("Omega").Accepts<IFormFile>("application/pdf");
         }
     }
 }

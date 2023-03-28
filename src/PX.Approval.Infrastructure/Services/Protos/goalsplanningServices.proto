@@ -7,6 +7,8 @@ package goalsPlanning;
 service GoalsPlanningService {
   rpc GetAllGoalsPlanningByCropIds (Request) returns (Response);
   rpc ReturnStatusGoalsPlanning (ReturnStatusRequest) returns (BooleanResponse);
+  rpc ApproveGoalsPlanning (ApproveRequest) returns (BooleanResponse);
+  rpc ReproveGoalsPlanning (ReproveRequest) returns (BooleanResponse);
   rpc GetInApprovalGoalsPlanningByCropIds (GetInApprovalGoalsPlanningRequest) returns (InApprovalGoalsPlanningResponse);
 }
 
@@ -68,4 +70,17 @@ message brandmodel{
 
 message errorsmodel{
 	string message = 1;
+}
+
+message ApproveRequest{
+	repeated goalsPlanningIntegrationIdList goalsPlanningIntegrationIds = 1;
+	string returnUserCWID = 2;
+}
+
+message ReproveRequest{
+	repeated goalsPlanningIntegrationIdList goalsPlanningIntegrationIds = 1;
+	string reason = 2;
+	string returnUserCWID = 3;
+	bytes file = 4;
+	string fileName = 5;
 }

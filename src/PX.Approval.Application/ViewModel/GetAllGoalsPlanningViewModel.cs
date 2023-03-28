@@ -33,7 +33,7 @@ public class DocumentApprovalHistory
     public string? DisapprovedReason { get; set; }
 }
 
-public class ReturnStatusViewModel
+public class ModifyGoalsPlanningViewModel
 {
     public bool Data { get; set; }
     public string Message { get; set; }

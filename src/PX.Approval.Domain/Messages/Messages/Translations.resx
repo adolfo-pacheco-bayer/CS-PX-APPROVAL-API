@@ -132,6 +132,9 @@
   <data name="Dealer" xml:space="preserve">
     <value>Atacadista</value>
   </data>
+  <data name="DefaultSender" xml:space="preserve">
+    <value>Portal Partner Experience</value>
+  </data>
   <data name="Deleted" xml:space="preserve">
     <value>Excluída</value>
   </data>
@@ -141,6 +144,47 @@
   <data name="Draft" xml:space="preserve">
     <value>Rascunho</value>
   </data>
+  <data name="EmailApprove" xml:space="preserve">
+    <value>&lt;html&gt;
+    &lt;head&gt;
+        &lt;style&gt;
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 12pt;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        Caro #PARCEIRO#,&lt;br/&gt;
+        Seu planejamento de metas foi aprovado.&lt;br/&gt;
+        Para ver mais detalhes, acesse o Portal do Parceiro.&lt;br/&gt;
+        &lt;br/&gt;
+        Este e-mail foi enviado pelo sistema.&lt;br/&gt;
+        Crop Science - Portal do Parceiro.
+    &lt;/body&gt;
+&lt;/html&gt;</value>
+  </data>
+  <data name="EmailReprove" xml:space="preserve">
+    <value>&lt;html&gt;
+    &lt;head&gt;
+        &lt;style&gt;
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 12pt;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        Caro #PARCEIRO#,&lt;br/&gt;
+        &lt;br/&gt;
+        Seu planejamento de metas foi reprovado e dever ser reavaliado de acordo com o motivo abaixo informado.&lt;br/&gt;
+        &lt;br/&gt;
+        #MOTIVO#
+        &lt;br/&gt;
+        Para ver mais detalhes, acesse o Portal do Parceiro.
+    &lt;/body&gt;
+&lt;/html&gt;</value>
+  </data>
   <data name="In-Review" xml:space="preserve">
     <value>Em Revisão</value>
   </data>
@@ -149,6 +193,9 @@
   </data>
   <data name="No" xml:space="preserve">
     <value>Não</value>
+  </data>
+  <data name="NoReplyEmail" xml:space="preserve">
+    <value>noreplay@bayer.com</value>
   </data>
   <data name="Opened" xml:space="preserve">
     <value>Ativa</value>
@@ -167,6 +214,12 @@
   </data>
   <data name="Seeds" xml:space="preserve">
     <value>Sementes</value>
+  </data>
+  <data name="SubjectApprove" xml:space="preserve">
+    <value>[Portal Parceiro Bayer] - Planejamento de metas aprovado</value>
+  </data>
+  <data name="SubjectReprove" xml:space="preserve">
+    <value>[Portal Parceiro Bayer] - Planejamento de metas reprovado</value>
   </data>
   <data name="Wholesaler" xml:space="preserve">
     <value>Atacadista</value>
