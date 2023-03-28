@@ -32,9 +32,3 @@ public class DocumentApprovalHistory
     public string? StatusChangedUserCPF { get; set; }
     public string? DisapprovedReason { get; set; }
 }
-
-public class ModifyGoalsPlanningViewModel
-{
-    public bool Data { get; set; }
-    public string Message { get; set; }
-}
