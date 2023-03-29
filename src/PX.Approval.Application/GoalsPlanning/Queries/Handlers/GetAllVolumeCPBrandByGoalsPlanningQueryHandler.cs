@@ -29,6 +29,8 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
         {
             try
             {
+                var result = new GetAllVolumeCPBrandByGoalsPlanningViewModel();
+
                 var goalsPlannings = await _elasticSearchClient.GetBrandsByGoalsPlanningId(request.GoalsPlanningId.ToString());
 
                 if (goalsPlannings.Brands == null)
@@ -36,9 +38,12 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
 
                 var brands = goalsPlannings.Brands.Where(x => x.Type == Domain.Models.ProductFamilyType.CP);
 
-                var valuedBrands = _mapper.Map<IEnumerable<VolumeBrandsViewModel>>(brands);
+                var volumeBrands = _mapper.Map<IEnumerable<VolumeBrandsViewModel>>(brands);
 
-                return await _response.CreateSuccessResponseAsync(valuedBrands);
+                result.FirstSellinPeriodRequired = goalsPlannings.FirstSellinPeriodRequired;
+                result.VolumeBrands = volumeBrands;
+
+                return await _response.CreateSuccessResponseAsync(result);
             }
             catch (Exception)
             {
