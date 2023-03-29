@@ -83,9 +83,9 @@ namespace PX.Approval.API.Routes
                 }); ;
             });
 
-            app.MapGet("api/approval/all-inapproval-goals-planning", async (Guid[] cropintegrationids, [FromServices] IMediator mediator) =>
+            app.MapGet("api/approval/all-inapproval-goals-planning/{cropIntegrationId}", async (Guid cropIntegrationId, [FromServices] IMediator mediator) =>
             {
-                return await mediator.Send(new GetInApprovalGoalsPlanningQuery(cropintegrationids.ToList()));
+                return await mediator.Send(new GetInApprovalGoalsPlanningQuery(cropIntegrationId));
             });
 
             app.MapPut("api/approval/approve-goals-planning", async ([FromServices] IMediator mediator, [FromBody] ApproveRequest request) =>
