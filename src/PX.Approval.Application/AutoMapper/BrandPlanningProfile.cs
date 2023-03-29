@@ -24,6 +24,13 @@ namespace PX.Approval.Application.AutoMapper
                     .ForMember(dest => dest.SecondSellinPeriod, cfg => cfg.MapFrom(source => source.SecondSellinPeriod.GetValueOrDefault(0)))
                     .AfterMap((after, dest) => dest.TotalSellin = dest.FirstSellinPeriod.GetValueOrDefault(0) + dest.SecondSellinPeriod.GetValueOrDefault(0));
 
+            CreateMap<BrandPlanningViewModel, GetBrandSeedsGoalsPlanningViewModel>()
+                    .ForMember(dest => dest.Name, cfg => cfg.MapFrom(source => "MILHO"))
+                    .ForMember(dest => dest.Sellout, cfg => cfg.MapFrom(source => Math.Truncate(source.Sellout)))
+                    .ForMember(dest => dest.Bio, cfg => cfg.MapFrom(source => source.Sellout == 0 ? null : (decimal?)Math.Truncate(source.Sellout * (decimal)0.9) + ((source.Sellout * (decimal)0.9) % 1 > 0 ? 1 : 0)))
+                    .ForMember(dest => dest.WithoutBio, cfg => cfg.MapFrom(source => source.Sellout == 0 ? null : (decimal?)Math.Truncate(source.Sellout * (decimal)0.1)))
+                    .ForMember(dest => dest.BrandGoalsPlanningIntegrationId, cfg => cfg.MapFrom(source => source.IntegrationId));
+
         }
     }
 }

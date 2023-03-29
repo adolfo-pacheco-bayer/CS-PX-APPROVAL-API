@@ -1,3 +1,0 @@
-CodeGen/CropServices.cs \
-CodeGen/CropServicesGrpc.cs: C:/Users/EFERE/.nuget/packages/grpc.tools/2.51.0/build/native/include/google/protobuf/timestamp.proto\
- Services/Protos/CropServices.proto

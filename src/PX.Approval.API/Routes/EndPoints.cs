@@ -106,6 +106,16 @@ namespace PX.Approval.API.Routes
                 return await mediator.Send(new ReproveGoalsPlanningCommand(p.Reason, fileBytes, fileName, p.GoalsPlanningIntegrationIds.ToList()));
 
             }).RequireAuthorization("Omega").Accepts<IFormFile>("application/pdf");
+
+
+
+            app.MapGet("api/approval/brands/{goalsPlanningId}/seeds", async (Guid goalsPlanningId, [FromServices] IMediator mediator) =>
+            {
+                return await mediator.Send(new GetBrandSeedsGoalsPlanningQuery()
+                {
+                    GoalsPlanningId = goalsPlanningId
+                }); ;
+            });
         }
     }
 }
