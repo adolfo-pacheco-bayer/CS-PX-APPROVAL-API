@@ -81,4 +81,46 @@ public class GoalsPlanningGrpcClient : IGoalsPlanningClient
 
         return new ModifyGoalsPlanningViewModel() { Data = result.Data, Message = result.Message };
     }
+
+    public async Task<IEnumerable<GetInApprovalGoalsPlanningViewModel>> GetInApprovalGoalsPlanning(Guid[] cropIntegrationIds)
+    {
+        using var channel = GrpcChannel.ForAddress(_config.Value.GrpcUrl);
+        var client = new GoalsPlanningService.GoalsPlanningServiceClient(channel);
+
+        var request = new GetInApprovalGoalsPlanningRequest();
+        request.CropIntegrationIds.AddRange(cropIntegrationIds.Select(x => new cropIntegrationIdList() { CropIntegrationId = x.ToString() }));
+
+        var result = await client.GetInApprovalGoalsPlanningByCropIdsAsync(request);
+        var list = new List<GetInApprovalGoalsPlanningViewModel>();
+        foreach(var item in result.Data)
+        {
+            var viewModel = new GetInApprovalGoalsPlanningViewModel()
+            {
+                CropIntegrationId = new Guid(item.CropIntegrationId),
+                IntegrationId = new Guid(item.IntegrationId),
+                PartnerGroupCode = item.PartnerGroupCode,
+                Status = item.Status
+            };
+            
+            foreach(var itemBrand in item.Brands)
+            {
+                viewModel.Brands.Add(new GetInApprovalGoalsPlanningBrandsViewModel()
+                {
+                    Bio = itemBrand.Bio,
+                    BrandCropIntegrationId = new Guid(itemBrand.BrandCropIntegrationId),
+                    ClassificationCPMargin = decimal.Parse(itemBrand.ClassificationCPMargin.ToString()),
+                    FirstSellinPeriod = decimal.Parse(itemBrand.FirstSellinPeriod.ToString()),
+                    Name = itemBrand.Name,
+                    Price = decimal.Parse(itemBrand.Price.ToString()),
+                    SecondSellinPeriod = decimal.Parse(itemBrand.SecondSellinPeriod.ToString()),
+                    Sellout = decimal.Parse(itemBrand.Sellout.ToString()),
+                    Type = itemBrand.Type
+                });
+            }
+
+            list.Add(viewModel);
+        }
+
+        return list;
+    }
 }
