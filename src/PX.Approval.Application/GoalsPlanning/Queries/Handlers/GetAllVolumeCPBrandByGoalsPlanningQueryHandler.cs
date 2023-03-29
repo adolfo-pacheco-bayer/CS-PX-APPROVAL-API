@@ -31,6 +31,9 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
             {
                 var goalsPlannings = await _elasticSearchClient.GetBrandsByGoalsPlanningId(request.GoalsPlanningId.ToString());
 
+                if (goalsPlannings.Brands == null)
+                    return await _response.CreateSuccessResponseAsync(new List<VolumeBrandsViewModel>());
+
                 var brands = goalsPlannings.Brands.Where(x => x.Type == Domain.Models.ProductFamilyType.CP);
 
                 var valuedBrands = _mapper.Map<IEnumerable<VolumeBrandsViewModel>>(brands);

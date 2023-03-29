@@ -27,7 +27,27 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
             if (request.CropIntegrationId == null)
                 return await _response.CreateErrorResponseAsync(new { message = "CropIntegrationId Obrigatorio" }, System.Net.HttpStatusCode.BadRequest);
 
+
+
+
             var result = await _elasticSearchClient.Get(request.CropIntegrationId);
+
+            //TO DO REFACTORY
+            foreach (var item in result)
+            {
+                if (item.PartnerType.Equals("Wholesaler"))
+                {
+                    item.PartnerType = "Atacadista";
+                }
+                else if (item.PartnerType.Equals("Distributor"))
+                {
+                    item.PartnerType = "Distribuidor";
+                }
+                else
+                {
+                    item.PartnerType = "Cooperativa";
+                }  
+            }
 
             return await _response.CreateSuccessResponseAsync(result);
         }

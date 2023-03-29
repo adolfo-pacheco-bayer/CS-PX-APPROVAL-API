@@ -5,19 +5,18 @@ using PX.Approval.Application.Common.Interfaces;
 using PX.Approval.Application.ViewModel;
 using PX.Approval.Domain.DomainObjects;
 using PX.Approval.Domain.Response;
-using PX.Crop.Domain.Enum;
 
 namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
 {
-    public class GetAllValuedCPBrandByGoalsPlanningQueryHandler : IRequestHandler<GetAllValuedCPBrandByGoalsPlanningQuery, Response>
+    public class GetBrandSeedsGoalsPlanningQueryHandler :  IRequestHandler<GetBrandSeedsGoalsPlanningQuery, Response>
     {
         private IResponse _response;
-        private ILogger<GetAllValuedCPBrandByGoalsPlanningQueryHandler> _logger;
+        private ILogger<GetBrandSeedsGoalsPlanningQueryHandler> _logger;
         private IElasticSearchServiceClient _elasticSearchClient;
         private readonly IMapper _mapper;
 
 
-        public GetAllValuedCPBrandByGoalsPlanningQueryHandler(IResponse response, ILogger<GetAllValuedCPBrandByGoalsPlanningQueryHandler> logger, IElasticSearchServiceClient elasticSearchClient, IMapper mapper)
+        public GetBrandSeedsGoalsPlanningQueryHandler(IResponse response, ILogger<GetBrandSeedsGoalsPlanningQueryHandler> logger, IElasticSearchServiceClient elasticSearchClient, IMapper mapper)
         {
             _response = response;
             _logger = logger;
@@ -26,7 +25,7 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
         }
 
 
-        public async Task<Response> Handle(GetAllValuedCPBrandByGoalsPlanningQuery request, CancellationToken cancellationToken)
+        public async Task<Response> Handle(GetBrandSeedsGoalsPlanningQuery request, CancellationToken cancellationToken)
         {
             try
             {
@@ -35,9 +34,9 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
                 if (goalsPlannings.Brands == null)
                     return await _response.CreateSuccessResponseAsync(new List<ValuedBrandsViewModel>());
 
-                var brands = goalsPlannings.Brands.Where(x => x.Type == Domain.Models.ProductFamilyType.CP);
+                var brands = goalsPlannings.Brands.Where(x => x.Type == Domain.Models.ProductFamilyType.Seeds);
 
-                var valuedBrands = _mapper.Map<IEnumerable<ValuedBrandsViewModel>>(brands);
+                var valuedBrands = _mapper.Map<IEnumerable<GetBrandSeedsGoalsPlanningViewModel>>(brands);
 
                 return await _response.CreateSuccessResponseAsync(valuedBrands);
             }
@@ -48,7 +47,5 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
             }
 
         }
-
-
     }
 }
