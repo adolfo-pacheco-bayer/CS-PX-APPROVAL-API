@@ -30,6 +30,9 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
         {
             try
             {
+
+                var result = new GetAllValuedCPBrandByGoalsPlanningViewModel();
+
                 var goalsPlannings = await _elasticSearchClient.GetBrandsByGoalsPlanningId(request.GoalsPlanningId.ToString());
 
                 if (goalsPlannings.Brands == null)
@@ -39,7 +42,10 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
 
                 var valuedBrands = _mapper.Map<IEnumerable<ValuedBrandsViewModel>>(brands);
 
-                return await _response.CreateSuccessResponseAsync(valuedBrands);
+                result.FirstSellinPeriodRequired = goalsPlannings.FirstSellinPeriodRequired;
+                result.ValuedBrands = valuedBrands;
+
+                return await _response.CreateSuccessResponseAsync(result);
             }
             catch (Exception)
             {

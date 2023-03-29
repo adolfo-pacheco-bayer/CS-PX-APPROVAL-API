@@ -30,4 +30,21 @@
         /// </summary>
         public decimal TotalSellin { get; set; }
     }
+
+    public class GetAllValuedCPBrandByGoalsPlanningViewModel
+    {
+        public bool FirstSellinPeriodRequired { get; set; }
+        public decimal? TotalFirstPeriod { get => ValuedBrands.Sum(b => b.FirstSellinPeriod); }
+        public decimal? TotalSecondPeriod { get => ValuedBrands.Sum(b => b.SecondSellinPeriod); }
+        public decimal TotalSellout { get => ValuedBrands.Sum(b => b.Sellout); }
+        public decimal TotalSellin { get => ValuedBrands.Sum(b => b.TotalSellin); }
+
+        public IEnumerable<ValuedBrandsViewModel> ValuedBrands { get; set; }
+
+        public GetAllValuedCPBrandByGoalsPlanningViewModel()
+        {
+            ValuedBrands = new List<ValuedBrandsViewModel>();
+        }
+    }
+
 }

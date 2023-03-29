@@ -29,5 +29,7 @@ namespace PX.Approval.Domain.Models
         public string EmailGoalsPlanning { get; set; }
         public string CWIDCPApprover { get; set; }
         public string CWIDSeedsApprover { get; set; }
+        public Guid PartnerIntegrationId { get; set; }
+        public bool FirstSellinPeriodRequired { get; set; }
     }
 }
