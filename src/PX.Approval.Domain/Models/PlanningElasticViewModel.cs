@@ -1,8 +1,4 @@
-﻿using Newtonsoft.Json.Converters;
-using PX.Crop.Domain.Enum;
-using System.Text.Json.Serialization;
-
-namespace PX.Approval.Domain.Models
+﻿namespace PX.Approval.Domain.Models
 {
     public class PlanningElasticViewModel
     {

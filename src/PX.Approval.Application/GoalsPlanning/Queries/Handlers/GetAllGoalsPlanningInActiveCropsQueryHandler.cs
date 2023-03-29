@@ -27,9 +27,6 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
             if (request.CropIntegrationId == null)
                 return await _response.CreateErrorResponseAsync(new { message = "CropIntegrationId Obrigatorio" }, System.Net.HttpStatusCode.BadRequest);
 
-
-
-
             var result = await _elasticSearchClient.Get(request.CropIntegrationId);
 
             //TO DO REFACTORY
