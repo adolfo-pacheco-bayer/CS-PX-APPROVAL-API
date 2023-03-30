@@ -93,7 +93,7 @@ namespace PX.Approval.API.Routes
                 return await mediator.Send(new ApproveGoalsPlanningCommand(request.GoalsPlanningIntegrationIds.ToList()));
             }).RequireAuthorization("Omega");
 
-            app.MapPut("api/approval/reprove-goals-planning", async (HttpRequest request, string fileName, string payload, IMediator mediator) =>
+            app.MapPut("api/approval/reprove-goals-planning", async (HttpRequest request, string? fileName, string payload, IMediator mediator) =>
             {
                 using var reader = new StreamReader(request.Body, System.Text.Encoding.UTF8);
 
