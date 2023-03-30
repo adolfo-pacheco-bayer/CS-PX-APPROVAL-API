@@ -27,5 +27,6 @@
         public string CWIDSeedsApprover { get; set; }
         public Guid PartnerIntegrationId { get; set; }
         public bool FirstSellinPeriodRequired { get; set; }
+        public int DaysInQueue { get; set; }
     }
 }

@@ -43,6 +43,8 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
                 {
                     item.PartnerType = "Cooperativa";
                 }
+
+                item.DaysInQueue = DateTime.Now.Subtract(item.LastUpdate).Days;
             }
             return await _response.CreateSuccessResponseAsync(result.Where(x => x.Status.Equals("InApproval")));
             
