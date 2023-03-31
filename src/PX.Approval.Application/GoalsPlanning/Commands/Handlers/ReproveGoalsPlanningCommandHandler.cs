@@ -51,8 +51,8 @@ public class ReproveGoalsPlanningCommandHandler : IRequestHandler<ReproveGoalsPl
 
                 if (goalsPlanningInfo is not null)
                 {
-                    var emailPartner = goalsPlanningInfo.PartnerName;
-                    var namePartner = goalsPlanningInfo.EmailGoalsPlanning;
+                    var emailPartner = goalsPlanningInfo.EmailGoalsPlanning;
+                    var namePartner = goalsPlanningInfo.PartnerName;
                     var content = Translations.EmailReprove.Replace("#PARCEIRO#", namePartner).Replace("#MOTIVO#", request.Reason);
 
                     if (!string.IsNullOrEmpty(emailPartner))

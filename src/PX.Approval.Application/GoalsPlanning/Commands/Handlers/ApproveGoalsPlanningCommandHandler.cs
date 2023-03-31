@@ -48,8 +48,8 @@ public class ApproveGoalsPlanningCommandHandler : IRequestHandler<ApproveGoalsPl
 
                 if (goalsPlanningInfo is not null)
                 {
-                    var emailPartner = goalsPlanningInfo.PartnerName;
-                    var namePartner = goalsPlanningInfo.EmailGoalsPlanning;
+                    var emailPartner = goalsPlanningInfo.EmailGoalsPlanning;
+                    var namePartner = goalsPlanningInfo.PartnerName;
                     var content = Translations.EmailApprove.Replace("#PARCEIRO#", namePartner);
 
                     if (!string.IsNullOrEmpty(emailPartner))
