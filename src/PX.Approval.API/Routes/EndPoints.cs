@@ -116,6 +116,18 @@ namespace PX.Approval.API.Routes
                     GoalsPlanningId = goalsPlanningId
                 }); ;
             });
+
+
+            app.MapGet("api/approval/goals-planning/crop/{cropintegrationid}", async (string? partnerType, string? name, Guid cropintegrationid, string? status, [FromServices] IMediator mediator) =>
+            {
+                return await mediator.Send(new GetGoalsPlanningsQuery()
+                {
+                    CropIntegrationId = cropintegrationid,
+                    Status = status, 
+                    Name = name,
+                    PartnerType = partnerType
+                }); 
+            });
         }
     }
 }

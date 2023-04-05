@@ -12,6 +12,8 @@ namespace PX.Approval.Application.Common.Interfaces
 
         Task<PlanningElasticViewModel> GetByGoalsPlanningIntegrationId(Guid goalsPlanningIntegrationId);
         Task<PlanningElasticViewModel> GetBrandsByGoalsPlanningId(string goalsPlanningId);
+
+        Task<List<PlanningElasticViewModel>> GetByFilter(Guid cropIntegrationId, string name);
     }
 }
 
