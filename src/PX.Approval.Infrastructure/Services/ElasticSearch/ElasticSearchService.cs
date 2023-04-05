@@ -1,8 +1,15 @@
 ﻿using Elastic.Clients.Elasticsearch;
-using Elastic.Transport;
 using Microsoft.Extensions.Configuration;
 using PX.Approval.Application.Common.Interfaces;
 using PX.Approval.Domain.Models;
+using ApiKey = Elastic.Transport.ApiKey;
+using Nest;
+using Elastic.Clients.Elasticsearch.QueryDsl;
+using Elastic.Transport;
+using Elasticsearch.Net;
+using PX.Crop.Domain.Enum;
+using Microsoft.IdentityModel.Tokens;
+using static iTextSharp.text.pdf.AcroFields;
 
 namespace PX.Approval.Infrastructure.Services.ElasticSearch
 {
@@ -12,6 +19,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
         private string _apiKey;
         private string _goalsPlanningApproval;
         private string _goalsPlanningApprovalTotal;
+        private string _Uri;
 
         public ElasticSearchService(IConfiguration configuration)
         {
@@ -19,6 +27,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
             _apiKey = configuration.GetSection("ElasticConfiguration:ElasticSearchApiKey").Value;
             _goalsPlanningApproval = configuration.GetSection("ElasticConfiguration:ElasticSearchIndexApproval").Value;
             _goalsPlanningApprovalTotal = configuration.GetSection("ElasticConfiguration:ElasticSearchIndexTotalApproval").Value;
+            _Uri = configuration.GetSection("ElasticConfiguration:Uri").Value;
 
         }
 
@@ -30,16 +39,16 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
         public async Task<List<PlanningElasticViewModel>> Get(Guid cropIntegrationId)
         {
 
-                var settings = new ElasticsearchClientSettings(_cloudId, new Elastic.Transport.ApiKey(_apiKey))
-                    .DefaultIndex(_goalsPlanningApproval);
-                var client = new ElasticsearchClient(settings);
+            var settings = new ElasticsearchClientSettings(_cloudId, new Elastic.Transport.ApiKey(_apiKey))
+                .DefaultIndex(_goalsPlanningApproval);
+            var client = new ElasticsearchClient(settings);
 
-                var response = await client.SearchAsync<PlanningElasticViewModel>(s => s.Query(
-                                                                                            q => q.Match(
-                                                                                            m => m.Field(f => f.CropIntegrationId)
-                                                                                           .Query(cropIntegrationId.ToString()))));
+            var response = await client.SearchAsync<PlanningElasticViewModel>(s => s.Query(
+                                                                                        q => q.Match(
+                                                                                        m => m.Field(f => f.CropIntegrationId)
+                                                                                       .Query(cropIntegrationId.ToString()))));
 
-                return response.Documents.ToList();
+            return response.Documents.ToList();
         }
 
 
@@ -110,6 +119,64 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
                                                                                           ))
                                                                                      );
             return response.Documents.FirstOrDefault();
+        }
+
+
+        public async Task<List<PlanningElasticViewModel>> GetByFilter(Guid cropIntegrationId, string name)
+        {
+            try
+            {
+                var uri = new Uri(_Uri);
+                var apikey = new ApiKeyAuthenticationCredentials(_apiKey);
+                var pool = new CloudConnectionPool(_cloudId, apikey);
+                var client = new ElasticClient(new ConnectionSettings(_cloudId, apikey));
+
+                QueryContainer query = new QueryContainerDescriptor<PlanningElasticViewModel>();
+
+                if (!string.IsNullOrEmpty(name))
+                {
+                    query = query && new QueryContainerDescriptor<PlanningElasticViewModel>()
+                            .MatchPhrasePrefix(qs => qs.Field(fs => fs.PartnerName).Query(name));
+                }
+
+                //foreach (var item in partnerTypes)
+                //{
+                //    query = query && new QueryContainerDescriptor<PlanningElasticViewModel>()
+                //            .Match(qs => qs.Field(fs => fs.Status).Query(Enum.GetName(item)));
+                //}
+
+                //foreach (var item in status)
+                //{
+                //    var t = Enum.GetName(item);
+                //    query = query && new QueryContainerDescriptor<PlanningElasticViewModel>()
+                //            .MatchPhrasePrefix(qs => qs.Field(fs => fs.Status).Query(t));
+                //}
+
+
+                query = query && new QueryContainerDescriptor<PlanningElasticViewModel>()
+                     .Match(qs => qs.Field(fs => fs.CropIntegrationId).Query(cropIntegrationId.ToString()));
+
+                var result = await client.SearchAsync<PlanningElasticViewModel>(s => s.Index(_goalsPlanningApproval)
+                                                                                    .Query(q => q
+                                                                                        .Bool(b => b
+                                                                                            .Should(
+                                                                                                bs => query
+                                                                                            )
+                                                                                           .MinimumShouldMatch(1)
+                                                                                        )
+                                                                                     )
+                                                                                        .Size(10000)
+                                                                                        .From(0)
+                                                                                );
+
+                return result.Documents.ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
     }
 }
