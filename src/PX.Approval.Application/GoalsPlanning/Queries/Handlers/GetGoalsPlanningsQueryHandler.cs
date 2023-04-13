@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
 using MassTransit.Initializers;
 using MediatR;
+using Microsoft.Azure.Amqp.Framing;
 using Microsoft.Extensions.Logging;
 using PX.Approval.Application.Common.Interfaces;
 using PX.Approval.Domain.DomainObjects;
+using PX.Approval.Domain.Messages.Messages;
 using PX.Approval.Domain.Models;
 using PX.Approval.Domain.Response;
 using PX.Crop.Domain.Enum;
-using System.Linq;
-using static iTextSharp.text.pdf.AcroFields;
 
 namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
 {
@@ -36,9 +36,11 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
             if (result == null)
                 return await _response.CreateErrorResponseAsync(System.Net.HttpStatusCode.BadRequest);
 
-            result = await ApplyFilters(result, request);
+            var model = _mapper.Map<List<PlanningElasticViewModel>>(result);
 
-            return await _response.CreateSuccessResponseAsync(result);
+            model = await ApplyFilters(model, request);
+
+            return await _response.CreateSuccessResponseAsync(model);
 
         }
 

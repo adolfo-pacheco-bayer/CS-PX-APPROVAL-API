@@ -122,7 +122,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
         }
 
 
-        public async Task<List<PlanningElasticViewModel>> GetByFilter(Guid cropIntegrationId, string name)
+        public async Task<List<PlanningElasticEntity>> GetByFilter(Guid cropIntegrationId, string name)
         {
             try
             {
@@ -156,7 +156,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
                 query = query && new QueryContainerDescriptor<PlanningElasticViewModel>()
                      .Match(qs => qs.Field(fs => fs.CropIntegrationId).Query(cropIntegrationId.ToString()));
 
-                var result = await client.SearchAsync<PlanningElasticViewModel>(s => s.Index(_goalsPlanningApproval)
+                var result = await client.SearchAsync<PlanningElasticEntity>(s => s.Index(_goalsPlanningApproval)
                                                                                     .Query(q => q
                                                                                         .Bool(b => b
                                                                                             .Should(
