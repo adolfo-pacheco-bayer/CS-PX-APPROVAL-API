@@ -5,10 +5,10 @@ namespace PX.Approval.Application.GoalsPlanning.Queries;
 
 public class GetAllApprovedGoalsPlanQuery : IRequest<Response>
 {
-    public IEnumerable<Guid> CropIntegrationIds { get; private set; }
+    public Guid IntegrationId { get; private set; }
 
-	public GetAllApprovedGoalsPlanQuery(IEnumerable<Guid> cropIntegrationIds)
+	public GetAllApprovedGoalsPlanQuery(Guid integrationId)
 	{
-		CropIntegrationIds= cropIntegrationIds;
+		IntegrationId = integrationId;
 	}
 }

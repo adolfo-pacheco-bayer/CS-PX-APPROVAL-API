@@ -128,6 +128,11 @@ namespace PX.Approval.API.Routes
                     PartnerType = partnerType
                 }); 
             });
+
+            app.MapGet("api/approval/history", async (Guid IntegrationId, [FromServices] IMediator mediator) =>
+            {
+                return await mediator.Send(new GetApprovalHistoryQuery(IntegrationId)); 
+            });
         }
     }
 }
