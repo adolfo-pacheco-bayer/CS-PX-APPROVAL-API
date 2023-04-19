@@ -28,9 +28,9 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
             // var result = await _elasticSearchClient.Get(request.CropIntegrationId);
 
 
-            //TO DO REFACTORY
+        
 
-            //TO DO REFACTORY
+            //Dados provisorios, até concluir chamada elastic, após subistituir.
             var History = new GoalsPlanningStatusHistoryViewModel()
             {
                 GoalsPlanningId = 34,
@@ -47,7 +47,8 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
          
             
         }
-
+        //Dados provisorios, até concluir chamada elastic, após subistituir.
+        //Exemplo de ViewModel utilizada para o elastic.
         public class GoalsPlanningStatusHistoryViewModel
         {
             public int GoalsPlanningId { get; set; }
