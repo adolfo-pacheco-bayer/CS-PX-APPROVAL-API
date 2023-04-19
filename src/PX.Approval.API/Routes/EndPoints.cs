@@ -129,9 +129,9 @@ namespace PX.Approval.API.Routes
                 }); 
             });
 
-            app.MapGet("api/approval/history", async (Guid cropIntegrationId, [FromServices] IMediator mediator) =>
+            app.MapGet("api/approval/history", async (Guid IntegrationId, [FromServices] IMediator mediator) =>
             {
-                return await mediator.Send(new GetApprovalHistoryQuery(cropIntegrationId)); 
+                return await mediator.Send(new GetApprovalHistoryQuery(IntegrationId)); 
             });
         }
     }

@@ -14,7 +14,7 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
 
         public GetApprovalHistoryQueryHandlercs(IElasticSearchServiceClient elasticSearchServiceClient,
                                                             IResponse response,
-                                                            ILogger<GetApprovalHistoryQueryHandlercs> logger)
+                                                            ILogger<GetAllApprovedGoalsPlanQueryHandlercs> logger)
         {
             _response = response;
             _logger = logger;
@@ -33,12 +33,12 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
             //TO DO REFACTORY
             var History = new GoalsPlanningStatusHistoryViewModel()
             {
-                GoalsPlanningId = 1,
+                GoalsPlanningId = 34,
                 Status = 1,
                 StatusChanged = new DateTime(),
-                StaStatusChangedUserCWID = "",
-                Reason = "",
-                IntegrationId = "",
+                StaStatusChangedUserCWID = "atacadista.seeds@gmail.com",
+                Reason = null,
+                IntegrationId = "C02C2176-5DB2-483B-9C72-D0132F242D6A",
                 UrlFile = null,
             };
 
