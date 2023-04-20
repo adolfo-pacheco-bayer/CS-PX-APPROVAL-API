@@ -5,7 +5,7 @@ namespace PX.Approval.Application.Common.Interfaces
     public interface IElasticSearchServiceClient
     {
         Task<List<PlanningElasticViewModel>> Get(Guid cropIntegrationId);
-        Task<List<PlanningElasticViewModel>> GetHistory(Guid IntegrationId);
+        Task<List<PlanningElasticViewModel>> GetHistory(Guid goalsPlanningIntegrationId);
 
         Task<List<PlanningElasticViewModel>> GetGraphicsByCropIntegrationId(string cropIntegrationId);
 

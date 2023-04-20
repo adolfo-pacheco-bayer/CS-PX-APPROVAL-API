@@ -23,5 +23,6 @@
         public bool FirstSellinPeriodRequired { get; set; }
         public int DaysInQueue { get; set; }
         public string PartnerType { get; set; }
+        public List<GoalsPlanningStatusHistory> MyProperty { get; set; }
     }
 }
