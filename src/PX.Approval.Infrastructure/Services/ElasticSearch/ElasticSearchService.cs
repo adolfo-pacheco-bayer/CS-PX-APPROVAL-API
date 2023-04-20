@@ -51,6 +51,25 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
             return response.Documents.ToList();
         }
 
+        /// <summary>
+        /// get values for graphic by percent
+        /// </summary>
+        /// <param name="cropIntegrationId"></param>
+        /// <returns></returns>
+        public async Task<List<PlanningElasticViewModel>> GetHistory(Guid goalsPlanningIntegrationId)
+        {
+
+            var settings = new ElasticsearchClientSettings(_cloudId, new Elastic.Transport.ApiKey(_apiKey))
+                .DefaultIndex(_goalsPlanningApproval);
+            var client = new ElasticsearchClient(settings);
+
+            var response = await client.SearchAsync<PlanningElasticViewModel>(s => s.Query(
+                                                                                        q => q.Match(
+                                                                                        m => m.Field(f => f.GoalsPlanningIntegrationId)
+                                                                                       .Query(goalsPlanningIntegrationId.ToString()))));
+
+            return response.Documents.ToList();
+        }
 
         /// <summary>
         /// get values for total

@@ -25,39 +25,12 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
 
         public async Task<Response> Handle(GetApprovalHistoryQuery request, CancellationToken cancellationToken)
         {
-            // var result = await _elasticSearchClient.Get(request.CropIntegrationId);
+            var result = await _elasticSearchClient.Get(request.GoalsPlanningIntegrationId);
+
+            return await _response.CreateSuccessResponseAsync(result);
 
 
-        
-
-            //Dados provisorios, até concluir chamada elastic, após subistituir.
-            var History = new GoalsPlanningStatusHistoryViewModel()
-            {
-                GoalsPlanningId = 34,
-                Status = 1,
-                StatusChanged = new DateTime(),
-                StaStatusChangedUserCWID = "atacadista.seeds@gmail.com",
-                Reason = null,
-                IntegrationId = "C02C2176-5DB2-483B-9C72-D0132F242D6A",
-                UrlFile = null,
-            };
-
-
-            return await _response.CreateSuccessResponseAsync(History);
-         
-            
         }
-        //Dados provisorios, até concluir chamada elastic, após subistituir.
-        //Exemplo de ViewModel utilizada para o elastic.
-        public class GoalsPlanningStatusHistoryViewModel
-        {
-            public int GoalsPlanningId { get; set; }
-            public int Status { get; set; }
-            public DateTime StatusChanged { get; set; }
-            public string StaStatusChangedUserCWID { get; set; }
-            public string? Reason { get; set; }
-            public string IntegrationId { get; set; }
-            public string? UrlFile { get; set; }
-        }
+
     }
 }
