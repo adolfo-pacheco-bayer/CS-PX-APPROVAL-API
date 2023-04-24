@@ -25,7 +25,7 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
 
         public async Task<Response> Handle(GetApprovalHistoryQuery request, CancellationToken cancellationToken)
         {
-            var result = await _elasticSearchClient.Get(request.GoalsPlanningIntegrationId);
+            var result = await _elasticSearchClient.GetHistory(request.GoalsPlanningIntegrationId);
 
             return await _response.CreateSuccessResponseAsync(result);
 
