@@ -56,16 +56,16 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
         /// </summary>
         /// <param name="cropIntegrationId"></param>
         /// <returns></returns>
-        public async Task<List<PlanningElasticViewModel>> GetHistory(Guid goalsPlanningIntegrationId)
+        public async Task<List<GoalsPlanningStatusHistoryViewModel>> GetHistory(Guid goalsPlanningIntegrationId)
         {
 
             var settings = new ElasticsearchClientSettings(_cloudId, new Elastic.Transport.ApiKey(_apiKey))
                 .DefaultIndex(_goalsPlanningApproval);
             var client = new ElasticsearchClient(settings);
 
-            var response = await client.SearchAsync<PlanningElasticViewModel>(s => s.Query(
+            var response = await client.SearchAsync<GoalsPlanningStatusHistoryViewModel>(s => s.Query(
                                                                                         q => q.Match(
-                                                                                        m => m.Field(f => f.GoalsPlanningIntegrationId)
+                                                                                        m => m.Field(f => f.GoalsPlanningId)
                                                                                        .Query(goalsPlanningIntegrationId.ToString()))));
 
             return response.Documents.ToList();
