@@ -67,7 +67,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
                                                                                         q => q.Match(
                                                                                         m => m.Field(f => f.GoalsPlanningIntegrationId)
                                                                                        .Query(goalsPlanningIntegrationId.ToString()))));
-            var history = response.Documents.First().History;
+            var history = response.Documents.First().statusHistory;
             return history;
         }
 
