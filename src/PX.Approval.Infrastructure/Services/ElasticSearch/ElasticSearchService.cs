@@ -1,15 +1,11 @@
 ﻿using Elastic.Clients.Elasticsearch;
+using Elasticsearch.Net;
 using Microsoft.Extensions.Configuration;
+using Nest;
 using PX.Approval.Application.Common.Interfaces;
 using PX.Approval.Domain.Models;
 using ApiKey = Elastic.Transport.ApiKey;
-using Nest;
-using Elastic.Clients.Elasticsearch.QueryDsl;
-using Elastic.Transport;
-using Elasticsearch.Net;
-using PX.Crop.Domain.Enum;
-using Microsoft.IdentityModel.Tokens;
-using static iTextSharp.text.pdf.AcroFields;
+using NestSuffix = Nest.SuffixExtensions;
 
 namespace PX.Approval.Infrastructure.Services.ElasticSearch
 {
@@ -67,7 +63,11 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
                                                                                         q => q.Match(
                                                                                         m => m.Field(f => f.GoalsPlanningIntegrationId)
                                                                                        .Query(goalsPlanningIntegrationId.ToString()))));
-            var history = response.Documents.First().statusHistory;
+
+            var history = response.Documents
+                                    .Where(x => x.GoalsPlanningIntegrationId == goalsPlanningIntegrationId.ToString())
+                                    .First()
+                                    .StatusHistory;
             return history;
         }
 
