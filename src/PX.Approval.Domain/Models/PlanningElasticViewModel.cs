@@ -28,7 +28,7 @@
         public Guid PartnerIntegrationId { get; set; }
         public bool FirstSellinPeriodRequired { get; set; }
         public int DaysInQueue { get; set; }
-        public List<GoalsPlanningStatusHistoryViewModel> History { get; set; }
+        public List<GoalsPlanningStatusHistoryViewModel> statusHistory { get; set; }
 
     }
 }
