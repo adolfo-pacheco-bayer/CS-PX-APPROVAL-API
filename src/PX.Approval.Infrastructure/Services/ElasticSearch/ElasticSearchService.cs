@@ -1,15 +1,11 @@
 ﻿using Elastic.Clients.Elasticsearch;
+using Elasticsearch.Net;
 using Microsoft.Extensions.Configuration;
+using Nest;
 using PX.Approval.Application.Common.Interfaces;
 using PX.Approval.Domain.Models;
 using ApiKey = Elastic.Transport.ApiKey;
-using Nest;
-using Elastic.Clients.Elasticsearch.QueryDsl;
-using Elastic.Transport;
-using Elasticsearch.Net;
-using PX.Crop.Domain.Enum;
-using Microsoft.IdentityModel.Tokens;
-using static iTextSharp.text.pdf.AcroFields;
+using NestSuffix = Nest.SuffixExtensions;
 
 namespace PX.Approval.Infrastructure.Services.ElasticSearch
 {
@@ -54,7 +50,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
         /// <summary>
         /// get values for graphic by percent
         /// </summary>
-        /// <param name="cropIntegrationId"></param>
+        /// <param name="goalsPlanningIntegrationId"></param>
         /// <returns></returns>
         public async Task<List<GoalsPlanningStatusHistoryViewModel>> GetHistory(Guid goalsPlanningIntegrationId)
         {
@@ -63,12 +59,13 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
                 .DefaultIndex(_goalsPlanningApproval);
             var client = new ElasticsearchClient(settings);
 
-            var response = await client.SearchAsync<GoalsPlanningStatusHistoryViewModel>(s => s.Query(
+            var response = await client.SearchAsync<PlanningElasticViewModel>(s => s.Query(
                                                                                         q => q.Match(
-                                                                                        m => m.Field(f => f.GoalsPlanningId)
+                                                                                        m => m.Field(f => f.GoalsPlanningIntegrationId)
                                                                                        .Query(goalsPlanningIntegrationId.ToString()))));
 
-            return response.Documents.ToList();
+            var history = response.Documents.Where(x => x.GoalsPlanningIntegrationId == goalsPlanningIntegrationId.ToString()).First().StatusHistory;
+            return history;
         }
 
         /// <summary>
