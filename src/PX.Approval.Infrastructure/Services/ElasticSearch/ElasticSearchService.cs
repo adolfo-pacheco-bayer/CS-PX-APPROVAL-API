@@ -1,4 +1,5 @@
-﻿using Elastic.Clients.Elasticsearch;
+﻿using AutoMapper;
+using Elastic.Clients.Elasticsearch;
 using Elasticsearch.Net;
 using Microsoft.Extensions.Configuration;
 using Nest;
@@ -16,14 +17,16 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
         private string _goalsPlanningApproval;
         private string _goalsPlanningApprovalTotal;
         private string _Uri;
+        private IMapper _mapper;
 
-        public ElasticSearchService(IConfiguration configuration)
+        public ElasticSearchService(IConfiguration configuration, IMapper mapper)
         {
             _cloudId = configuration.GetSection("ElasticConfiguration:ElasticSearchCloudId").Value;
             _apiKey = configuration.GetSection("ElasticConfiguration:ElasticSearchApiKey").Value;
             _goalsPlanningApproval = configuration.GetSection("ElasticConfiguration:ElasticSearchIndexApproval").Value;
             _goalsPlanningApprovalTotal = configuration.GetSection("ElasticConfiguration:ElasticSearchIndexTotalApproval").Value;
             _Uri = configuration.GetSection("ElasticConfiguration:Uri").Value;
+            _mapper = mapper;
 
         }
 
@@ -55,7 +58,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
         public async Task<List<GoalsPlanningStatusHistoryViewModel>> GetHistory(Guid goalsPlanningIntegrationId)
         {
 
-            var settings = new ElasticsearchClientSettings(_cloudId, new Elastic.Transport.ApiKey(_apiKey))
+            var settings = new ElasticsearchClientSettings(_cloudId, new ApiKey(_apiKey))
                 .DefaultIndex(_goalsPlanningApproval);
             var client = new ElasticsearchClient(settings);
 
@@ -65,7 +68,8 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
                                                                                        .Query(goalsPlanningIntegrationId.ToString()))));
 
             var history = response.Documents.Where(x => x.GoalsPlanningIntegrationId == goalsPlanningIntegrationId.ToString()).First().StatusHistory;
-            return history;
+
+            return _mapper.Map<List<GoalsPlanningStatusHistoryViewModel>>(history);
         }
 
         /// <summary>
@@ -75,7 +79,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
         /// <returns></returns>
         public async Task<PlanningTotalElasticViewModel> GetTotal(Guid cropIntegrationId)
         {
-            var settings = new ElasticsearchClientSettings(_cloudId, new Elastic.Transport.ApiKey(_apiKey))
+            var settings = new ElasticsearchClientSettings(_cloudId, new ApiKey(_apiKey))
                  .DefaultIndex(_goalsPlanningApprovalTotal);
             var client = new ElasticsearchClient(settings);
 

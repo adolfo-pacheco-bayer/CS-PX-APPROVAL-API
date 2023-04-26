@@ -191,6 +191,9 @@
   <data name="Inactive" xml:space="preserve">
     <value>Inativo</value>
   </data>
+  <data name="New" xml:space="preserve">
+    <value>Pendente</value>
+  </data>
   <data name="No" xml:space="preserve">
     <value>Não</value>
   </data>
