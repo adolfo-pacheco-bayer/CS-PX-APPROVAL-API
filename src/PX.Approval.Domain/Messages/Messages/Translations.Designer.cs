@@ -213,6 +213,15 @@ namespace PX.Approval.Domain.Messages.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pendente.
+        /// </summary>
+        public static string New {
+            get {
+                return ResourceManager.GetString("New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Não.
         /// </summary>
         public static string No {
