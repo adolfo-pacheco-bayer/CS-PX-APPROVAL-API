@@ -7,9 +7,9 @@ using PX.Crop.Domain.Enum;
 namespace PX.Approval.Application.AutoMapper
 {
 
-    public class GoalsPlanningHistoryElastic : Profile
+    public class GoalsPlanningHistoryElasticProfile : Profile
     {
-        public GoalsPlanningHistoryElastic()
+        public GoalsPlanningHistoryElasticProfile()
         {
             CreateMap<GoalsPlanningStatusHistory, GoalsPlanningStatusHistoryViewModel>()
                     .ForMember(dest => dest.GoalsPlanningId, cfg => cfg.MapFrom(source => source.GoalsPlanningId))
@@ -30,7 +30,9 @@ namespace PX.Approval.Application.AutoMapper
             GoalsPlanningStatus.Approved => "Aprovado",
             GoalsPlanningStatus.InApproval => "Aguardando Aprovação",
             GoalsPlanningStatus.Canceled => "Cancelado",
-            GoalsPlanningStatus.InPreparation => "Em Elaboração"
+            GoalsPlanningStatus.InPreparation => "Em Elaboração",
+            GoalsPlanningStatus.Reproved => "Reprovado",
+            _=> string.Empty
         };
     }
 }

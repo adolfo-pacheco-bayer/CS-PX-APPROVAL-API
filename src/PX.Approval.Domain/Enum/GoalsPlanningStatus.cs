@@ -6,6 +6,7 @@
         InPreparation = 2,
         InApproval = 3,
         Canceled = 4,
-        Approved = 5
+        Approved = 5,
+        Reproved = 6
     }
 }
