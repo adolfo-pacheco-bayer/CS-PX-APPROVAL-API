@@ -24,8 +24,6 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
             _elasticSearchClient = elasticSearchServiceClient;
         }
 
-
-
         public async Task<Response> Handle(GetApprovalHistoryQuery request, CancellationToken cancellationToken)
         {
             var result = await _elasticSearchClient.GetHistory(request.GoalsPlanningIntegrationId);

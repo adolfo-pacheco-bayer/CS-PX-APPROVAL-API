@@ -55,7 +55,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
         /// </summary>
         /// <param name="goalsPlanningIntegrationId"></param>
         /// <returns></returns>
-        public async Task<List<GoalsPlanningStatusHistoryViewModel>> GetHistory(Guid goalsPlanningIntegrationId)
+        public async Task<IEnumerable<GoalsPlanningStatusHistoryViewModel>> GetHistory(Guid goalsPlanningIntegrationId)
         {
 
             var settings = new ElasticsearchClientSettings(_cloudId, new ApiKey(_apiKey))
@@ -67,9 +67,12 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
                                                                                         m => m.Field(f => f.GoalsPlanningIntegrationId)
                                                                                        .Query(goalsPlanningIntegrationId.ToString()))));
 
-            var history = response.Documents.Where(x => x.GoalsPlanningIntegrationId == goalsPlanningIntegrationId.ToString()).First().StatusHistory;
+            var history = response.Documents
+                                    .Where(x => x.GoalsPlanningIntegrationId == goalsPlanningIntegrationId.ToString())
+                                    .First().StatusHistory
+                                    .OrderByDescending(x => x.StatusChanged);
 
-            return _mapper.Map<List<GoalsPlanningStatusHistoryViewModel>>(history);
+            return _mapper.Map<IEnumerable<GoalsPlanningStatusHistoryViewModel>>(history);
         }
 
         /// <summary>
