@@ -70,7 +70,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
             var history = response.Documents
                                     .Where(x => x.GoalsPlanningIntegrationId == goalsPlanningIntegrationId.ToString())
                                     .First().StatusHistory
-                                    .OrderByDescending(x => x.StatusChanged);
+                                    .OrderBy(x => x.StatusChanged);
 
             return _mapper.Map<IEnumerable<GoalsPlanningStatusHistoryViewModel>>(history);
         }
