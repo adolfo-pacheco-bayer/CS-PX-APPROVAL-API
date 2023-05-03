@@ -60,7 +60,7 @@ namespace PX.Approval.API.Authorization
                 profiles = JsonConvert.DeserializeObject<IEnumerable<ProfileViewModel>>(profileClaim)?.ToList();
 
             var identity = _httpContextAccessor.HttpContext?.User.Identities.FirstOrDefault();
-            identity?.AddClaim(new Claim("cwid", cwid));
+            identity?.AddClaim(new Claim("cwid", userCwid));
 
             var roles = new List<RoleViewModel>();
             IEnumerable<LevelViewModel>? levels = null;
