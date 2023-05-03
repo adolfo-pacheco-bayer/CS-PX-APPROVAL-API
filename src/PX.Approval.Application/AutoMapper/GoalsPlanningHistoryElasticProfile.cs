@@ -26,7 +26,7 @@ namespace PX.Approval.Application.AutoMapper
         private string TranslateStatus(GoalsPlanningStatus status)
         => status switch
         {
-            GoalsPlanningStatus.New => "Novo",
+            GoalsPlanningStatus.New => "Criado",
             GoalsPlanningStatus.Approved => "Aprovado",
             GoalsPlanningStatus.InApproval => "Aguardando Aprovação",
             GoalsPlanningStatus.Canceled => "Cancelado",
