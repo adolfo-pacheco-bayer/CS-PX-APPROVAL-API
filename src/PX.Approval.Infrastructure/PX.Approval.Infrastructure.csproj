@@ -33,6 +33,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\..\CS-PX-COMMON-LIBRARY\PX.Library.Common\src\PX.Library.Common\PX.Library.Common.csproj" />
 		<ProjectReference Include="..\PX.Approval.Application\PX.Approval.Application.csproj" />
 	</ItemGroup>
 

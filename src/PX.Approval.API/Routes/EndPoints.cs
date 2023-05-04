@@ -107,8 +107,6 @@ namespace PX.Approval.API.Routes
 
             }).RequireAuthorization("Omega").Accepts<IFormFile>("application/pdf");
 
-
-
             app.MapGet("api/approval/brands/{goalsPlanningId}/seeds", async (Guid goalsPlanningId, [FromServices] IMediator mediator) =>
             {
                 return await mediator.Send(new GetBrandSeedsGoalsPlanningQuery()
@@ -133,6 +131,11 @@ namespace PX.Approval.API.Routes
             {
                 return await mediator.Send(new GetApprovalHistoryQuery(goalsPlanningIntegrationId)); 
             });
+
+            app.MapGet("api/approval/{goalsplanningIntegrationId}/document/download/{fileName}", async (Guid goalsPlanningIntegrationId, string fileName, [FromServices] IMediator mediator) =>
+            {
+                return await mediator.Send(new DownloadApprovalDocumentQuery(fileName, goalsPlanningIntegrationId));
+            }).RequireAuthorization("Omega");
         }
     }
 }
