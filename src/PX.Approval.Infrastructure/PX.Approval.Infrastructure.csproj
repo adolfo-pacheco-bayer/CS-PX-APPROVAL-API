@@ -29,6 +29,7 @@
 		<PackageReference Include="Elastic.Clients.Elasticsearch" Version="8.0.4" />
 		<PackageReference Include="NEST" Version="7.17.5" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+		<PackageReference Include="PXBayerLibraries" Version="1.0.106" />
 		<PackageReference Include="scrutor" Version="4.2.0" />
 	</ItemGroup>
 

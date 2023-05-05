@@ -85,7 +85,7 @@ namespace PX.Approval.API.Authorization
                 Email = userCwid,
                 NameUser = userCwid,
                 Roles = roles,
-                Cwid = cwid,
+                Cwid = userCwid,
             });
 
             identity?.AddClaim(new Claim("user", user));
