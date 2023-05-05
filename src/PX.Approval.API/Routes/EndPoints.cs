@@ -135,6 +135,10 @@ namespace PX.Approval.API.Routes
             app.MapGet("api/approval/{goalsplanningIntegrationId}/document/download/{fileName}", async (Guid goalsPlanningIntegrationId, string fileName, [FromServices] IMediator mediator) =>
             {
                 var file =  await mediator.Send(new DownloadApprovalDocumentQuery(fileName, goalsPlanningIntegrationId));
+
+                if (file is null)
+                    return Results.NotFound();
+
                 return Results.File(file.FileStream, file.ContentType, file.FileDownloadName);
 
             }).RequireAuthorization("Omega");

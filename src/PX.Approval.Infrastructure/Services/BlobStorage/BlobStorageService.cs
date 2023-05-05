@@ -27,7 +27,9 @@ public class BlobStorageService : IBlobStorageService
         _logger.LogInformation($"Getting file {fileName} from blob storage");
 
         var file = await _documentsManagement.ReadFileAsync(goalsPlanningIntegrationId, fileName);
-        file.EnsureSuccessStatusCode();
+        
+        if(!file.IsSuccessStatusCode)
+            return null;            
 
         _logger.LogInformation($"File read : {fileName}");
         var memoryStream = new MemoryStream();
