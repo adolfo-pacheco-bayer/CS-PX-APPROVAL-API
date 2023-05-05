@@ -25,8 +25,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PX.Approval.TestHelpers", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PX.Approval.UnityTests", "..\src\PX.Approval.UnityTests\PX.Approval.UnityTests.csproj", "{B668F3EF-A120-4B5B-8D61-F484E7F94C56}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PX.Library.Common", "..\..\CS-PX-COMMON-LIBRARY\PX.Library.Common\src\PX.Library.Common\PX.Library.Common.csproj", "{54064045-3B38-4EB7-BBCD-9B15D47B1D12}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,10 +59,6 @@ Global
 		{B668F3EF-A120-4B5B-8D61-F484E7F94C56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B668F3EF-A120-4B5B-8D61-F484E7F94C56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B668F3EF-A120-4B5B-8D61-F484E7F94C56}.Release|Any CPU.Build.0 = Release|Any CPU
-		{54064045-3B38-4EB7-BBCD-9B15D47B1D12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{54064045-3B38-4EB7-BBCD-9B15D47B1D12}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{54064045-3B38-4EB7-BBCD-9B15D47B1D12}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{54064045-3B38-4EB7-BBCD-9B15D47B1D12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

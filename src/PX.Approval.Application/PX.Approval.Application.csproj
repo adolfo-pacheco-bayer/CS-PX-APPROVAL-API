@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\CS-PX-COMMON-LIBRARY\PX.Library.Common\src\PX.Library.Common\PX.Library.Common.csproj" />
     <ProjectReference Include="..\PX.Approval.Domain\PX.Approval.Domain.csproj" />
   </ItemGroup>
 
@@ -16,6 +15,7 @@
     <PackageReference Include="MediatR" Version="12.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
     <PackageReference Include="newtonsoft.json" Version="13.0.2" />
+    <PackageReference Include="PXBayerLibraries" Version="1.0.106" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.27.0" />
   </ItemGroup>
 

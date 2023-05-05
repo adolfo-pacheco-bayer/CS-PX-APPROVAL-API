@@ -4,7 +4,7 @@ using PX.Approval.Domain.Response;
 
 namespace PX.Approval.Application.GoalsPlanning.Queries;
 
-public class DownloadApprovalDocumentQuery : IRequest<IActionResult>
+public class DownloadApprovalDocumentQuery : IRequest<FileStreamResult>
 {
     public string FileName { get; set; }
     public Guid GoalsPlanningIntegrationId { get; set; }

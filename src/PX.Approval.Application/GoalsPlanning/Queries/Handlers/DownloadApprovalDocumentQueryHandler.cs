@@ -6,7 +6,7 @@ using PX.Library.Common.Extensions;
 
 namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers;
 
-public class DownloadApprovalDocumentQueryHandler : IRequestHandler<DownloadApprovalDocumentQuery, IActionResult>
+public class DownloadApprovalDocumentQueryHandler : IRequestHandler<DownloadApprovalDocumentQuery, FileStreamResult>
 {
     private IBlobStorageService _blobStorageService;
     private IPDFFileService _pdfFileService;
@@ -21,7 +21,7 @@ public class DownloadApprovalDocumentQueryHandler : IRequestHandler<DownloadAppr
         _httpContextAccessor = httpContextAccessor;
     }
 
-    public async Task<IActionResult> Handle(DownloadApprovalDocumentQuery request, CancellationToken cancellationToken)
+    public async Task<FileStreamResult> Handle(DownloadApprovalDocumentQuery request, CancellationToken cancellationToken)
     {
         var user = _httpContextAccessor.HttpContext.GetUser();
 
@@ -32,6 +32,8 @@ public class DownloadApprovalDocumentQueryHandler : IRequestHandler<DownloadAppr
 
         byte[] outfileByteArray = await _pdfFileService.ApplyWaterMarkAsync(memoryStream, result.FileDownloadName, user.NameUser, user.Cwid, DateTime.UtcNow.Date, "Images\\watermark.png");
         Stream stream = new MemoryStream(outfileByteArray);
-        return new FileStreamResult(stream, "application/octet-stream") { FileDownloadName = result.FileDownloadName };
+
+        _httpContextAccessor.HttpContext.Response.ContentType= "application/pdf";
+        return new FileStreamResult(stream, "application/pdf") { FileDownloadName = result.FileDownloadName };
     }
 }
