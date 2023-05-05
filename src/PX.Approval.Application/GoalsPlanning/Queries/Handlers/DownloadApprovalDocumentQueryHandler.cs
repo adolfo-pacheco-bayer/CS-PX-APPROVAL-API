@@ -26,6 +26,8 @@ public class DownloadApprovalDocumentQueryHandler : IRequestHandler<DownloadAppr
         var user = _httpContextAccessor.HttpContext.GetUser();
 
         var result = await _blobStorageService.ReadFileAsync(request.GoalsPlanningIntegrationId.ToString(), request.FileName);
+        if (result is null)
+            return null;   
 
         var memoryStream = new MemoryStream();
         result.FileStream.CopyTo(memoryStream);
