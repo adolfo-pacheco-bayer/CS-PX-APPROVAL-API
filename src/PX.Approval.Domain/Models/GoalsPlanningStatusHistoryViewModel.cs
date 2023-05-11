@@ -11,5 +11,6 @@ namespace PX.Approval.Domain.Models
         public string? Reason { get; set; }
         public string IntegrationId { get; set; }
         public string? UrlFile { get; set; }        
+        public string? OriginalFileName { get; set; }
     }
 }
