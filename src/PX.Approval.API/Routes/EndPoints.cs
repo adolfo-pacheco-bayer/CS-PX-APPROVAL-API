@@ -56,7 +56,12 @@ namespace PX.Approval.API.Routes
                 return await mediator.Send(new ReturnStatusGoalsPlanningCommand(request.Reason, request.GoalsPlanningIntegrationIds.ToList()));
             }).RequireAuthorization("Omega");
 
-            
+            app.MapPut("api/approval/cancel-goals-planning", async ([FromServices] IMediator mediator, [FromBody] CancelRequest request) =>
+            {
+                return await mediator.Send(new CancelGoalsPlanningCommand(request.Reason, request.GoalsPlanningIntegrationIds.ToList()));
+            }).RequireAuthorization("Omega");
+
+
             app.MapGet("api/approval/graphic-partnertype/{cropintegrationid}", async (Guid cropintegrationid, [FromServices] IMediator mediator) =>
             {
                 return await mediator.Send(new GetGraphicsPartnerTyperQuery()
