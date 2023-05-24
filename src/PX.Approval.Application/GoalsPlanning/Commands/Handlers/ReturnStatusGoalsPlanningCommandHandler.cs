@@ -57,7 +57,7 @@ public class ReturnStatusGoalsPlanningCommandHandler : IRequestHandler<ReturnSta
                         await _serviceBusClient.SendEmailMessage(new Email(emailPartner, Translations.NoReplyEmail, Translations.DefaultSender, Translations.SubjectReturn, content, true), cancellationToken);
                 }
                 else
-                    _logger.LogError($"GetByGoalsPlanningIntegrationId não retornou dados do elastic - GoalsPlanningIntegrationId: {goalsPlanning}");
+                    _logger.LogError($"GetByGoalsPlanningIntegrationId não retornou dados do elastic - ReturnStatusGoalsPlanningCommand - GoalsPlanningIntegrationId: {goalsPlanning}");
             }
         }
 
