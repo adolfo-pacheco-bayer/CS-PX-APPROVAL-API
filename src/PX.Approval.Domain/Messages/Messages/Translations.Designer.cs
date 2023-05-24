@@ -178,15 +178,15 @@ namespace PX.Approval.Domain.Messages.Messages {
         ///        &lt;/style&gt;
         ///    &lt;/head&gt;
         ///    &lt;body&gt;
-        ///        Caro #PARCEIRO#,&lt;br/&gt;
+        ///        Prezado #PARCEIRO#,&lt;br/&gt;
         ///        &lt;br/&gt;
         ///        Seu planejamento de metas foi cancelado e dever ser reavaliado de acordo com o motivo abaixo informado.&lt;br/&gt;
         ///        &lt;br/&gt;
         ///        #MOTIVO#
         ///        &lt;br/&gt;
         ///        Para ver mais detalhes, acesse o Portal do Parceiro.
-        ///    &lt;/body&gt;
-        ///&lt;/html&gt;.
+        ///       &lt;br/&gt;
+        ///       Este  [rest of string was truncated]&quot;;.
         /// </summary>
         public static string EmailCancel {
             get {
@@ -232,15 +232,15 @@ namespace PX.Approval.Domain.Messages.Messages {
         ///        &lt;/style&gt;
         ///    &lt;/head&gt;
         ///    &lt;body&gt;
-        ///        Caro #PARCEIRO#,&lt;br/&gt;
+        ///        Prezado #PARCEIRO#,&lt;br/&gt;
         ///        &lt;br/&gt;
         ///        Seu planejamento de metas teve o status retornado e dever ser reavaliado de acordo com o motivo abaixo informado.&lt;br/&gt;
         ///        &lt;br/&gt;
         ///        #MOTIVO#
         ///        &lt;br/&gt;
         ///        Para ver mais detalhes, acesse o Portal do Parceiro.
-        ///    &lt;/body&gt;
-        ///&lt;/html [rest of string was truncated]&quot;;.
+        ///       &lt;br/&gt;
+        ///   [rest of string was truncated]&quot;;.
         /// </summary>
         public static string EmailReturn {
             get {

@@ -175,13 +175,18 @@
         &lt;/style&gt;
     &lt;/head&gt;
     &lt;body&gt;
-        Caro #PARCEIRO#,&lt;br/&gt;
+        Prezado #PARCEIRO#,&lt;br/&gt;
         &lt;br/&gt;
         Seu planejamento de metas foi cancelado e dever ser reavaliado de acordo com o motivo abaixo informado.&lt;br/&gt;
         &lt;br/&gt;
         #MOTIVO#
         &lt;br/&gt;
         Para ver mais detalhes, acesse o Portal do Parceiro.
+       &lt;br/&gt;
+       Este e-mail foi enviado pelo sistema.
+       
+
+Crop Science - Portal do Parceiro.
     &lt;/body&gt;
 &lt;/html&gt;</value>
   </data>
@@ -217,13 +222,18 @@
         &lt;/style&gt;
     &lt;/head&gt;
     &lt;body&gt;
-        Caro #PARCEIRO#,&lt;br/&gt;
+        Prezado #PARCEIRO#,&lt;br/&gt;
         &lt;br/&gt;
         Seu planejamento de metas teve o status retornado e dever ser reavaliado de acordo com o motivo abaixo informado.&lt;br/&gt;
         &lt;br/&gt;
         #MOTIVO#
         &lt;br/&gt;
         Para ver mais detalhes, acesse o Portal do Parceiro.
+       &lt;br/&gt;
+       Este e-mail foi enviado pelo sistema.
+       
+
+Crop Science - Portal do Parceiro.
     &lt;/body&gt;
 &lt;/html&gt;</value>
   </data>
