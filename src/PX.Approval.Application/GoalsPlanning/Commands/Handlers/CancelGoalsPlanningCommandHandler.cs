@@ -1,5 +1,4 @@
-﻿using Azure.Messaging.ServiceBus;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using PX.Approval.Application.Common.Interfaces;
@@ -21,8 +20,8 @@ public class CancelGoalsPlanningCommandHandler : IRequestHandler<CancelGoalsPlan
     private readonly IServiceBus _serviceBusClient;
     private readonly ILogger<CancelGoalsPlanningCommandHandler> _logger;
 
-    public CancelGoalsPlanningCommandHandler(IResponse response, 
-        IGoalsPlanningClient goalsPlanningClient, 
+    public CancelGoalsPlanningCommandHandler(IResponse response,
+        IGoalsPlanningClient goalsPlanningClient,
         IHttpContextAccessor httpContextAccessor,
         IElasticSearchServiceClient elasticSearchClient,
         IServiceBus serviceBusClient,
@@ -38,8 +37,18 @@ public class CancelGoalsPlanningCommandHandler : IRequestHandler<CancelGoalsPlan
 
     public async Task<Response> Handle(CancelGoalsPlanningCommand request, CancellationToken cancellationToken)
     {
+        var user = _httpContextAccessor.HttpContext.GetUser();
+
+        if (user is not null)
+        {
+            var role = user.Roles.Where(x => x.Name.ToUpper().Contains("CS-PLANOMETAS_ADMINISTRADOR")).Any();
+
+            if (!role)
+                return await _response.CreateErrorResponseAsync(new { message = "Usuário não tem permissão para executar essa ação." }, System.Net.HttpStatusCode.Unauthorized);
+        }
+
         var cancelUserCWID = _httpContextAccessor.HttpContext.GetCwid();
-        var result = await _goalsPlanningClient.CancelPlanningAsync(cancelUserCWID, request.Reason, request.GoalsPlanningIntegrationIds);
+        var result = await _goalsPlanningClient.CancelPlanningAsync(cancelUserCWID, request.Reason, request.File, request.FileName, request.GoalsPlanningIntegrationIds);
 
         if (result.Data)
         {

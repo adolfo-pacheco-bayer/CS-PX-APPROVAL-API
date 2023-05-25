@@ -39,12 +39,16 @@ message ReturnStatusRequest{
 	repeated goalsPlanningIntegrationIdList goalsPlanningIntegrationIds = 1;
 	string reason = 2;
 	string returnUserCWID = 3;
+	bytes file = 4;
+	string fileName = 5;
 }
 
 message CancelRequest{
 	repeated goalsPlanningIntegrationIdList goalsPlanningIntegrationIds = 1;
 	string reason = 2;
 	string cancelUserCWID = 3;
+	bytes file = 4;
+	string fileName = 5;
 }
 
 message ApproveRequest{

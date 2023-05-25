@@ -33,7 +33,7 @@ public class GoalsPlanningGrpcClient : IGoalsPlanningClient
         return JsonConvert.DeserializeObject<IEnumerable<GetAllGoalsPlanningViewModel>>(result.Data);
     }
 
-    public async Task<ModifyGoalsPlanningViewModel> ReturnStatusGoalsPlanningAsync(string returnUserCWID, string reason, List<Guid> goalsPlanningIntegrationIds)
+    public async Task<ModifyGoalsPlanningViewModel> ReturnStatusGoalsPlanningAsync(string returnUserCWID, string reason, byte[] file, string fileName, List<Guid> goalsPlanningIntegrationIds)
     {
         using var channel = GrpcChannel.ForAddress(_config.Value.GrpcUrl);
         var client = new GoalsPlanningService.GoalsPlanningServiceClient(channel);
@@ -42,6 +42,8 @@ public class GoalsPlanningGrpcClient : IGoalsPlanningClient
 
         request.ReturnUserCWID = returnUserCWID;
         request.Reason = reason;
+        request.File = ByteString.CopyFrom(file);
+        request.FileName = fileName;
         request.GoalsPlanningIntegrationIds.AddRange(goalsPlanningIntegrationIds.Select(x => new goalsPlanningIntegrationIdList() { GoalsPlanningIntegrationId = x.ToString() }));
 
         var result = await client.ReturnStatusGoalsPlanningAsync(request);
@@ -49,7 +51,7 @@ public class GoalsPlanningGrpcClient : IGoalsPlanningClient
         return new ModifyGoalsPlanningViewModel() { Data = result.Data, Message = result.Message };
     }
 
-    public async Task<ModifyGoalsPlanningViewModel> CancelPlanningAsync(string cancelUserCWID, string reason, List<Guid> goalsPlanningIntegrationIds)
+    public async Task<ModifyGoalsPlanningViewModel> CancelPlanningAsync(string cancelUserCWID, string reason, byte[] file, string fileName, List<Guid> goalsPlanningIntegrationIds)
     {
         using var channel = GrpcChannel.ForAddress(_config.Value.GrpcUrl);
         var client = new GoalsPlanningService.GoalsPlanningServiceClient(channel);
@@ -58,6 +60,8 @@ public class GoalsPlanningGrpcClient : IGoalsPlanningClient
 
         request.CancelUserCWID = cancelUserCWID;
         request.Reason = reason;
+        request.File = ByteString.CopyFrom(file);
+        request.FileName = fileName;
         request.GoalsPlanningIntegrationIds.AddRange(goalsPlanningIntegrationIds.Select(x => new goalsPlanningIntegrationIdList() { GoalsPlanningIntegrationId = x.ToString() }));
 
         var result = await client.CancelGoalsPlanningAsync(request);
