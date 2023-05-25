@@ -49,6 +49,22 @@ public class GoalsPlanningGrpcClient : IGoalsPlanningClient
         return new ModifyGoalsPlanningViewModel() { Data = result.Data, Message = result.Message };
     }
 
+    public async Task<ModifyGoalsPlanningViewModel> CancelPlanningAsync(string cancelUserCWID, string reason, List<Guid> goalsPlanningIntegrationIds)
+    {
+        using var channel = GrpcChannel.ForAddress(_config.Value.GrpcUrl);
+        var client = new GoalsPlanningService.GoalsPlanningServiceClient(channel);
+
+        var request = new CancelRequest();
+
+        request.CancelUserCWID = cancelUserCWID;
+        request.Reason = reason;
+        request.GoalsPlanningIntegrationIds.AddRange(goalsPlanningIntegrationIds.Select(x => new goalsPlanningIntegrationIdList() { GoalsPlanningIntegrationId = x.ToString() }));
+
+        var result = await client.CancelGoalsPlanningAsync(request);
+
+        return new ModifyGoalsPlanningViewModel() { Data = result.Data, Message = result.Message };
+    }
+
     public async Task<ModifyGoalsPlanningViewModel> ApproveGoalsPlanningAsync(string returnUserCWID, List<Guid> goalsPlanningIntegrationIds)
     {
         using var channel = GrpcChannel.ForAddress(_config.Value.GrpcUrl);

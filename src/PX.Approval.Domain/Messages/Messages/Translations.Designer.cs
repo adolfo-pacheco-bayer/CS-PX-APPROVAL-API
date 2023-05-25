@@ -178,6 +178,33 @@ namespace PX.Approval.Domain.Messages.Messages {
         ///        &lt;/style&gt;
         ///    &lt;/head&gt;
         ///    &lt;body&gt;
+        ///        Prezado #PARCEIRO#,&lt;br/&gt;
+        ///        &lt;br/&gt;
+        ///        Seu planejamento de metas foi cancelado e dever ser reavaliado de acordo com o motivo abaixo informado.&lt;br/&gt;
+        ///        &lt;br/&gt;
+        ///        #MOTIVO#
+        ///        &lt;br/&gt;
+        ///        Para ver mais detalhes, acesse o Portal do Parceiro.
+        ///       &lt;br/&gt;
+        ///       Este  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string EmailCancel {
+            get {
+                return ResourceManager.GetString("EmailCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;html&gt;
+        ///    &lt;head&gt;
+        ///        &lt;style&gt;
+        ///            body {
+        ///                font-family: Arial, Helvetica, sans-serif;
+        ///                font-size: 12pt;
+        ///            }
+        ///        &lt;/style&gt;
+        ///    &lt;/head&gt;
+        ///    &lt;body&gt;
         ///        Caro #PARCEIRO#,&lt;br/&gt;
         ///        &lt;br/&gt;
         ///        Seu planejamento de metas foi reprovado e dever ser reavaliado de acordo com o motivo abaixo informado.&lt;br/&gt;
@@ -191,6 +218,33 @@ namespace PX.Approval.Domain.Messages.Messages {
         public static string EmailReprove {
             get {
                 return ResourceManager.GetString("EmailReprove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;html&gt;
+        ///    &lt;head&gt;
+        ///        &lt;style&gt;
+        ///            body {
+        ///                font-family: Arial, Helvetica, sans-serif;
+        ///                font-size: 12pt;
+        ///            }
+        ///        &lt;/style&gt;
+        ///    &lt;/head&gt;
+        ///    &lt;body&gt;
+        ///        Prezado #PARCEIRO#,&lt;br/&gt;
+        ///        &lt;br/&gt;
+        ///        Seu planejamento de metas teve o status retornado e dever ser reavaliado de acordo com o motivo abaixo informado.&lt;br/&gt;
+        ///        &lt;br/&gt;
+        ///        #MOTIVO#
+        ///        &lt;br/&gt;
+        ///        Para ver mais detalhes, acesse o Portal do Parceiro.
+        ///       &lt;br/&gt;
+        ///   [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string EmailReturn {
+            get {
+                return ResourceManager.GetString("EmailReturn", resourceCulture);
             }
         }
         
@@ -303,11 +357,29 @@ namespace PX.Approval.Domain.Messages.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [Portal Parceiro Bayer] - Planejamento de metas cancelado.
+        /// </summary>
+        public static string SubjectCancel {
+            get {
+                return ResourceManager.GetString("SubjectCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [Portal Parceiro Bayer] - Planejamento de metas reprovado.
         /// </summary>
         public static string SubjectReprove {
             get {
                 return ResourceManager.GetString("SubjectReprove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [Portal Parceiro Bayer] - Planejamento de metas status retornado.
+        /// </summary>
+        public static string SubjectReturn {
+            get {
+                return ResourceManager.GetString("SubjectReturn", resourceCulture);
             }
         }
         
