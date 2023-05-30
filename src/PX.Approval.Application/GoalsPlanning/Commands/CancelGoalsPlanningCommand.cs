@@ -3,9 +3,9 @@ using PX.Approval.Domain.Response;
 
 namespace PX.Approval.Application.GoalsPlanning.Commands;
 
-public class ReturnStatusGoalsPlanningCommand : IRequest<Response>
+public class CancelGoalsPlanningCommand : IRequest<Response>
 {
-    public ReturnStatusGoalsPlanningCommand(string reason, byte[] file, string fileName, List<Guid> goalsPlanningIntegrationIds)
+    public CancelGoalsPlanningCommand(string reason, byte[] file, string fileName, List<Guid> goalsPlanningIntegrationIds)
     {
         Reason = reason;
         File = file;

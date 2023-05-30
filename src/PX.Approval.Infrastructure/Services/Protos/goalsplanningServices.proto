@@ -11,6 +11,7 @@ service GoalsPlanningService {
   rpc ReproveGoalsPlanning (ReproveRequest) returns (BooleanResponse);
   rpc GetInApprovalGoalsPlanningByCropIds (GetInApprovalGoalsPlanningRequest) returns (InApprovalGoalsPlanningResponse);
   rpc AllGoalsPlanningIsPendingByCropIds (Request) returns (BooleanResponse);
+rpc CancelGoalsPlanning (CancelRequest) returns (BooleanResponse);  
   rpc ExportExcelModel (ExportRequest) returns (ExportResponse);
 }
 
@@ -39,6 +40,29 @@ message ReturnStatusRequest{
 	repeated goalsPlanningIntegrationIdList goalsPlanningIntegrationIds = 1;
 	string reason = 2;
 	string returnUserCWID = 3;
+	bytes file = 4;
+	string fileName = 5;
+}
+
+message CancelRequest{
+	repeated goalsPlanningIntegrationIdList goalsPlanningIntegrationIds = 1;
+	string reason = 2;
+	string cancelUserCWID = 3;
+	bytes file = 4;
+	string fileName = 5;
+}
+
+message ApproveRequest{
+	repeated goalsPlanningIntegrationIdList goalsPlanningIntegrationIds = 1;
+	string returnUserCWID = 2;
+}
+
+message ReproveRequest{
+	repeated goalsPlanningIntegrationIdList goalsPlanningIntegrationIds = 1;
+	string reason = 2;
+	string returnUserCWID = 3;
+	bytes file = 4;
+	string fileName = 5;
 }
 
 message ApproveRequest{
@@ -85,15 +109,4 @@ message brandmodel{
 
 message errorsmodel{
 	string message = 1;
-}
-
-message ExportRequest{
-	string goalsPlanningIntegrationId = 1;
-	string partnerIntegrationid = 2;
-}
-
-message ExportResponse{
-	bytes File = 1;
-	bool result = 2;
-	string message = 3;
 }

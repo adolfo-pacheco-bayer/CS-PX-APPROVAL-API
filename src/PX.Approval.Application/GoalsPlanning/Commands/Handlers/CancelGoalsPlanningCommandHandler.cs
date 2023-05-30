@@ -11,21 +11,21 @@ using PX.Library.Common.ServiceBus.Interfaces;
 
 namespace PX.Approval.Application.GoalsPlanning.Commands.Handlers;
 
-public class ReturnStatusGoalsPlanningCommandHandler : IRequestHandler<ReturnStatusGoalsPlanningCommand, Response>
+public class CancelGoalsPlanningCommandHandler : IRequestHandler<CancelGoalsPlanningCommand, Response>
 {
     private IResponse _response;
     private IGoalsPlanningClient _goalsPlanningClient;
     private IHttpContextAccessor _httpContextAccessor;
     private IElasticSearchServiceClient _elasticSearchClient;
     private readonly IServiceBus _serviceBusClient;
-    private readonly ILogger<ReturnStatusGoalsPlanningCommandHandler> _logger;
+    private readonly ILogger<CancelGoalsPlanningCommandHandler> _logger;
 
-    public ReturnStatusGoalsPlanningCommandHandler(IResponse response,
+    public CancelGoalsPlanningCommandHandler(IResponse response,
         IGoalsPlanningClient goalsPlanningClient,
         IHttpContextAccessor httpContextAccessor,
         IElasticSearchServiceClient elasticSearchClient,
         IServiceBus serviceBusClient,
-        ILogger<ReturnStatusGoalsPlanningCommandHandler> logger)
+        ILogger<CancelGoalsPlanningCommandHandler> logger)
     {
         _response = response;
         _goalsPlanningClient = goalsPlanningClient;
@@ -35,7 +35,7 @@ public class ReturnStatusGoalsPlanningCommandHandler : IRequestHandler<ReturnSta
         _logger = logger;
     }
 
-    public async Task<Response> Handle(ReturnStatusGoalsPlanningCommand request, CancellationToken cancellationToken)
+    public async Task<Response> Handle(CancelGoalsPlanningCommand request, CancellationToken cancellationToken)
     {
         var user = _httpContextAccessor.HttpContext.GetUser();
 
@@ -47,8 +47,8 @@ public class ReturnStatusGoalsPlanningCommandHandler : IRequestHandler<ReturnSta
                 return await _response.CreateErrorResponseAsync(new { message = "Usuário não tem permissão para executar essa ação." }, System.Net.HttpStatusCode.Unauthorized);
         }
 
-        var returnUserCWID = _httpContextAccessor.HttpContext.GetCwid();
-        var result = await _goalsPlanningClient.ReturnStatusGoalsPlanningAsync(returnUserCWID, request.Reason, request.File, request.FileName, request.GoalsPlanningIntegrationIds);
+        var cancelUserCWID = _httpContextAccessor.HttpContext.GetCwid();
+        var result = await _goalsPlanningClient.CancelPlanningAsync(cancelUserCWID, request.Reason, request.File, request.FileName, request.GoalsPlanningIntegrationIds);
 
         if (result.Data)
         {
@@ -60,13 +60,13 @@ public class ReturnStatusGoalsPlanningCommandHandler : IRequestHandler<ReturnSta
                 {
                     var emailPartner = goalsPlanningInfo.EmailGoalsPlanning;
                     var namePartner = goalsPlanningInfo.PartnerName;
-                    var content = Translations.EmailReturn.Replace("#PARCEIRO#", namePartner).Replace("#MOTIVO#", request.Reason);
+                    var content = Translations.EmailCancel.Replace("#PARCEIRO#", namePartner).Replace("#MOTIVO#", request.Reason);
 
                     if (!string.IsNullOrEmpty(emailPartner))
-                        await _serviceBusClient.SendEmailMessage(new Email(emailPartner, Translations.NoReplyEmail, Translations.DefaultSender, Translations.SubjectReturn, content, true), cancellationToken);
+                        await _serviceBusClient.SendEmailMessage(new Email(emailPartner, Translations.NoReplyEmail, Translations.DefaultSender, Translations.SubjectCancel, content, true), cancellationToken);
                 }
                 else
-                    _logger.LogError($"GetByGoalsPlanningIntegrationId não retornou dados do elastic - ReturnStatusGoalsPlanningCommand - GoalsPlanningIntegrationId: {goalsPlanning}");
+                    _logger.LogError($"GetByGoalsPlanningIntegrationId não retornou dados do elastic - CancelGoalsPlanningCommandHandler - GoalsPlanningIntegrationId: {goalsPlanning}");
             }
         }
 

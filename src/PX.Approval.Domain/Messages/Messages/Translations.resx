@@ -164,6 +164,32 @@
     &lt;/body&gt;
 &lt;/html&gt;</value>
   </data>
+  <data name="EmailCancel" xml:space="preserve">
+    <value>&lt;html&gt;
+    &lt;head&gt;
+        &lt;style&gt;
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 12pt;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        Prezado #PARCEIRO#,&lt;br/&gt;
+        &lt;br/&gt;
+        Seu planejamento de metas foi cancelado e dever ser reavaliado de acordo com o motivo abaixo informado.&lt;br/&gt;
+        &lt;br/&gt;
+        #MOTIVO#
+        &lt;br/&gt;
+        Para ver mais detalhes, acesse o Portal do Parceiro.
+       &lt;br/&gt;
+       Este e-mail foi enviado pelo sistema.
+       
+
+Crop Science - Portal do Parceiro.
+    &lt;/body&gt;
+&lt;/html&gt;</value>
+  </data>
   <data name="EmailReprove" xml:space="preserve">
     <value>&lt;html&gt;
     &lt;head&gt;
@@ -182,6 +208,32 @@
         #MOTIVO#
         &lt;br/&gt;
         Para ver mais detalhes, acesse o Portal do Parceiro.
+    &lt;/body&gt;
+&lt;/html&gt;</value>
+  </data>
+  <data name="EmailReturn" xml:space="preserve">
+    <value>&lt;html&gt;
+    &lt;head&gt;
+        &lt;style&gt;
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 12pt;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        Prezado #PARCEIRO#,&lt;br/&gt;
+        &lt;br/&gt;
+        Seu planejamento de metas teve o status retornado e dever ser reavaliado de acordo com o motivo abaixo informado.&lt;br/&gt;
+        &lt;br/&gt;
+        #MOTIVO#
+        &lt;br/&gt;
+        Para ver mais detalhes, acesse o Portal do Parceiro.
+       &lt;br/&gt;
+       Este e-mail foi enviado pelo sistema.
+       
+
+Crop Science - Portal do Parceiro.
     &lt;/body&gt;
 &lt;/html&gt;</value>
   </data>
@@ -221,8 +273,14 @@
   <data name="SubjectApprove" xml:space="preserve">
     <value>[Portal Parceiro Bayer] - Planejamento de metas aprovado</value>
   </data>
+  <data name="SubjectCancel" xml:space="preserve">
+    <value>[Portal Parceiro Bayer] - Planejamento de metas cancelado</value>
+  </data>
   <data name="SubjectReprove" xml:space="preserve">
     <value>[Portal Parceiro Bayer] - Planejamento de metas reprovado</value>
+  </data>
+  <data name="SubjectReturn" xml:space="preserve">
+    <value>[Portal Parceiro Bayer] - Planejamento de metas status retornado</value>
   </data>
   <data name="Wholesaler" xml:space="preserve">
     <value>Atacadista</value>
