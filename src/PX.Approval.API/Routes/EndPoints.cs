@@ -50,11 +50,7 @@ namespace PX.Approval.API.Routes
                     CropIntegrationId = cropintegrationid
                 });
             });
-
-            //app.MapPut("api/approval/return-status-goals-planning", async ([FromServices] IMediator mediator, [FromBody] ReturnStatusRequest request) =>
-            //{
-            //    return await mediator.Send(new ReturnStatusGoalsPlanningCommand(request.Reason, request.GoalsPlanningIntegrationIds.ToList()));
-            //}).RequireAuthorization("Omega");
+            
             app.MapPut("api/approval/return-status-goals-planning", async (HttpRequest request, string? fileName, string payload, IMediator mediator) =>
             {
                 using var reader = new StreamReader(request.Body, System.Text.Encoding.UTF8);
@@ -68,11 +64,7 @@ namespace PX.Approval.API.Routes
                 return await mediator.Send(new ReturnStatusGoalsPlanningCommand(p.Reason, fileBytes, fileName, p.GoalsPlanningIntegrationIds.ToList()));
 
             }).RequireAuthorization("Omega").Accepts<IFormFile>("application/pdf");
-
-            //app.MapPut("api/approval/cancel-goals-planning", async ([FromServices] IMediator mediator, [FromBody] CancelRequest request) =>
-            //{
-            //    return await mediator.Send(new CancelGoalsPlanningCommand(request.Reason, request.GoalsPlanningIntegrationIds.ToList()));
-            //}).RequireAuthorization("Omega");
+            
             app.MapPut("api/approval/cancel-goals-planning", async (HttpRequest request, string? fileName, string payload, IMediator mediator) =>
             {
                 using var reader = new StreamReader(request.Body, System.Text.Encoding.UTF8);
