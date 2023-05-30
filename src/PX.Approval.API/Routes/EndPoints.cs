@@ -142,6 +142,18 @@ namespace PX.Approval.API.Routes
                 return Results.File(file.FileStream, file.ContentType, file.FileDownloadName);
 
             }).RequireAuthorization("Omega");
+
+            app.MapGet("api/approval/{goalsplanningIntegrationId}/partner/{partnerIntegrationId}/export", async (Guid goalsPlanningIntegrationId, Guid partnerIntegrationId, [FromServices] IMediator mediator) =>
+            {
+                var file = await mediator.Send(new ExportExcelModelQuery(goalsPlanningIntegrationId, partnerIntegrationId));
+
+                if (file is null)
+                    return Results.NotFound();
+
+                file.FileStream.Position = 0;
+                return Results.File(file.FileStream, file.ContentType, file.FileDownloadName);
+
+            });
         }
     }
 }
