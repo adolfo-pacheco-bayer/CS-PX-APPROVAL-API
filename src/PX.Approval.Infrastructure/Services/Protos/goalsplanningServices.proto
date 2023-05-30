@@ -65,19 +65,6 @@ message ReproveRequest{
 	string fileName = 5;
 }
 
-message ApproveRequest{
-	repeated goalsPlanningIntegrationIdList goalsPlanningIntegrationIds = 1;
-	string returnUserCWID = 2;
-}
-
-message ReproveRequest{
-	repeated goalsPlanningIntegrationIdList goalsPlanningIntegrationIds = 1;
-	string reason = 2;
-	string returnUserCWID = 3;
-	bytes file = 4;
-	string fileName = 5;
-}
-
 message GetInApprovalGoalsPlanningRequest{
 	repeated cropIntegrationIdList cropIntegrationIds = 1;
 }
@@ -109,4 +96,15 @@ message brandmodel{
 
 message errorsmodel{
 	string message = 1;
+}
+
+message ExportRequest{
+	string goalsPlanningIntegrationId = 1;
+	string partnerIntegrationid = 2;
+}
+
+message ExportResponse{
+	bytes File = 1;
+	bool result = 2;
+	string message = 3;
 }
