@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Elastic.Clients.Elasticsearch;
+using Elastic.Transport;
 using Elasticsearch.Net;
 using Microsoft.Extensions.Configuration;
 using Nest;
@@ -39,12 +40,15 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
         {
 
             var settings = new ElasticsearchClientSettings(_cloudId, new Elastic.Transport.ApiKey(_apiKey))
-                .DefaultIndex(_goalsPlanningApproval);
+                .DefaultIndex(_goalsPlanningApproval)
+                .DisableDirectStreaming(false)
+                .EnableDebugMode();
+
             var client = new ElasticsearchClient(settings);
 
             var response = await client.SearchAsync<PlanningElasticViewModel>(s => s.Query(
                                                                                         q => q.Match(
-                                                                                        m => m.Field(f => f.CropIntegrationId)
+                                                                                        m => m.Field("cropIntegrationId.keyword")
                                                                                        .Query(cropIntegrationId.ToString()))));
 
             return response.Documents.ToList();
@@ -64,7 +68,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
 
             var response = await client.SearchAsync<PlanningElasticViewModel>(s => s.Query(
                                                                                         q => q.Match(
-                                                                                        m => m.Field(f => f.GoalsPlanningIntegrationId)
+                                                                                        m => m.Field("goalsPlanningIntegrationId.keyword")
                                                                                        .Query(goalsPlanningIntegrationId.ToString()))));
 
             var history = response.Documents
@@ -88,7 +92,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
 
             var response = await client.SearchAsync<PlanningTotalElasticViewModel>(s => s.Query(
                                                                                         q => q.Match(
-                                                                                        m => m.Field(f => f.CropIntegrationId)
+                                                                                        m => m.Field("cropIntegrationId.keyword")
                                                                                        .Query(cropIntegrationId.ToString()))));
 
             return response.Documents.FirstOrDefault();
@@ -104,7 +108,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
             var response = await client.SearchAsync<PlanningElasticViewModel>(s =>
                                                                              s.Query(
                                                                                q => q.Match(
-                                                                                 m => m.Field(f => f.CropIntegrationId)
+                                                                                m => m.Field("cropIntegrationId.keyword")
                                                                                   .Query(cropIntegrationId)
                                                                                           ))
                                                                                      );
@@ -120,7 +124,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
 
             var response = await client.SearchAsync<PlanningElasticViewModel>(s => s.Query(
                                                                                         q => q.Match(
-                                                                                        m => m.Field(f => f.GoalsPlanningIntegrationId)
+                                                                                        m => m.Field("goalsPlanningIntegrationId.keyword")
                                                                                        .Query(goalsPlanningIntegrationId.ToString()))));
 
             return response.Documents.FirstOrDefault();
@@ -137,7 +141,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
             var response = await client.SearchAsync<PlanningElasticViewModel>(s =>
                                                                              s.Query(
                                                                                q => q.Match(
-                                                                                 m => m.Field(f => f.GoalsPlanningIntegrationId)
+                                                                                 m => m.Field("goalsPlanningIntegrationId.keyword")
                                                                                   .Query(goalsPlanningId)
                                                                                           ))
                                                                                      );
@@ -153,6 +157,8 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
                 var apikey = new ApiKeyAuthenticationCredentials(_apiKey);
                 var pool = new CloudConnectionPool(_cloudId, apikey);
                 var client = new ElasticClient(new ConnectionSettings(_cloudId, apikey));
+
+
 
                 QueryContainer query = new QueryContainerDescriptor<PlanningElasticViewModel>();
 
@@ -177,7 +183,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
 
 
                 query = query && new QueryContainerDescriptor<PlanningElasticViewModel>()
-                     .Match(qs => qs.Field(fs => fs.CropIntegrationId).Query(cropIntegrationId.ToString()));
+                     .Match(qs =>qs.Field("cropIntegrationId.keyword").Query(cropIntegrationId.ToString()));
 
                 var result = await client.SearchAsync<PlanningElasticEntity>(s => s.Index(_goalsPlanningApproval)
                                                                                     .Query(q => q

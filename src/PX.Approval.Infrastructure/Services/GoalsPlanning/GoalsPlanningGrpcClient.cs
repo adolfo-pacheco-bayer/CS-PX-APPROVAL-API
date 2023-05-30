@@ -143,4 +143,22 @@ public class GoalsPlanningGrpcClient : IGoalsPlanningClient
 
         return list;
     }
+
+    public async Task<Stream> ExportExcelModel(Guid goalsPlanningIntegrationId, Guid partnerIntegrationId)
+    {
+        using var channel = GrpcChannel.ForAddress(_config.Value.GrpcUrl);
+        var client = new GoalsPlanningService.GoalsPlanningServiceClient(channel);
+
+        var request = new ExportRequest()
+        {
+            GoalsPlanningIntegrationId = goalsPlanningIntegrationId.ToString(),
+            PartnerIntegrationid = partnerIntegrationId.ToString()
+        };
+
+        var response = await client.ExportExcelModelAsync(request);
+        var stream = new MemoryStream();    
+        response.File.WriteTo(stream);
+
+        return stream;
+    }
 }
