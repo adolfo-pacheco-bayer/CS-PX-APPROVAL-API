@@ -19,7 +19,7 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
 
             return new FileStreamResult(result, "application/octet-stream")
             {
-                FileDownloadName = "GoalsPlanningExport.xlsx"
+                FileDownloadName = "ApprovalGoalsPlanningExport.xlsx"
             };
         }
     }
