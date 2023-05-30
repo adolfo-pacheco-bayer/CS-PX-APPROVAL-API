@@ -37,10 +37,9 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
                 return await _response.CreateErrorResponseAsync(System.Net.HttpStatusCode.BadRequest);
 
             var model = _mapper.Map<List<PlanningElasticViewModel>>(result);
-
             model = await ApplyFilters(model, request);
-
-            return await _response.CreateSuccessResponseAsync(model);
+                                    
+            return await _response.CreateSuccessResponseAsync(_mapper.Map<List<PlanningElasticViewModel>>(model));
 
         }
 
@@ -62,8 +61,6 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
                     }
                 }
             }
-
-
 
             return partnerTypes;
         }
@@ -88,31 +85,26 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
                 }
             }
 
-
-
             return planningStatus;
         }
 
         private async Task<List<PlanningElasticViewModel>> ApplyFilters(List<PlanningElasticViewModel> listResult, GetGoalsPlanningsQuery request)
         {
-            var listStatus =  ConvertToStatusType(request.Status).Result.Select(x => Enum.GetName(x)); ;
+            var listStatus =  ConvertToStatusType(request.Status).Result.Select(x => Enum.GetName(x)); 
             var listPartnerType =  ConvertToPartnerType(request.PartnerType).Result.Select(x => Enum.GetName(x));
 
 
             if (listStatus.Any() && listPartnerType.Any())
             {
                 listResult = listResult.Where(x => listStatus.Contains(x.Status) && listPartnerType.Contains(x.PartnerType)).ToList();
-
             }
             else if (!listStatus.Any() && listPartnerType.Any())
             {
                 listResult = listResult.Where(x => listPartnerType.Contains(x.PartnerType)).ToList();
-
             }
             else if (listStatus.Any() && !listPartnerType.Any())
             {
                 listResult = listResult.Where(x => listStatus.Contains(x.Status)).ToList();
-
             }
 
             return listResult;  

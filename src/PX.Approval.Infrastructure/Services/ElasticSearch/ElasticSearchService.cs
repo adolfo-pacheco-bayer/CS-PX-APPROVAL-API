@@ -158,8 +158,6 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
                 var pool = new CloudConnectionPool(_cloudId, apikey);
                 var client = new ElasticClient(new ConnectionSettings(_cloudId, apikey));
 
-
-
                 QueryContainer query = new QueryContainerDescriptor<PlanningElasticViewModel>();
 
                 if (!string.IsNullOrEmpty(name))
@@ -167,20 +165,6 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
                     query = query && new QueryContainerDescriptor<PlanningElasticViewModel>()
                             .MatchPhrasePrefix(qs => qs.Field(fs => fs.PartnerName).Query(name));
                 }
-
-                //foreach (var item in partnerTypes)
-                //{
-                //    query = query && new QueryContainerDescriptor<PlanningElasticViewModel>()
-                //            .Match(qs => qs.Field(fs => fs.Status).Query(Enum.GetName(item)));
-                //}
-
-                //foreach (var item in status)
-                //{
-                //    var t = Enum.GetName(item);
-                //    query = query && new QueryContainerDescriptor<PlanningElasticViewModel>()
-                //            .MatchPhrasePrefix(qs => qs.Field(fs => fs.Status).Query(t));
-                //}
-
 
                 query = query && new QueryContainerDescriptor<PlanningElasticViewModel>()
                      .Match(qs =>qs.Field("cropIntegrationId.keyword").Query(cropIntegrationId.ToString()));
