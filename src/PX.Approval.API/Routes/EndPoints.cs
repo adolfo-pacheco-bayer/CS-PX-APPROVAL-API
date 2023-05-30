@@ -51,16 +51,41 @@ namespace PX.Approval.API.Routes
                 });
             });
 
-            app.MapPut("api/approval/return-status-goals-planning", async ([FromServices] IMediator mediator, [FromBody] ReturnStatusRequest request) =>
+            //app.MapPut("api/approval/return-status-goals-planning", async ([FromServices] IMediator mediator, [FromBody] ReturnStatusRequest request) =>
+            //{
+            //    return await mediator.Send(new ReturnStatusGoalsPlanningCommand(request.Reason, request.GoalsPlanningIntegrationIds.ToList()));
+            //}).RequireAuthorization("Omega");
+            app.MapPut("api/approval/return-status-goals-planning", async (HttpRequest request, string? fileName, string payload, IMediator mediator) =>
             {
-                return await mediator.Send(new ReturnStatusGoalsPlanningCommand(request.Reason, request.GoalsPlanningIntegrationIds.ToList()));
-            }).RequireAuthorization("Omega");
+                using var reader = new StreamReader(request.Body, System.Text.Encoding.UTF8);
 
-            app.MapPut("api/approval/cancel-goals-planning", async ([FromServices] IMediator mediator, [FromBody] CancelRequest request) =>
+                using var ms = new MemoryStream();
+                await reader.BaseStream.CopyToAsync(ms);
+                var fileBytes = ms.ToArray();
+
+                var p = JsonConvert.DeserializeObject<ReturnStatusRequest>(payload);
+
+                return await mediator.Send(new ReturnStatusGoalsPlanningCommand(p.Reason, fileBytes, fileName, p.GoalsPlanningIntegrationIds.ToList()));
+
+            }).RequireAuthorization("Omega").Accepts<IFormFile>("application/pdf");
+
+            //app.MapPut("api/approval/cancel-goals-planning", async ([FromServices] IMediator mediator, [FromBody] CancelRequest request) =>
+            //{
+            //    return await mediator.Send(new CancelGoalsPlanningCommand(request.Reason, request.GoalsPlanningIntegrationIds.ToList()));
+            //}).RequireAuthorization("Omega");
+            app.MapPut("api/approval/cancel-goals-planning", async (HttpRequest request, string? fileName, string payload, IMediator mediator) =>
             {
-                return await mediator.Send(new CancelGoalsPlanningCommand(request.Reason, request.GoalsPlanningIntegrationIds.ToList()));
-            }).RequireAuthorization("Omega");
+                using var reader = new StreamReader(request.Body, System.Text.Encoding.UTF8);
 
+                using var ms = new MemoryStream();
+                await reader.BaseStream.CopyToAsync(ms);
+                var fileBytes = ms.ToArray();
+
+                var p = JsonConvert.DeserializeObject<CancelRequest>(payload);
+
+                return await mediator.Send(new CancelGoalsPlanningCommand(p.Reason, fileBytes, fileName, p.GoalsPlanningIntegrationIds.ToList()));
+
+            }).RequireAuthorization("Omega").Accepts<IFormFile>("application/pdf");
 
             app.MapGet("api/approval/graphic-partnertype/{cropintegrationid}", async (Guid cropintegrationid, [FromServices] IMediator mediator) =>
             {
