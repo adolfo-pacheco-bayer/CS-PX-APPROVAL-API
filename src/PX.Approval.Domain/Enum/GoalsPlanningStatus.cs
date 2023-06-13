@@ -7,6 +7,7 @@
         InApproval = 3,
         Canceled = 4,
         Approved = 5,
-        Reproved = 6
+        Reproved = 6,
+        Returned = 7
     }
 }

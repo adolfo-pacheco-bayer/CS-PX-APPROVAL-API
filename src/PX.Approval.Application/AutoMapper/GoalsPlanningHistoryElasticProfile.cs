@@ -33,6 +33,7 @@ namespace PX.Approval.Application.AutoMapper
             GoalsPlanningStatus.Canceled => "Cancelado",
             GoalsPlanningStatus.InPreparation => "Em Elaboração",
             GoalsPlanningStatus.Reproved => "Reprovado",
+            GoalsPlanningStatus.Returned => "Retornado",
             _=> string.Empty
         };
     }
