@@ -93,7 +93,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
             var response = await client.SearchAsync<PlanningTotalElasticViewModel>(s => s.Query(
                                                                                         q => q.Match(
                                                                                         m => m.Field("cropIntegrationId.keyword")
-                                                                                       .Query(cropIntegrationId.ToString()))));
+                                                                                       .Query(cropIntegrationId.ToString()))).Size(1000));
 
             return response.Documents.LastOrDefault();
         }
@@ -110,7 +110,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
                                                                                q => q.Match(
                                                                                 m => m.Field("cropIntegrationId.keyword")
                                                                                   .Query(cropIntegrationId)
-                                                                                          ))
+                                                                                          )).Size(1000)
                                                                                      );
             return response.Documents.ToList();
         }
