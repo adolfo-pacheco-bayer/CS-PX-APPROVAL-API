@@ -95,7 +95,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
                                                                                         m => m.Field("cropIntegrationId.keyword")
                                                                                        .Query(cropIntegrationId.ToString()))));
 
-            return response.Documents.FirstOrDefault();
+            return response.Documents.LastOrDefault();
         }
 
         public async Task<List<PlanningElasticViewModel>> GetGraphicsByCropIntegrationId(string cropIntegrationId)
