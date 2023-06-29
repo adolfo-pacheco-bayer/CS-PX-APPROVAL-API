@@ -14,7 +14,7 @@ namespace PX.Approval.Application.AutoMapper
             CreateMap<GoalsPlanningStatusHistory, GoalsPlanningStatusHistoryViewModel>()
                     .ForMember(dest => dest.GoalsPlanningId, cfg => cfg.MapFrom(source => source.GoalsPlanningId))
                     .ForMember(dest => dest.Status, cfg => cfg.MapFrom(source => TranslateStatus(source.Status)))
-                    .ForMember(dest => dest.StatusChanged, cfg => cfg.MapFrom(source => source.StatusChanged))
+                    .ForMember(dest => dest.StatusChanged, cfg => cfg.MapFrom(source => source.StatusChanged.ToLocalTime()))
                     .ForMember(dest => dest.StatusChangedUserCWID, cfg => cfg.MapFrom(source => source.StatusChangedUserCWID))
                     .ForMember(dest => dest.Reason, cfg => cfg.MapFrom(source => source.Reason))
                     .ForMember(dest => dest.IntegrationId, cfg => cfg.MapFrom(source => source.IntegrationId))
