@@ -1,4 +1,4 @@
-﻿    using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using PX.Approval.API.Models;
@@ -50,7 +50,7 @@ namespace PX.Approval.API.Routes
                     CropIntegrationId = cropintegrationid
                 });
             });
-            
+
             app.MapPut("api/approval/return-status-goals-planning", async (HttpRequest request, string? fileName, string payload, IMediator mediator) =>
             {
                 using var reader = new StreamReader(request.Body, System.Text.Encoding.UTF8);
@@ -64,7 +64,7 @@ namespace PX.Approval.API.Routes
                 return await mediator.Send(new ReturnStatusGoalsPlanningCommand(p.Reason, fileBytes, fileName, p.GoalsPlanningIntegrationIds.ToList()));
 
             }).RequireAuthorization("Omega").Accepts<IFormFile>("application/pdf");
-            
+
             app.MapPut("api/approval/cancel-goals-planning", async (HttpRequest request, string? fileName, string payload, IMediator mediator) =>
             {
                 using var reader = new StreamReader(request.Body, System.Text.Encoding.UTF8);
@@ -143,20 +143,20 @@ namespace PX.Approval.API.Routes
                 return await mediator.Send(new GetGoalsPlanningsQuery()
                 {
                     CropIntegrationId = cropintegrationid,
-                    Status = status, 
+                    Status = status,
                     Name = name,
                     PartnerType = partnerType
-                }); 
+                });
             });
 
             app.MapGet("api/approval/history/{goalsplanningintegrationId}", async (Guid goalsPlanningIntegrationId, [FromServices] IMediator mediator) =>
             {
-                return await mediator.Send(new GetApprovalHistoryQuery(goalsPlanningIntegrationId)); 
+                return await mediator.Send(new GetApprovalHistoryQuery(goalsPlanningIntegrationId));
             });
 
             app.MapGet("api/approval/{goalsplanningIntegrationId}/document/download/{fileName}", async (Guid goalsPlanningIntegrationId, string fileName, [FromServices] IMediator mediator) =>
             {
-                var file =  await mediator.Send(new DownloadApprovalDocumentQuery(fileName, goalsPlanningIntegrationId));
+                var file = await mediator.Send(new DownloadApprovalDocumentQuery(fileName, goalsPlanningIntegrationId));
 
                 if (file is null)
                     return Results.NotFound();
