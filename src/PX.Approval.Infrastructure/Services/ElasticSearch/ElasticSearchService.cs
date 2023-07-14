@@ -27,12 +27,6 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
             _totalsIndex = configuration.GetSection("ElasticConfiguration:ElasticSearchIndexTotalApproval").Value;
             _Uri = configuration.GetSection("ElasticConfiguration:Uri").Value;
             _mapper = mapper;
-
-            _settings = new ElasticsearchClientSettings(cloudId, new Elastic.Transport.ApiKey(apiKey))
-
-                .DisableDirectStreaming(false)
-                .EnableDebugMode();
-
         }
 
         /// <summary>
@@ -42,10 +36,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
         /// <returns></returns>
         public async Task<List<PlanningElasticViewModel>> Get(Guid cropIntegrationId)
         {
-            _settings.DefaultIndex(_goalsPlanningIndexName);
-            var client = new ElasticsearchClient(_settings);
-
-            var settings = new ElasticsearchClientSettings(_cloudId, new Elastic.Transport.ApiKey(_apiKey))
+          var settings = new ElasticsearchClientSettings(_cloudId, new Elastic.Transport.ApiKey(_apiKey))
                 .DefaultIndex(_goalsPlanningIndex)
                 .DisableDirectStreaming(false)
                 .EnableDebugMode();
@@ -67,10 +58,8 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
         /// <returns></returns>
         public async Task<IEnumerable<GoalsPlanningStatusHistoryViewModel>> GetHistory(Guid goalsPlanningIntegrationId)
         {
-            _settings.DefaultIndex(_goalsPlanningIndexName);
-            var client = new ElasticsearchClient(_settings);
-
-            var settings = new ElasticsearchClientSettings(_cloudId, new ApiKey(_apiKey))
+         
+            var settings = new ElasticsearchClientSettings(_cloudId, new Elastic.Transport.ApiKey(_apiKey))
                 .DefaultIndex(_goalsPlanningIndex);
             var client = new ElasticsearchClient(settings);
 
@@ -94,7 +83,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
         /// <returns></returns>
         public async Task<PlanningTotalElasticViewModel> GetTotal(Guid cropIntegrationId)
         {
-            var settings = new ElasticsearchClientSettings(_cloudId, new ApiKey(_apiKey))
+            var settings = new ElasticsearchClientSettings(_cloudId, new Elastic.Transport.ApiKey(_apiKey))
                  .DefaultIndex(_totalsIndex);
             var client = new ElasticsearchClient(settings);
 
@@ -109,7 +98,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
 
         public async Task<List<PlanningElasticViewModel>> GetGraphicsByCropIntegrationId(string cropIntegrationId)
         {
-            var settings = new ElasticsearchClientSettings(_cloudId, new ApiKey(_apiKey))
+            var settings = new ElasticsearchClientSettings(_cloudId, new Elastic.Transport.ApiKey(_apiKey))
               .DefaultIndex(_goalsPlanningIndex);
             var client = new ElasticsearchClient(settings);
 
@@ -140,7 +129,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
 
         public async Task<PlanningElasticViewModel> GetBrandsByGoalsPlanningId(string goalsPlanningId)
         {
-            var settings = new ElasticsearchClientSettings(_cloudId, new ApiKey(_apiKey))
+            var settings = new ElasticsearchClientSettings(_cloudId, new Elastic.Transport.ApiKey(_apiKey))
               .DefaultIndex(_goalsPlanningIndex);
             var client = new ElasticsearchClient(settings);
 
