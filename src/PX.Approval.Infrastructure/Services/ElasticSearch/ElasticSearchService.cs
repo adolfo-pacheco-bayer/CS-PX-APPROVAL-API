@@ -1,13 +1,10 @@
 ﻿using AutoMapper;
 using Elastic.Clients.Elasticsearch;
-using Elastic.Transport;
 using Elasticsearch.Net;
 using Microsoft.Extensions.Configuration;
 using Nest;
 using PX.Approval.Application.Common.Interfaces;
 using PX.Approval.Domain.Models;
-using ApiKey = Elastic.Transport.ApiKey;
-using NestSuffix = Nest.SuffixExtensions;
 
 namespace PX.Approval.Infrastructure.Services.ElasticSearch
 {
@@ -19,6 +16,8 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
         private string _totalsIndex;
         private string _Uri;
         private IMapper _mapper;
+        private ElasticsearchClientSettings _settings;
+
 
         public ElasticSearchService(IConfiguration configuration, IMapper mapper)
         {
@@ -29,6 +28,11 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
             _Uri = configuration.GetSection("ElasticConfiguration:Uri").Value;
             _mapper = mapper;
 
+            _settings = new ElasticsearchClientSettings(cloudId, new Elastic.Transport.ApiKey(apiKey))
+                
+                .DisableDirectStreaming(false)
+                .EnableDebugMode();
+
         }
 
         /// <summary>
@@ -38,6 +42,8 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
         /// <returns></returns>
         public async Task<List<PlanningElasticViewModel>> Get(Guid cropIntegrationId)
         {
+            _settings.DefaultIndex(_goalsPlanningIndexName);
+            var client = new ElasticsearchClient(_settings);
 
             var settings = new ElasticsearchClientSettings(_cloudId, new Elastic.Transport.ApiKey(_apiKey))
                 .DefaultIndex(_goalsPlanningIndex)
@@ -61,6 +67,8 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
         /// <returns></returns>
         public async Task<IEnumerable<GoalsPlanningStatusHistoryViewModel>> GetHistory(Guid goalsPlanningIntegrationId)
         {
+            _settings.DefaultIndex(_goalsPlanningIndexName);
+            var client = new ElasticsearchClient(_settings);
 
             var settings = new ElasticsearchClientSettings(_cloudId, new ApiKey(_apiKey))
                 .DefaultIndex(_goalsPlanningIndex);
@@ -93,7 +101,8 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
             var response = await client.SearchAsync<PlanningTotalElasticViewModel>(s => s.Query(
                                                                                         q => q.Match(
                                                                                         m => m.Field("cropIntegrationId.keyword")
-                                                                                       .Query(cropIntegrationId.ToString()))).Size(1000));
+                                                                                              .Query(cropIntegrationId.ToString())))
+                                                                                              .Size(1000));
 
             return response.Documents.LastOrDefault();
         }
@@ -105,13 +114,11 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
             var client = new ElasticsearchClient(settings);
 
 
-            var response = await client.SearchAsync<PlanningElasticViewModel>(s =>
-                                                                             s.Query(
-                                                                               q => q.Match(
-                                                                                m => m.Field("cropIntegrationId.keyword")
-                                                                                  .Query(cropIntegrationId)
-                                                                                          )).Size(1000)
-                                                                                     );
+            var response = await client.SearchAsync<PlanningElasticViewModel>(s => s.Query(
+                                                                                    q => q.Match(
+                                                                                    m => m.Field("cropIntegrationId.keyword")
+                                                                                          .Query(cropIntegrationId)))
+                                                                                          .Size(1000));
             return response.Documents.ToList();
         }
 
@@ -125,7 +132,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
             var response = await client.SearchAsync<PlanningElasticViewModel>(s => s.Query(
                                                                                         q => q.Match(
                                                                                         m => m.Field("goalsPlanningIntegrationId.keyword")
-                                                                                       .Query(goalsPlanningIntegrationId.ToString()))));
+                                                                                              .Query(goalsPlanningIntegrationId.ToString()))));
 
             return response.Documents.FirstOrDefault();
         }
@@ -141,10 +148,8 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
             var response = await client.SearchAsync<PlanningElasticViewModel>(s =>
                                                                              s.Query(
                                                                                q => q.Match(
-                                                                                 m => m.Field("goalsPlanningIntegrationId.keyword")
-                                                                                  .Query(goalsPlanningId)
-                                                                                          ))
-                                                                                     );
+                                                                               m => m.Field("goalsPlanningIntegrationId.keyword")
+                                                                                     .Query(goalsPlanningId))));
             return response.Documents.FirstOrDefault();
         }
 
@@ -179,9 +184,8 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
                                                                                            .MinimumShouldMatch(1)
                                                                                         )
                                                                                      )
-                                                                                        .Size(10000)
-                                                                                        .From(0)
-                                                                                );
+                                                                                     .Size(10000)
+                                                                                     .From(0));
 
                 return result.Documents.ToList();
             //}

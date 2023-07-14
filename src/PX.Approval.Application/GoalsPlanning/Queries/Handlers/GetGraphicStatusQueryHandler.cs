@@ -24,13 +24,21 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
         public async Task<Response> Handle(GetGraphicStatusQuery request, CancellationToken cancellationToken)
         {
             var goalsPlannings = await _elasticSearchClient.GetGraphicsByCropIntegrationId(request.CropIntegrationId.ToString());
+
+            goalsPlannings = goalsPlannings.Where(x => x.Status != null).ToList();
+
             var graphic = new GraphicsStatusViewModel();
-            graphic.InApproval = ((double)goalsPlannings.Count(i => i.Status.Equals((int)GoalsPlanningStatus.InApproval))) / goalsPlannings.Count() * 100;
-            graphic.New = ((double)goalsPlannings.Count(i => i.Status.Equals((int)GoalsPlanningStatus.New))) / goalsPlannings.Count() * 100;
-            graphic.InPreparation = ((double)goalsPlannings.Count(i => i.Status.Equals((int)GoalsPlanningStatus.InPreparation)))  / goalsPlannings.Count() * 100;
-            graphic.Approved = ((double)goalsPlannings.Count(i => i.Status.Equals((int)GoalsPlanningStatus.Approved)))  / goalsPlannings.Count() * 100;
-            graphic.Canceled = ((double)goalsPlannings.Count(i => i.Status.Equals((int)GoalsPlanningStatus.Canceled))) / goalsPlannings.Count() * 100;
-            graphic.GoalsPlanningTotal = goalsPlannings.Count();
+
+            if (goalsPlannings.Any())
+            {
+                graphic.InApproval = ((double)goalsPlannings.Count(i => i.Status.ToLower().Equals(Enum.GetName(GoalsPlanningStatus.InApproval).ToLower()))) / goalsPlannings.Count() * 100;
+                graphic.New = ((double)goalsPlannings.Count(i => i.Status.ToLower().Equals(Enum.GetName(GoalsPlanningStatus.New).ToLower()))) / goalsPlannings.Count() * 100;
+                graphic.InPreparation = ((double)goalsPlannings.Count(i => i.Status.ToLower().Equals(Enum.GetName(GoalsPlanningStatus.InPreparation).ToLower()))) / goalsPlannings.Count() * 100;
+                graphic.Approved = ((double)goalsPlannings.Count(i => i.Status.ToLower().Equals(Enum.GetName(GoalsPlanningStatus.Approved).ToLower()))) / goalsPlannings.Count() * 100;
+                graphic.Canceled = ((double)goalsPlannings.Count(i => i.Status.ToLower().Equals(Enum.GetName(GoalsPlanningStatus.Canceled).ToLower()))) / goalsPlannings.Count() * 100;
+                graphic.GoalsPlanningTotal = goalsPlannings.Count();
+
+            }
 
             return await _response.CreateSuccessResponseAsync(graphic);
         }
