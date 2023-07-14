@@ -30,7 +30,7 @@ namespace PX.Approval.Application.AutoMapper
                     .ForMember(dest => dest.Total, cfg => cfg.MapFrom(source => source.Total));
 
             CreateMap<PlanningElasticViewModel, PlanningElasticViewModel>()
-                    .ForMember(dest => dest.PartnerType, cfg => cfg.MapFrom(source => Translations.ResourceManager.GetString(source.PartnerType)))
+                    .ForMember(dest => dest.PartnerType, cfg => cfg.MapFrom(source => source.PartnerType.ToString()))
                     .ForMember(dest => dest.Id, cfg => cfg.MapFrom(source => source.Id))
                     .ForMember(dest => dest.FirstSellinPeriodRequired, cfg => cfg.MapFrom(source => source.FirstSellinPeriodRequired))
                     .ForMember(dest => dest.SelloutCp, cfg => cfg.MapFrom(source => source.SelloutCp))

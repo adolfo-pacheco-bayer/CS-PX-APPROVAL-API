@@ -25,9 +25,9 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
         {
             var goalsPlannings = await _elasticSearchClient.GetGraphicsByCropIntegrationId(request.CropIntegrationId.ToString());
             var graphic = new GraphicPartnerType();
-            graphic.Distributor = ((double)goalsPlannings.Count(i => i.PartnerType.ToLower().Equals(Enum.GetName(PartnerType.Distributor).ToLower()))) / goalsPlannings.Count() * 100;
-            graphic.Wholesaler = ((double)goalsPlannings.Count(i => i.PartnerType.ToLower().Equals(Enum.GetName(PartnerType.Wholesaler).ToLower()))) / goalsPlannings.Count() * 100;
-            graphic.Cooperative = ((double)goalsPlannings.Count(i => i.PartnerType.ToLower().Equals(Enum.GetName(PartnerType.Cooperative).ToLower()))) / goalsPlannings.Count() * 100;
+            graphic.Distributor = ((double)goalsPlannings.Count(i => i.PartnerType.Equals((int)PartnerType.Distributor))) / goalsPlannings.Count() * 100;
+            graphic.Wholesaler = ((double)goalsPlannings.Count(i => i.PartnerType.Equals((int)PartnerType.Wholesaler))) / goalsPlannings.Count() * 100;
+            graphic.Cooperative = ((double)goalsPlannings.Count(i => i.PartnerType.Equals((int)PartnerType.Cooperative))) / goalsPlannings.Count() * 100;
             return await _response.CreateSuccessResponseAsync(graphic);
         }
     }

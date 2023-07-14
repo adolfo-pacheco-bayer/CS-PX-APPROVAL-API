@@ -36,7 +36,7 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
                 if (goalsPlannings.Brands == null)
                     return await _response.CreateSuccessResponseAsync(new List<VolumeBrandsViewModel>());
 
-                var brands = goalsPlannings.Brands.Where(x => x.Type == Domain.Models.ProductFamilyType.CP);
+                var brands = goalsPlannings.Brands.Where(x => x.Type == Domain.Models.ProductFamilyType.CP.ToString());
 
                 var volumeBrands = _mapper.Map<IEnumerable<VolumeBrandsViewModel>>(brands);
 
