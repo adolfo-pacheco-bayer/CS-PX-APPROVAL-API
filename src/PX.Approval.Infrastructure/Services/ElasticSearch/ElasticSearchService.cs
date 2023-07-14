@@ -29,7 +29,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
             _mapper = mapper;
 
             _settings = new ElasticsearchClientSettings(cloudId, new Elastic.Transport.ApiKey(apiKey))
-                
+
                 .DisableDirectStreaming(false)
                 .EnableDebugMode();
 
@@ -156,12 +156,11 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
 
         public async Task<List<PlanningElasticEntity>> GetByFilter(Guid cropIntegrationId, string name)
         {
-            //try
-            //{
+            try
+            {
                 var uri = new Uri(_Uri);
-                var apikey = new ApiKeyAuthenticationCredentials(_apiKey);                
-                var client = new ElasticClient(new ConnectionSettings(_cloudId, apikey).DisableDirectStreaming(false)
-                .EnableDebugMode());
+                var apikey = new ApiKeyAuthenticationCredentials(_apiKey);
+                var client = new ElasticClient(new ConnectionSettings(_cloudId, apikey));
 
 
                 QueryContainer query = new QueryContainerDescriptor<PlanningElasticViewModel>();
@@ -173,27 +172,27 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
                 }
 
                 query = query && new QueryContainerDescriptor<PlanningElasticViewModel>()
-                     .Match(qs =>qs.Field("cropIntegrationId.keyword").Query(cropIntegrationId.ToString()));
+                     .Match(qs => qs.Field("cropIntegrationId.keyword").Query(cropIntegrationId.ToString()));
 
-               var result = await client.SearchAsync<PlanningElasticEntity>(s => s.Index(_goalsPlanningIndex)
-                                                                                    .Query(q => q
-                                                                                        .Bool(b => b
-                                                                                            .Should(
-                                                                                                bs => query
-                                                                                            )
-                                                                                           .MinimumShouldMatch(1)
-                                                                                        )
-                                                                                     )
-                                                                                     .Size(10000)
-                                                                                     .From(0));
+                var result = await client.SearchAsync<PlanningElasticEntity>(s => s.Index(_goalsPlanningIndex)
+                                                                                     .Query(q => q
+                                                                                         .Bool(b => b
+                                                                                             .Should(
+                                                                                                 bs => query
+                                                                                             )
+                                                                                            .MinimumShouldMatch(1)
+                                                                                         )
+                                                                                      )
+                                                                                      .Size(10000)
+                                                                                      .From(0));
 
                 return result.Documents.ToList();
-            //}
-            //catch (Exception)
-            //{
+            }
+            catch (Exception)
+            {
 
-            //    throw;
-            //}
+                throw;
+            }
 
         }
     }
