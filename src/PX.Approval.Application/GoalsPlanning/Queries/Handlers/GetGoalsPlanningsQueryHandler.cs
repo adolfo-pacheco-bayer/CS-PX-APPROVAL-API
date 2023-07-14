@@ -90,13 +90,12 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
 
         private async Task<List<PlanningElasticViewModel>> ApplyFilters(List<PlanningElasticViewModel> listResult, GetGoalsPlanningsQuery request)
         {
-            var listStatus =  ConvertToStatusType(request.Status).Result.Select(x => Enum.GetName(x)); 
-            var listPartnerType =  ConvertToPartnerType(request.PartnerType).Result.Select(x => Enum.GetName(x));
-
+            var listStatus = ConvertToStatusType(request.Status).Result.Select(x => (int)x).ToList();
+            var listPartnerType = ConvertToPartnerType(request.PartnerType).Result.Select(x => (int)x).ToList();
 
             if (listStatus.Any() && listPartnerType.Any())
             {
-                listResult = listResult.Where(x => listStatus.Contains(x.Status) && listPartnerType.Contains(x.PartnerType)).ToList();
+                listResult = listResult.Where(x => listStatus.Contains(int.Parse(x.Status)) && listPartnerType.Contains(x.PartnerType)).ToList();
             }
             else if (!listStatus.Any() && listPartnerType.Any())
             {
@@ -104,7 +103,7 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
             }
             else if (listStatus.Any() && !listPartnerType.Any())
             {
-                listResult = listResult.Where(x => listStatus.Contains(x.Status)).ToList();
+                listResult = listResult.Where(x => listStatus.Contains(int.Parse(x.Status))).ToList();
             }
 
             return listResult;  

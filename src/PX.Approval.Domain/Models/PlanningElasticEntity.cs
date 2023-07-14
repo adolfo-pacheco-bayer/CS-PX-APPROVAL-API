@@ -19,10 +19,10 @@
         public string EmailGoalsPlanning { get; set; }
         public string CwidcpApprover { get; set; }
         public string CwidSeedsApprover { get; set; }
-        public Guid PartnerIntegrationId { get; set; }
+        public string PartnerIntegrationId { get; set; }
         public bool FirstSellinPeriodRequired { get; set; }
         public int DaysInQueue { get; set; }
-        public string PartnerType { get; set; }
-        public List<GoalsPlanningStatusHistory> MyProperty { get; set; }
+        public int PartnerType { get; set; }
+        public List<GoalsPlanningStatusHistory> StatusHistory { get; set; }
     }
 }

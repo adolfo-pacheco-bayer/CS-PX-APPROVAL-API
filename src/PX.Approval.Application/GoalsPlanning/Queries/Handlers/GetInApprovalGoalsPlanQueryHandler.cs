@@ -29,22 +29,22 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
 
 
             //TO DO REFACTORY
-            foreach (var item in result)
-            {
-                if (item.PartnerType.Equals("Wholesaler"))
-                {
-                    item.PartnerType = "Atacadista";
-                }
-                else if (item.PartnerType.Equals("Distributor"))
-                {
-                    item.PartnerType = "Distribuidor";
-                }
-                else
-                {
-                    item.PartnerType = "Cooperativa";
-                }
-                item.DaysInQueue = DateTime.Now.Subtract(item.LastUpdate).Days;
-            }
+            //foreach (var item in result)
+            //{
+            //    if (item.PartnerType.Equals("Wholesaler"))
+            //    {
+            //        item.PartnerType = "Atacadista";
+            //    }
+            //    else if (item.PartnerType.Equals("Distributor"))
+            //    {
+            //        item.PartnerType = "Distribuidor";
+            //    }
+            //    else
+            //    {
+            //        item.PartnerType = "Cooperativa";
+            //    }
+            //    item.DaysInQueue = DateTime.Now.Subtract(item.LastUpdate).Days;
+            //}
             return await _response.CreateSuccessResponseAsync(result.Where(x => x.Status.Equals("InApproval")));
             
         }

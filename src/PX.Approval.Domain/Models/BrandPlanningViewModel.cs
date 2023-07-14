@@ -7,7 +7,7 @@
 
         public string Name { get; set; }
         public decimal? Price { get; set; }
-        public ProductFamilyType Type { get; set; }
+        public string Type { get; set; }
 
         /// <summary>
         /// Biotechnology. Used only for seeds type

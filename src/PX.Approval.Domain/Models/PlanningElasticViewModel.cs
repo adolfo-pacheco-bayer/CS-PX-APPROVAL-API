@@ -1,4 +1,6 @@
-﻿namespace PX.Approval.Domain.Models
+﻿using PX.Crop.Domain.Enum;
+
+namespace PX.Approval.Domain.Models
 {
     public class PlanningElasticViewModel
     {
@@ -16,7 +18,7 @@
         public bool IsGoalPlanningValued { get; set; }
         public List<BrandPlanningViewModel> Brands { get; set; }
 
-        public string PartnerType { get; set; }
+        public int PartnerType { get; set; }
 
         public string CropIntegrationId { get; set; }
 
