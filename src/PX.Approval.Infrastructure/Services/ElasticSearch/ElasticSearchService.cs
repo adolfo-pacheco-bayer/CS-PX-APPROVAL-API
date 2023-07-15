@@ -4,6 +4,7 @@ using Elasticsearch.Net;
 using Microsoft.Extensions.Configuration;
 using Nest;
 using PX.Approval.Application.Common.Interfaces;
+using PX.Approval.Application.ViewModel;
 using PX.Approval.Domain.Models;
 
 namespace PX.Approval.Infrastructure.Services.ElasticSearch
@@ -36,10 +37,10 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
         /// <returns></returns>
         public async Task<List<PlanningElasticViewModel>> Get(Guid cropIntegrationId)
         {
-          var settings = new ElasticsearchClientSettings(_cloudId, new Elastic.Transport.ApiKey(_apiKey))
-                .DefaultIndex(_goalsPlanningIndex)
-                .DisableDirectStreaming(false)
-                .EnableDebugMode();
+            var settings = new ElasticsearchClientSettings(_cloudId, new Elastic.Transport.ApiKey(_apiKey))
+                  .DefaultIndex(_goalsPlanningIndex)
+                  .DisableDirectStreaming(false)
+                  .EnableDebugMode();
 
             var client = new ElasticsearchClient(settings);
 
@@ -58,7 +59,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
         /// <returns></returns>
         public async Task<IEnumerable<GoalsPlanningStatusHistoryViewModel>> GetHistory(Guid goalsPlanningIntegrationId)
         {
-         
+
             var settings = new ElasticsearchClientSettings(_cloudId, new Elastic.Transport.ApiKey(_apiKey))
                 .DefaultIndex(_goalsPlanningIndex);
             var client = new ElasticsearchClient(settings);
@@ -81,7 +82,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
         /// </summary>
         /// <param name="cropIntegrationId"></param>
         /// <returns></returns>
-        public async Task<PlanningTotalViewModel> GetTotal(Guid cropIntegrationId)
+        public async Task<TotalViewModel> GetTotal(Guid cropIntegrationId)
         {
             var settings = new ElasticsearchClientSettings(_cloudId, new Elastic.Transport.ApiKey(_apiKey))
                  .DefaultIndex(_totalsIndex);
@@ -93,7 +94,15 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
                                                                                               .Query(cropIntegrationId.ToString())))
                                                                                               .Size(1000));
 
-            return response.Documents.LastOrDefault();
+            return new TotalViewModel()
+            {
+                Quimio = response.Documents.FirstOrDefault()?.CPTotalValue ?? 0,
+                Seeds = response.Documents.FirstOrDefault()?.SeedsTotalVolume ?? 0,
+                FirstPeriod = response.Documents.FirstOrDefault()?.FirstPeriodValue ?? 0,
+                SecondPeriod = response.Documents.FirstOrDefault()?.SecondPeriodValue ?? 0,
+                CropIntegrationId = cropIntegrationId,
+                Sellout = response.Documents.FirstOrDefault()?.SelloutValue ?? 0
+            };
         }
 
         public async Task<List<PlanningElasticViewModel>> GetGraphicsByCropIntegrationId(string cropIntegrationId)

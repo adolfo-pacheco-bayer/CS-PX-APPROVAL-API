@@ -1,4 +1,5 @@
-﻿using PX.Approval.Domain.Models;
+﻿using PX.Approval.Application.ViewModel;
+using PX.Approval.Domain.Models;
 
 namespace PX.Approval.Application.Common.Interfaces
 {
@@ -9,7 +10,7 @@ namespace PX.Approval.Application.Common.Interfaces
 
         Task<List<PlanningElasticViewModel>> GetGraphicsByCropIntegrationId(string cropIntegrationId);
 
-        Task<PlanningTotalViewModel> GetTotal(Guid cropIntegrationId);
+        Task<TotalViewModel> GetTotal(Guid cropIntegrationId);
 
         Task<PlanningElasticViewModel> GetByGoalsPlanningIntegrationId(Guid goalsPlanningIntegrationId);
         Task<PlanningElasticViewModel> GetBrandsByGoalsPlanningId(string goalsPlanningId);
