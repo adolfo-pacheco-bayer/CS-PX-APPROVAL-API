@@ -30,9 +30,9 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
 
             if (goalsPlannings.Any())
             {
-                graphic.Distributor = ((double)goalsPlannings.Count(i => i.PartnerType.Equals(PartnerType.Distributor))) / goalsPlannings.Count() * 100;
-                graphic.Wholesaler = ((double)goalsPlannings.Count(i => i.PartnerType.Equals(PartnerType.Wholesaler))) / goalsPlannings.Count() * 100;
-                graphic.Cooperative = ((double)goalsPlannings.Count(i => i.PartnerType.Equals(PartnerType.Cooperative))) / goalsPlannings.Count() * 100;
+                graphic.Distributor = ((double)goalsPlannings.Count(i => i.PartnerType == PartnerType.Distributor.ToString())) / goalsPlannings.Count() * 100;
+                graphic.Wholesaler = ((double)goalsPlannings.Count(i => i.PartnerType == PartnerType.Wholesaler.ToString())) / goalsPlannings.Count() * 100;
+                graphic.Cooperative = ((double)goalsPlannings.Count(i => i.PartnerType == PartnerType.Cooperative.ToString())) / goalsPlannings.Count() * 100;
             }
                         
             return await _response.CreateSuccessResponseAsync(graphic);

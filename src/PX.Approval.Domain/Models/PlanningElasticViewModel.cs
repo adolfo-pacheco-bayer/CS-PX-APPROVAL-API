@@ -18,7 +18,7 @@ namespace PX.Approval.Domain.Models
         public bool IsGoalPlanningValued { get; set; }
         public List<BrandPlanningViewModel> Brands { get; set; }
 
-        public int PartnerType { get; set; }
+        public string PartnerType { get; set; }
 
         public string CropIntegrationId { get; set; }
 
