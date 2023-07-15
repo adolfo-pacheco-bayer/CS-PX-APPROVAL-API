@@ -22,7 +22,7 @@
         public string PartnerIntegrationId { get; set; }
         public bool FirstSellinPeriodRequired { get; set; }
         public int DaysInQueue { get; set; }
-        public int PartnerType { get; set; }
+        public string PartnerType { get; set; }
         public List<GoalsPlanningStatusHistory> StatusHistory { get; set; }
     }
 }

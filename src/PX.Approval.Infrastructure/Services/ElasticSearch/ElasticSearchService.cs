@@ -81,13 +81,13 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
         /// </summary>
         /// <param name="cropIntegrationId"></param>
         /// <returns></returns>
-        public async Task<PlanningTotalElasticViewModel> GetTotal(Guid cropIntegrationId)
+        public async Task<PlanningTotalViewModel> GetTotal(Guid cropIntegrationId)
         {
             var settings = new ElasticsearchClientSettings(_cloudId, new Elastic.Transport.ApiKey(_apiKey))
                  .DefaultIndex(_totalsIndex);
             var client = new ElasticsearchClient(settings);
 
-            var response = await client.SearchAsync<PlanningTotalElasticViewModel>(s => s.Query(
+            var response = await client.SearchAsync<PlanningTotalViewModel>(s => s.Query(
                                                                                         q => q.Match(
                                                                                         m => m.Field("cropIntegrationId.keyword")
                                                                                               .Query(cropIntegrationId.ToString())))

@@ -31,11 +31,11 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
 
             if (goalsPlannings.Any())
             {
-                graphic.InApproval = ((double)goalsPlannings.Count(i => i.Status.Equals(GoalsPlanningStatus.InApproval))) / goalsPlannings.Count() * 100;
-                graphic.New = ((double)goalsPlannings.Count(i => i.Status.Equals(GoalsPlanningStatus.New))) / goalsPlannings.Count() * 100;
-                graphic.InPreparation = ((double)goalsPlannings.Count(i => i.Status.Equals(GoalsPlanningStatus.InPreparation))) / goalsPlannings.Count() * 100;
-                graphic.Approved = ((double)goalsPlannings.Count(i => i.Status.Equals(GoalsPlanningStatus.Approved))) / goalsPlannings.Count() * 100;
-                graphic.Canceled = ((double)goalsPlannings.Count(i => i.Status.Equals(GoalsPlanningStatus.Canceled))) / goalsPlannings.Count() * 100;
+                graphic.InApproval = ((double)goalsPlannings.Count(i => i.Status == GoalsPlanningStatus.InApproval.ToString())) / goalsPlannings.Count() * 100;
+                graphic.New = ((double)goalsPlannings.Count(i => i.Status ==GoalsPlanningStatus.New.ToString())) / goalsPlannings.Count() * 100;
+                graphic.InPreparation = ((double)goalsPlannings.Count(i => i.Status == GoalsPlanningStatus.InPreparation.ToString())) / goalsPlannings.Count() * 100;
+                graphic.Approved = ((double)goalsPlannings.Count(i => i.Status == GoalsPlanningStatus.Approved.ToString())) / goalsPlannings.Count() * 100;
+                graphic.Canceled = ((double)goalsPlannings.Count(i => i.Status == GoalsPlanningStatus.Canceled.ToString())) / goalsPlannings.Count() * 100;
                 graphic.GoalsPlanningTotal = goalsPlannings.Count();
             }
 
