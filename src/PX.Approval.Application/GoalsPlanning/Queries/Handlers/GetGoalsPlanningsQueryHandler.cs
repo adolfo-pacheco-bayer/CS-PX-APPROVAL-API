@@ -39,7 +39,7 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
             var model = _mapper.Map<List<PlanningElasticViewModel>>(result);
             model = await ApplyFilters(model, request);
                                     
-            return await _response.CreateSuccessResponseAsync(_mapper.Map<List<PlanningElasticViewModel>>(model));
+            return await _response.CreateSuccessResponseAsync(model);
 
         }
 
