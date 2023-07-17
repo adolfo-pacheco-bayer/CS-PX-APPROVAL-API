@@ -91,7 +91,7 @@ namespace PX.Approval.Application.GoalsPlanning.Queries.Handlers
         private async Task<List<PlanningElasticViewModel>> ApplyFilters(List<PlanningElasticViewModel> listResult, GetGoalsPlanningsQuery request)
         {
             var listStatus = ConvertToStatusType(request.Status).Result.Select(x => Enum.GetName(x));
-            var listPartnerType = ConvertToPartnerType(request.PartnerType).Result.Select(x => Enum.GetName(x));
+            var listPartnerType = ConvertToPartnerType(request.PartnerType).Result.Select(x => Translations.ResourceManager.GetString(Enum.GetName(x)));
 
 
             if (listStatus.Any() && listPartnerType.Any())
