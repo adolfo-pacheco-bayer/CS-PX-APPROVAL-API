@@ -38,9 +38,7 @@ namespace PX.Approval.Infrastructure.Services.ElasticSearch
         public async Task<List<PlanningElasticViewModel>> Get(Guid cropIntegrationId)
         {
             var settings = new ElasticsearchClientSettings(_cloudId, new Elastic.Transport.ApiKey(_apiKey))
-                  .DefaultIndex(_goalsPlanningIndex)
-                  .DisableDirectStreaming(false)
-                  .EnableDebugMode();
+                  .DefaultIndex(_goalsPlanningIndex);
 
             var client = new ElasticsearchClient(settings);
 
