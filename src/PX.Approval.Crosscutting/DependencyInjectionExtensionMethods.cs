@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using PX.Approval.Application.Common.Interfaces;
 using PX.Approval.Domain.DomainObjects;
 using PX.Approval.Domain.Response;
+using PX.Approval.Infrastructure.Services.Accomplashiment;
 using PX.Approval.Infrastructure.Services.BlobStorage;
 using PX.Approval.Infrastructure.Services.Crop;
 using PX.Approval.Infrastructure.Services.ElasticSearch;
@@ -27,6 +28,7 @@ public static class DependencyInjectionExtensionMethods
 
         services.Configure<GoalsPlanningClientConfiguration>(configuration.GetSection(GoalsPlanningClientConfiguration.GoalsPlanningOptions));
         services.Configure<CropClientConfiguration>(configuration.GetSection(CropClientConfiguration.CropClientOptions));
+        services.Configure<AccomplashimentClientConfiguration>(configuration.GetSection(AccomplashimentClientConfiguration.PlanningServiceOptions));
         services.Configure<BlobStorageConfiguration>(configuration.GetSection(BlobStorageConfiguration.BlobStorageOptions));
         services.AddScoped<IResponse, Response>();
         services.AddScoped<IGoalsPlanningClient, GoalsPlanningGrpcClient>();
@@ -42,6 +44,7 @@ public static class DependencyInjectionExtensionMethods
         {
             services.Configure<ServiceBusConfiguration>(configuration.GetSection("AzureServiceBusOptions"));
         });
+
         return services;
     }
 
